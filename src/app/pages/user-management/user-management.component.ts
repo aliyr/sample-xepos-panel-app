@@ -10,19 +10,17 @@ import {MatPaginator ,MatTableDataSource} from '@angular/material';
 export class UserManagementComponent implements OnInit {
   dataSource= new MatTableDataSource(this.userManagementService.ElementData);
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  constructor(private userManagementService: UserManagementService) {
-  }
+  constructor(private userManagementService: UserManagementService) {}
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   ngOnInit() {
       this.dataSource.paginator = this.paginator;
-  }
 
-  applyFilter(filterValue: string) {
-    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
-
+  newFilteredData($event){
+    this.dataSource= new MatTableDataSource($event);
+  }
 }
 
 
