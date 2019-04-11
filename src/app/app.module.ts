@@ -8,7 +8,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { LoginComponent } from './pages/login/login.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { UserManagementComponent } from './pages/user-management/user-management.component';
-import {MatTableModule} from '@angular/material';
+import {MatTableModule ,MatPaginatorModule ,MatInputModule} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -16,15 +16,19 @@ import {MatTableModule} from '@angular/material';
     DashboardComponent,
     LoginComponent,
     SignupComponent,
-    UserManagementComponent
+    UserManagementComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatTableModule
+    MatTableModule,
+    MatPaginatorModule,
+    MatInputModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+
+}
