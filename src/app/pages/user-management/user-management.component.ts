@@ -20,6 +20,7 @@ export class UserManagementComponent implements OnInit {
   }
   newFilteredData($event){
     this.dataSource= new MatTableDataSource($event);
+    this.dataSource.paginator = this.paginator;
   }
 }
 
