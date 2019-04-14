@@ -18,7 +18,7 @@ export class UserManagementComponent implements OnInit {
       this.dataSource.paginator = this.paginator;
 
   }
-  newFilteredData($event){
+  newFilteredData($event : User[]){
     this.dataSource= new MatTableDataSource($event);
     this.dataSource.paginator = this.paginator;
   }
