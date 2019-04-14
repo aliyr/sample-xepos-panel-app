@@ -11,7 +11,7 @@ export class UserManagementComponent implements OnInit {
   dataSource= new MatTableDataSource(this.userManagementService.ElementData);
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
   constructor(private userManagementService: UserManagementService) {}
-
+  
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   ngOnInit() {
@@ -20,9 +20,9 @@ export class UserManagementComponent implements OnInit {
   }
   newFilteredData($event : User[]){
     this.dataSource= new MatTableDataSource($event);
-    this.dataSource.paginator = this.paginator;
+  }
+  goToNextPage(){
+    this.dataSource.paginator.nextPage();
+
   }
 }
-
-
-
