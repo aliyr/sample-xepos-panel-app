@@ -1,10 +1,12 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import {NgLog} from '../../decorators/nglog.decorator';
 
 @Component({
   selector: 'app-search-input-component',
   templateUrl: './search-input-component.component.html',
   styleUrls: ['./search-input-component.component.scss']
 })
+@NgLog()
 export class SearchInputComponentComponent implements OnInit {
   @Input() listValues;
   @Output() onFilter = new EventEmitter();

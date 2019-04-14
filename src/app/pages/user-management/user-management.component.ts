@@ -2,12 +2,14 @@ import { Component, OnInit , ViewChild} from '@angular/core';
 import {UserManagementService} from '../../services/user-management/user-management.service';
 import {User} from '../../models/User';
 import {MatPaginator, MatSort , MatTableDataSource} from '@angular/material';
+import {NgLog} from '../../decorators/nglog.decorator';
 
 @Component({
   selector: 'app-user-management',
   templateUrl: './user-management.component.html',
   styleUrls: ['./user-management.component.scss']
 })
+@NgLog()
 export class UserManagementComponent implements OnInit {
   dataSource = new MatTableDataSource(this.userManagementService.ElementData);
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
