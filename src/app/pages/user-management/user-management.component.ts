@@ -27,4 +27,5 @@ export class UserManagementComponent implements OnInit {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
-}
+  goToNextPage(){
+    this.dataSource.paginator.nextPage();
