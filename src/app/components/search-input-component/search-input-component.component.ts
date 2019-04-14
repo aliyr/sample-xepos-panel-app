@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output ,EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-search-input-component',
@@ -6,19 +6,21 @@ import { Component, OnInit, Input, Output ,EventEmitter } from '@angular/core';
   styleUrls: ['./search-input-component.component.scss']
 })
 export class SearchInputComponentComponent implements OnInit {
-  @Input() listValues ;
-  @Output() onFilter = new EventEmitter() ;
-  filteredValues :[] ; 
-  constructor() { }
+  @Input() listValues;
+  @Output() onFilter = new EventEmitter();
+  filteredValues: [];
+  constructor() {}
 
-  ngOnInit() {
-  }
-  
-  filterTableList(searchValue){
-    this.filteredValues = this.listValues.filter(function(elem) {
-      if(elem.name.trim().toLowerCase().includes(searchValue.trim().toLowerCase()) )
-      return  elem;
+  ngOnInit() {}
+
+  filterTableList(searchValue) {
+    this.filteredValues = this.listValues.filter((elem) => {
+      const rawData = elem.name.trim().toLowerCase();
+      const searchText = searchValue.trim().toLowerCase();
+      if (rawData.includes(searchText)) {
+        return elem;
+      }
     });
-    this.onFilter.emit(this.filteredValues)
+    this.onFilter.emit(this.filteredValues);
   }
 }
