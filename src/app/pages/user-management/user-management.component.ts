@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {UserManagementService} from '../../services/user-management/user-management.service';
 import {User} from '../../models/User';
+import {MatSort, MatTableDataSource} from '@angular/material';
 
 @Component({
   selector: 'app-user-management',
@@ -8,12 +9,13 @@ import {User} from '../../models/User';
   styleUrls: ['./user-management.component.scss']
 })
 export class UserManagementComponent implements OnInit {
-  dataSource: User[];
+  dataSource = new MatTableDataSource(this.userManagementService.ElementData);
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
+  @ViewChild(MatSort) sort: MatSort;
   constructor(private userManagementService: UserManagementService) {
   }
   ngOnInit() {
-    this.dataSource = this.userManagementService.ElementData;
+    this.dataSource.sort = this.sort;
   }
 
 }
