@@ -8,7 +8,9 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { LoginComponent } from './pages/login/login.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { UserManagementComponent } from './pages/user-management/user-management.component';
-import {MatSortModule, MatTableModule} from '@angular/material';
+import {MatTableModule , MatSortModule, MatPaginatorModule , MatInputModule , MatPaginatorIntl  } from '@angular/material';
+import { SearchInputComponentComponent } from './components/search-input-component/search-input-component.component';
+import {CustomMatPaginatorIntl} from './ngMaterialCustomization/CustomMatPaginatorIntl';
 
 @NgModule({
   declarations: [
@@ -16,16 +18,21 @@ import {MatSortModule, MatTableModule} from '@angular/material';
     DashboardComponent,
     LoginComponent,
     SignupComponent,
-    UserManagementComponent
+    UserManagementComponent,
+    SearchInputComponentComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatTableModule,
-    MatSortModule
+    MatSortModule,
+    MatPaginatorModule,
+    MatInputModule,
   ],
-  providers: [],
+  providers: [
+    { provide: CustomMatPaginatorIntl , useClass: CustomMatPaginatorIntl}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
