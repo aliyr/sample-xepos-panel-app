@@ -29,3 +29,5 @@ export class UserManagementComponent implements OnInit {
   }
   goToNextPage(){
     this.dataSource.paginator.nextPage();
+  }
+}
