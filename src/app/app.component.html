@@ -1,4 +1,28 @@
-  
-     <app-side-nav></app-side-nav> 
- 
-    
+<mat-drawer-container class="example-container" hasBackdrop="false" autosize>
+  <mat-drawer #drawer mode="side" class="left-side-nav" opened>
+    <nav >
+      <button routerLink='/'> dashboard</button>
+      <button routerLink='/Login'>login</button>
+      <button routerLink='/Signup'>signup</button>
+      <button routerLink='/UserManagement'>user management</button>
+      <hr>
+      <button (click)="toggleSubNav()">DASHBOARD</button>
+      <button>REPORTING</button>
+      <button>PRODUCTS</button>
+      <button>COMPANY</button>
+      <button>MANAGEMENT</button>
+      <button (click)="drawer.toggle()">close</button>
+    </nav>
+    <div class="sub-nav" [@subNav]="isSubNavOpen ? 'start' : 'end'">
+      <app-sub-nav selectedIndex="1"></app-sub-nav>
+    </div>
+  </mat-drawer>
+  <mat-drawer-content>
+    <div class="container-fluid">
+      <div class="page-header">
+        user info
+      </div>
+      <router-outlet></router-outlet>
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>

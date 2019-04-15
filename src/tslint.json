@@ -17,6 +17,7 @@
     "no-unused-expression": false,
     "no-debugger": false,
     "no-trailing-whitespace": false,
-    "quotemark": false
+    "quotemark": false,
+    "whitespace": false
   }
 }

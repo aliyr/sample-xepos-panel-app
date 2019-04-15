@@ -11,7 +11,7 @@ import { UserManagementComponent } from './pages/user-management/user-management
 import {MatTableModule , MatSortModule, MatPaginatorModule , MatInputModule , MatPaginatorIntl ,MatSidenavModule } from '@angular/material';
 import { SearchInputComponentComponent } from './components/search-input-component/search-input-component.component';
 import {CustomMatPaginatorIntl} from './ngMaterialCustomization/CustomMatPaginatorIntl';
-import { SideNavComponent } from './components/side-nav/side-nav.component';
+import { SubNavComponent } from './components/subNav/sub-nav.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +21,7 @@ import { SideNavComponent } from './components/side-nav/side-nav.component';
     SignupComponent,
     UserManagementComponent,
     SearchInputComponentComponent,
-    SideNavComponent,
+    SubNavComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,7 +35,7 @@ import { SideNavComponent } from './components/side-nav/side-nav.component';
   ],
   providers: [
     { provide: CustomMatPaginatorIntl , useClass: CustomMatPaginatorIntl}
-  ],   
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
