@@ -12,7 +12,7 @@ import {NgLog} from '../../decorators/nglog.decorator';
 export class UserManagementComponent implements OnInit {
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
   dataSource
-  
+
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   constructor(private userManagementService: UserManagementService) {
@@ -27,8 +27,4 @@ export class UserManagementComponent implements OnInit {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
-  goToNextPage(){
-     this.dataSource.paginator.nextPage(); 
-     console.log(this.dataSource.sort.direction)
-    }
 }

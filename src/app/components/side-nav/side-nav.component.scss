@@ -20,12 +20,18 @@
     margin-bottom: 20px;
   }
   .left-side-nav{
-      width: 400px;
+      min-width: 150px;
     padding: 0;
         nav{
+            float: left;
          padding: 10px;
          display: flex;
          flex-direction: column
         }
+  }
+  .sub-nav{
+    float:left;   min-width: 150px;
+    background-color: #3d3f46;
+    height: 100%;
   }
  
