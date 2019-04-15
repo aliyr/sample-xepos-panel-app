@@ -8,9 +8,10 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { LoginComponent } from './pages/login/login.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { UserManagementComponent } from './pages/user-management/user-management.component';
-import {MatTableModule , MatSortModule, MatPaginatorModule , MatInputModule , MatPaginatorIntl  } from '@angular/material';
+import {MatTableModule , MatSortModule, MatPaginatorModule , MatInputModule , MatPaginatorIntl ,MatSidenavModule } from '@angular/material';
 import { SearchInputComponentComponent } from './components/search-input-component/search-input-component.component';
 import {CustomMatPaginatorIntl} from './ngMaterialCustomization/CustomMatPaginatorIntl';
+import { SideNavComponent } from './components/side-nav/side-nav.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import {CustomMatPaginatorIntl} from './ngMaterialCustomization/CustomMatPaginat
     LoginComponent,
     SignupComponent,
     UserManagementComponent,
-    SearchInputComponentComponent
+    SearchInputComponentComponent,
+    SideNavComponent,
   ],
   imports: [
     BrowserModule,
@@ -29,10 +31,11 @@ import {CustomMatPaginatorIntl} from './ngMaterialCustomization/CustomMatPaginat
     MatSortModule,
     MatPaginatorModule,
     MatInputModule,
+    MatSidenavModule,
   ],
   providers: [
     { provide: CustomMatPaginatorIntl , useClass: CustomMatPaginatorIntl}
-  ],
+  ],   
   bootstrap: [AppComponent]
 })
 export class AppModule { }
