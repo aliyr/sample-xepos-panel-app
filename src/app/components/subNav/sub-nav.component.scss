@@ -12,9 +12,18 @@
   list-style-type: none;
   padding-left: 5px;
   width: 100%;
+
   .mat-button{
     width: 100%;
     text-align: left;
   }
+
+  .uppercase-text{
+    text-transform: uppercase;
+  }
+  .capitalize-text{
+    text-transform: capitalize;
+  }
+
 }
 

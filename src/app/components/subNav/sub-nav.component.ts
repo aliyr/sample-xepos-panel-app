@@ -14,6 +14,10 @@ export class SubNavComponent {
   dataSource = new MatTreeNestedDataSource<SideMenu>();
   sideNavItems: SideMenu[] = [
       {
+        title: 'dashboard',
+        route: ''
+      },
+      {
           title:'reporting',
           items : [
             { title : 'sales',
@@ -103,7 +107,7 @@ export class SubNavComponent {
           {
             title : 'users',
             items:[
-              {title : 'user management' , route : ''},
+              {title : 'user management' , route : '/UserManagement'},
               {title : 'loyalty schemes' , route : ''},
             ]
           },
