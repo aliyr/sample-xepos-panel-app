@@ -13,7 +13,6 @@ import {NgLog} from '../../decorators/nglog.decorator';
 export class UserManagementComponent implements OnInit {
   dataSource = new MatTableDataSource(this.userManagementService.ElementData);
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSource
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;

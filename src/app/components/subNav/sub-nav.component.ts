@@ -1,109 +1,132 @@
 import { Component, OnInit } from '@angular/core';
+import {NestedTreeControl} from '@angular/cdk/tree';
+import {MatTreeNestedDataSource, MatTreeNodePadding} from '@angular/material';
+
+
+interface SideMenu {
+  title: string;
+  items?: SideMenu[];
+}
 
 @Component({
   selector: 'app-sub-nav',
   templateUrl: './sub-nav.component.html',
   styleUrls: ['./sub-nav.component.scss']
 })
-export class SubNavComponent implements OnInit {
-  sideNavItems = {
-    reporting : [
-      { title : 'sales',
-        items : [
-          {name : 'Sales Report'},
-          {name : 'Product Types Report'},
-          {name : 'Customer Report'},
-          {name : 'User Sales Report'},
-          {name : 'Sales per product'},
-          {name : 'Stock Report'},
-          {name : 'Transactions Log'},
-        ]
-      },
-      {
-        title : 'other',
-        items:[
-          {name : 'register closures'},
-          {name : 'time attendance'},
-        ]
-      },
-    ],
-    products : [
-      { title : 'products',
-        items : [
-          {name : 'products'},
-          {name : 'composite products'},
-          {name : 'promotions'},
-          {name : 'categories'},
-          {name : 'service products'},
-          {name : 'product types'},
-          {name : 'popup alerts'},
-          {name : 'brands'},
-          {name : 'tags'},
-          {name : 'tax rates'},
-          {name : 'attributes'},
-          {name : 'miscs'},
-        ]
-      },
-      {
-        title : 'stock',
-        items:[
-          {name : 'ingredients'},
-          {name : 'stock movement'},
-          {name : 'suppliers'},
-        ]
-      },
-    ],
-    company : [
-      { title : 'company',
-        items : [
-          {name : 'company details'},
-        ]
-      },
-      {
-        title : 'locations',
-        items:[
-          {name : 'locations'},
-          {name : 'devices'},
-          {name : 'registers'},
-        ]
-      },
-      {
-        title : 'customers',
-        items:[
-          {name : 'groups'},
-          {name : 'customers'},
-        ]
-      },
-    ],
-    management : [
-      { title : 'printers',
-        items : [
-          {name : 'printers'},
-          {name : 'printers templates'},
 
+export class SubNavComponent {
+  treeControl = new NestedTreeControl<SideMenu>(node => node.items);
+  dataSource = new MatTreeNestedDataSource<SideMenu>();
+  sideNavItems: SideMenu[] = [
+      {
+          title:'reporting',
+          items : [
+            { title : 'sales',
+              items : [
+                {title : 'Sales Report'},
+                {title : 'Product Types Report'},
+                {title : 'Customer Report'},
+                {title : 'User Sales Report'},
+                {title : 'Sales per product'},
+                {title : 'Stock Report'},
+                {title : 'Transactions Log'},
+              ]
+            },
+            {
+              title : 'other',
+              items:[
+                {title : 'register closures'},
+                {title : 'time attendance'},
+              ]
+            },
+          ]
+        },
+      {
+        title: 'products',
+        items: [
+          { title : 'products',
+            items : [
+              {title : 'products'},
+              {title : 'composite products'},
+              {title : 'promotions'},
+              {title : 'categories'},
+              {title : 'service products'},
+              {title : 'product types'},
+              {title : 'popup alerts'},
+              {title : 'brands'},
+              {title : 'tags'},
+              {title : 'tax rates'},
+              {title : 'attributes'},
+              {title : 'miscs'},
+            ]
+          },
+          {
+            title : 'stock',
+            items:[
+              {title : 'ingredients'},
+              {title : 'stock movement'},
+              {title : 'suppliers'},
+            ]
+          },
         ]
       },
       {
-        title : 'users',
-        items:[
-          {name : 'user management'},
-          {name : 'loyalty schemes'},
+        title: 'company',
+        items: [
+          { title : 'company',
+            items : [
+              {title : 'company details'},
+            ]
+          },
+          {
+            title : 'locations',
+            items:[
+              {title : 'locations'},
+              {title : 'devices'},
+              {title : 'registers'},
+            ]
+          },
+          {
+            title : 'customers',
+            items:[
+              {title : 'groups'},
+              {title : 'customers'},
+            ]
+          },
         ]
       },
       {
-        title : 'settings',
-        items:[
-          {name : 'favorite products'},
-          {name : 'reasons'},
-          {name : 'loyalty setting'},
-          {name : 'delivery charges'},
-        ]
-      },
-    ],
-  };
-  constructor() { }
+        title: 'management',
+        items: [
+          { title : 'printers',
+            items : [
+              {title : 'printers'},
+              {title : 'printers templates'},
 
-  ngOnInit() {
+            ]
+          },
+          {
+            title : 'users',
+            items:[
+              {title : 'user management'},
+              {title : 'loyalty schemes'},
+            ]
+          },
+          {
+            title : 'settings',
+            items:[
+              {title : 'favorite products'},
+              {title : 'reasons'},
+              {title : 'loyalty setting'},
+              {title : 'delivery charges'},
+            ]
+          },
+        ]
+      }
+    ];
+  constructor() {
+    this.dataSource.data = this.sideNavItems;
   }
 
+  hasChild = (_: number, node: SideMenu) => !!node.items && node.items.length > 0;
 }

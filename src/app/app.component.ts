@@ -14,23 +14,15 @@ import {
   animations: [
     trigger('subNav', [
       state('start', style({
-        backgroundColor: 'yellow',
-        width: '150px',
-        height: '150px'
+        width: '0px'
       })),
       state('end', style({
-        backgroundColor: 'green',
-        width: '300px',
-        height: '300px'
+        width: '300px'
       })),
-      transition('start => end', animate(1500)),
-      transition('end => start', animate('800ms 0.5s ease-out'))
+      // transition('start => end', animate(500)),
+      // transition('end => start', animate(500))
     ]),
   ],
 })
 export class AppComponent {
-  isSubNavOpen  = true;
-  toggleSubNav() {
-    this.isSubNavOpen = this.isSubNavOpen !== true;
-  }
 }
