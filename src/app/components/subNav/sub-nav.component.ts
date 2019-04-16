@@ -1,12 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {NestedTreeControl} from '@angular/cdk/tree';
 import {MatTreeNestedDataSource, MatTreeNodePadding} from '@angular/material';
-
-
-interface SideMenu {
-  title: string;
-  items?: SideMenu[];
-}
+import {SideMenu} from '../../models/SideMenu'
 
 @Component({
   selector: 'app-sub-nav',
@@ -23,20 +18,20 @@ export class SubNavComponent {
           items : [
             { title : 'sales',
               items : [
-                {title : 'Sales Report'},
-                {title : 'Product Types Report'},
-                {title : 'Customer Report'},
-                {title : 'User Sales Report'},
-                {title : 'Sales per product'},
-                {title : 'Stock Report'},
-                {title : 'Transactions Log'},
+                {title : 'Sales Report' , route : ''},
+                {title : 'Product Types Report' , route : ''},
+                {title : 'Customer Report' , route : ''},
+                {title : 'User Sales Report' , route : ''},
+                {title : 'Sales per product' , route : ''},
+                {title : 'Stock Report' , route : ''},
+                {title : 'Transactions Log' , route : ''},
               ]
             },
             {
               title : 'other',
               items:[
-                {title : 'register closures'},
-                {title : 'time attendance'},
+                {title : 'register closures' , route : ''},
+                {title : 'time attendance' , route : ''},
               ]
             },
           ]
@@ -46,26 +41,26 @@ export class SubNavComponent {
         items: [
           { title : 'products',
             items : [
-              {title : 'products'},
-              {title : 'composite products'},
-              {title : 'promotions'},
-              {title : 'categories'},
-              {title : 'service products'},
-              {title : 'product types'},
-              {title : 'popup alerts'},
-              {title : 'brands'},
-              {title : 'tags'},
-              {title : 'tax rates'},
-              {title : 'attributes'},
-              {title : 'miscs'},
+              {title : 'products' , route : ''},
+              {title : 'composite products' , route : ''},
+              {title : 'promotions' , route : ''},
+              {title : 'categories' , route : ''},
+              {title : 'service products' , route : ''},
+              {title : 'product types' , route : ''},
+              {title : 'popup alerts' , route : ''},
+              {title : 'brands' , route : ''},
+              {title : 'tags' , route : ''},
+              {title : 'tax rates' , route : ''},
+              {title : 'attributes' , route : ''},
+              {title : 'miscs' , route : ''},
             ]
           },
           {
             title : 'stock',
             items:[
-              {title : 'ingredients'},
-              {title : 'stock movement'},
-              {title : 'suppliers'},
+              {title : 'ingredients' , route : ''},
+              {title : 'stock movement' , route : ''},
+              {title : 'suppliers' , route : ''},
             ]
           },
         ]
@@ -75,22 +70,22 @@ export class SubNavComponent {
         items: [
           { title : 'company',
             items : [
-              {title : 'company details'},
+              {title : 'company details' , route : ''},
             ]
           },
           {
             title : 'locations',
             items:[
-              {title : 'locations'},
-              {title : 'devices'},
-              {title : 'registers'},
+              {title : 'locations' , route : ''},
+              {title : 'devices' , route : ''},
+              {title : 'registers' , route : ''},
             ]
           },
           {
             title : 'customers',
             items:[
-              {title : 'groups'},
-              {title : 'customers'},
+              {title : 'groups' , route : ''},
+              {title : 'customers' , route : ''},
             ]
           },
         ]
@@ -100,25 +95,25 @@ export class SubNavComponent {
         items: [
           { title : 'printers',
             items : [
-              {title : 'printers'},
-              {title : 'printers templates'},
+              {title : 'printers' , route : ''},
+              {title : 'printers templates' , route : ''},
 
             ]
           },
           {
             title : 'users',
             items:[
-              {title : 'user management'},
-              {title : 'loyalty schemes'},
+              {title : 'user management' , route : ''},
+              {title : 'loyalty schemes' , route : ''},
             ]
           },
           {
             title : 'settings',
             items:[
-              {title : 'favorite products'},
+              {title : 'favorite products' , route : ''},
               {title : 'reasons'},
-              {title : 'loyalty setting'},
-              {title : 'delivery charges'},
+              {title : 'loyalty setting' , route : ''},
+              {title : 'delivery charges' , route : ''},
             ]
           },
         ]

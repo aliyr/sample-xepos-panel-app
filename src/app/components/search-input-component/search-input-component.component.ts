@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import {NgLog} from '../../decorators/nglog.decorator';
+import {User} from '../../models/User'
 
 @Component({
   selector: 'app-search-input-component',
@@ -8,9 +9,9 @@ import {NgLog} from '../../decorators/nglog.decorator';
 })
 @NgLog()
 export class SearchInputComponentComponent implements OnInit {
-  @Input() listValues;
+  @Input() listValues : User[] ;
   @Output() onFilter = new EventEmitter();
-  filteredValues: [];
+  filteredValues: User[];
   constructor() {}
 
   ngOnInit() {}
