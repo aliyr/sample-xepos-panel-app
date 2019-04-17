@@ -20,27 +20,28 @@ export class UserManagementListComponent implements OnInit {
   constructor(private userManagementService: UserManagementService , private router: Router) {
   }
   ngOnInit() {
-      this.dataSource.paginator = this.paginator;
-      this.dataSource.sort = this.sort;
+    this.updateMaterialTable();
   }
-  newFilteredData($event: User[]) {
+  newFilteredData($event: User[]) : void {
     this.dataSource = new MatTableDataSource($event);
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+    this.updateMaterialTable();
   }
 
-  deleteUser(userID) {
+  deleteUser(userID) : void {
     this.userManagementService.ElementData.map((elem , index)=>{
       if(userID == elem.position){
-        console.log(elem)
         this.userManagementService.ElementData.splice(index,1 );
        }
     })
     this.dataSource = new MatTableDataSource(this.userManagementService.ElementData);
+    this.updateMaterialTable();
+  }
+  updateUser(userID) : void{
+    this.router.navigate(['/user-management/form',  userID ]);
+  }
+
+  updateMaterialTable() : void{
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
-  }
-  updateUser(userID){
-    this.router.navigate(['/user-management/form',  userID ]);
   }
 }
