@@ -41,12 +41,11 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
   </table>
+  <mat-paginator [pageSizeOptions]="[6,12,18]" showFirstLastButtons length='5'></mat-paginator>
+</mat-card>
 
   <mat-paginator
     [pageSizeOptions]="[6, 12, 18]"
     showFirstLastButtons
     length="5"
   ></mat-paginator>
-
-  <app-user-management-form></app-user-management-form>
-</mat-card>
