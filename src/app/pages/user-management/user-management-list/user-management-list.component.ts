@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 @NgLog()
 export class UserManagementListComponent implements OnInit {
   dataSource = new MatTableDataSource(this.userManagementService.ElementData);
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol' , 'actions'];
+  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol' , 'edit' , 'delete'];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -41,6 +41,6 @@ export class UserManagementListComponent implements OnInit {
     this.dataSource.sort = this.sort;
   }
   updateUser(userID){
-  
+    this.router.navigate(['/user-management/form',  userID ]);
   }
 }

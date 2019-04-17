@@ -15,7 +15,7 @@ const routes: Routes = [
     path: "user-management", component: UserManagementComponent,
     children: [
       { path: "", redirectTo: 'list', pathMatch: 'full' },
-      { path: "form", component: UserManagementFormComponent },
+      { path: "form/:id", component: UserManagementFormComponent },
       { path: "list", component: UserManagementListComponent }
     ]
   }
