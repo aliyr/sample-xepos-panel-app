@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { LoginComponent } from './pages/login/login.component';
 import { SignupComponent } from './pages/signup/signup.component';
-import { UserManagementComponent } from './pages/user-management/user-management-list/user-management-list.component';
+import { UserManagementListComponent } from './pages/user-management/user-management-list/user-management-list.component';
 import {
   MatTableModule,
   MatSortModule,
@@ -50,6 +50,7 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { UserManagementFormComponent } from './pages/user-management/user-management-form/user-management-form.component';
+import { UserManagementComponent } from './pages/user-management/user-management.component';
 
 @NgModule({
   declarations: [
@@ -57,10 +58,11 @@ import { UserManagementFormComponent } from './pages/user-management/user-manage
     DashboardComponent,
     LoginComponent,
     SignupComponent,
-    UserManagementComponent,
+    UserManagementListComponent,
     SearchInputComponentComponent,
     SubNavComponent,
     UserManagementFormComponent,
+    UserManagementComponent,
   ],
   imports: [
     BrowserModule,
