@@ -3,6 +3,7 @@ import {UserManagementService} from '../../../services/user-management/user-mana
 import {User} from '../../../models/User';
 import {MatPaginator, MatSort , MatTableDataSource} from '@angular/material';
 import {NgLog} from '../../../decorators/nglog.decorator';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-management',
@@ -12,11 +13,11 @@ import {NgLog} from '../../../decorators/nglog.decorator';
 @NgLog()
 export class UserManagementComponent implements OnInit {
   dataSource = new MatTableDataSource(this.userManagementService.ElementData);
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
+  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol' , 'actions'];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-  constructor(private userManagementService: UserManagementService) {
+  constructor(private userManagementService: UserManagementService , private router: Router) {
   }
   ngOnInit() {
       this.dataSource.paginator = this.paginator;
@@ -26,5 +27,20 @@ export class UserManagementComponent implements OnInit {
     this.dataSource = new MatTableDataSource($event);
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+  }
+
+  deleteUser(userID) {
+    this.userManagementService.ElementData.map((elem , index)=>{
+      if(userID == elem.position){
+        console.log(elem)
+        this.userManagementService.ElementData.splice(index,1 );
+       }
+    })
+    this.dataSource = new MatTableDataSource(this.userManagementService.ElementData);
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+  }
+  updateUser(userID){
+  
   }
 }
