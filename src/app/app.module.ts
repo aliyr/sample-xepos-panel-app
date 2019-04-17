@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { LoginComponent } from './pages/login/login.component';
 import { SignupComponent } from './pages/signup/signup.component';
-import { UserManagementComponent } from './pages/user-management/user-management.component';
+import { UserManagementComponent } from './pages/user-management/user-management-list/user-management-list.component';
 import {
   MatTableModule,
   MatSortModule,
@@ -49,6 +49,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { UserManagementFormComponent } from './pages/user-management/user-management-form/user-management-form.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     UserManagementComponent,
     SearchInputComponentComponent,
     SubNavComponent,
+    UserManagementFormComponent,
   ],
   imports: [
     BrowserModule,

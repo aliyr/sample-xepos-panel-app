@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import {DashboardComponent} from './pages/dashboard/dashboard.component'
 import { LoginComponent } from './pages/login/login.component'
 import { SignupComponent} from './pages/signup/signup.component'
-import {UserManagementComponent} from './pages/user-management/user-management.component'
+import {UserManagementComponent} from './pages/user-management/user-management-list/user-management-list.component'
 
 const routes: Routes = [
  { path: '' , component : DashboardComponent },
