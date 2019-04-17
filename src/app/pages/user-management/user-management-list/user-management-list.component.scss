@@ -9,6 +9,9 @@ th.mat-sort-header-sorted {
   color: black;
 }
 .userManagementListActionRow{
-    
-width: 50px;
+  i{
+    cursor: pointer;
+  }
+    padding-right: 5px;
+    width: 50px;
 }
