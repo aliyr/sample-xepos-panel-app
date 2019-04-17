@@ -1,32 +1,51 @@
 <mat-card class="mat-elevation-z8">
-
-  <app-search-input-component [listValues]='userManagementService.ElementData' (onFilter)='newFilteredData($event)'>
+  <app-search-input-component
+    [listValues]="userManagementService.ElementData"
+    (onFilter)="newFilteredData($event)"
+  >
   </app-search-input-component>
   <table mat-table matSort [dataSource]="dataSource">
-
     <ng-container matColumnDef="position">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header> No. </th>
-      <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>No.</th>
+      <td mat-cell *matCellDef="let element">{{ element.position }}</td>
     </ng-container>
 
     <ng-container matColumnDef="name">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
-      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+      <td mat-cell *matCellDef="let element">{{ element.name }}</td>
     </ng-container>
 
     <ng-container matColumnDef="weight">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header> Weight </th>
-      <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Weight</th>
+      <td mat-cell *matCellDef="let element">{{ element.weight }}</td>
     </ng-container>
 
     <ng-container matColumnDef="symbol">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header> Symbol </th>
-      <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Symbol</th>
+      <td mat-cell *matCellDef="let element">{{ element.symbol }}</td>
     </ng-container>
 
+    <ng-container matColumnDef="edit" >
+      <th mat-header-cell *matHeaderCellDef  class="userManagementListActionRow" >edit</th>
+      <td mat-cell *matCellDef="let element" class="userManagementListActionRow">
+        <i class="material-icons" (click)="updateUser(element.position)">
+          edit
+        </i>
+    </ng-container>
+
+    <ng-container matColumnDef="delete" >
+        <th mat-header-cell *matHeaderCellDef  class="userManagementListActionRow" >delete</th>
+        <td mat-cell *matCellDef="let element" class="userManagementListActionRow">
+          <i class="material-icons" (click)="deleteUser(element.position)">
+            delete
+          </i>
+        </td>
+      </ng-container>
+
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
   </table>
   <mat-paginator [pageSizeOptions]="[6,12,18]" showFirstLastButtons length='5'></mat-paginator>
 </mat-card>
+
 
