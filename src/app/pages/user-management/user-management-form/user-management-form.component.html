@@ -6,3 +6,150 @@
     <button mat-button class="header-button" aria-hidden="false" aria-label="delete icon">delete</button>
   </mat-toolbar-row>
 </mat-toolbar>
+<div class="row">
+  <div class="col-7">
+    <mat-card class="mat-card-container">
+      <p>
+        <mat-form-field class="mat-input">
+          <mat-label>firstname</mat-label>
+          <input matInput placeholder="firstname" />
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field class="mat-input">
+          <mat-label>surname</mat-label>
+          <input matInput placeholder="surname" />
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field class="mat-input">
+          <mat-label>email address</mat-label>
+          <input matInput placeholder="email address" />
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field class="mat-input">
+          <mat-label>type</mat-label>
+          <mat-select placeholder="type">
+            <mat-option value="option">Option</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field class="mat-input">
+          <mat-label>User's Locations</mat-label>
+
+          <input
+            type="text"
+            #chosenLocation
+            placeholder="User's Locations"
+            aria-label="Number"
+            matInput
+            [matAutocomplete]="auto"
+            (keydown.enter)="addTOChips(chosenLocation.value)"
+          />
+          <mat-autocomplete #auto="matAutocomplete">
+            <mat-option
+              *ngFor="let location of dropDownLocations"
+              [value]="location"
+            >
+              {{ location }}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-chip-list class="mat-input">
+          <mat-chip
+            *ngFor="let location of chipsLocations"
+            (removed)="remove(location)"
+            >{{ location }}
+            <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+          </mat-chip>
+        </mat-chip-list>
+      </p>
+
+      <p>
+        <mat-form-field class="mat-input">
+          <mat-label>RFID token</mat-label>
+
+          <input
+            matInput
+            placeholder="RFID token"
+            [type]="hide ? 'password' : 'text'"
+          />
+          <mat-icon matSuffix (click)="hide = !hide">{{
+            hide ? "visibility_off" : "visibility"
+          }}</mat-icon>
+        </mat-form-field>
+      </p>
+    </mat-card>
+    <mat-card class="mat-card-container">
+      <div>
+        time attendance
+        <mat-slide-toggle
+          #toggleTimeAttendance
+          [(ngModel)]="check"
+        ></mat-slide-toggle>
+      </div>
+      <div>If it's on the user appears on clocking page.</div>
+      <p *ngIf="check">
+        <mat-form-field class="mat-input">
+          <mat-label>wage</mat-label>
+          <input matInput placeholder="wage" />
+        </mat-form-field>
+      </p>
+    </mat-card>
+  </div>
+  <div class="col-5">
+    <mat-card class="mat-card-container">
+      <p>
+        <mat-form-field class="mat-input">
+          <mat-label>username</mat-label>
+          <input matInput placeholder="username" />
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field class="mat-input">
+          <mat-label>Back-Office Password</mat-label>
+
+          <input
+            matInput
+            placeholder="Back-Office Password "
+            [type]="hide1 ? 'password' : 'text'"
+          />
+          <mat-icon matSuffix (click)="hide1 = !hide1">{{
+            hide1 ? "visibility_off" : "visibility"
+          }}</mat-icon>
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field class="mat-input">
+          <input
+            matInput
+            placeholder="Repeat Back-Office Password "
+            [type]="hide2 ? 'password' : 'text'"
+          />
+          <mat-icon matSuffix (click)="hide2 = !hide2">{{
+            hide2 ? "visibility_off" : "visibility"
+          }}</mat-icon>
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field class="mat-input">
+          <input
+            matInput
+            placeholder="4 Digits Passcode "
+            [type]="hide3 ? 'password' : 'text'"
+          />
+          <mat-icon matSuffix (click)="hide3 = !hide3">{{
+            hide3 ? "visibility_off" : "visibility"
+          }}</mat-icon>
+        </mat-form-field>
+      </p>
+    </mat-card>
+  </div>
+</div>

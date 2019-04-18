@@ -1,13 +1,18 @@
+
 table {
-  width: 100%;
+    width: 100%;
 }
-.mat-table {
-  box-shadow: none;
-}
+.mat-table{
+    box-shadow: none
+  }
 th.mat-sort-header-sorted {
   color: black;
 }
-.userManagementListActionRow {
+.userManagementListActionRow{
+  i{
+    cursor: pointer;
+  }
+  padding-right: 5px;
   width: 50px;
   cursor: pointer;
 }
