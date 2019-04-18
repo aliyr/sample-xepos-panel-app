@@ -39,6 +39,7 @@ import {CustomMatPaginatorIntl} from './ngMaterialCustomization/CustomMatPaginat
 import { SubNavComponent } from './components/subNav/sub-nav.component';
 import {MatTreeModule} from '@angular/material/tree';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
@@ -101,7 +102,8 @@ import { UserManagementComponent } from './pages/user-management/user-management
     MatTabsModule,
     MatTooltipModule,
     MatTreeModule,
-    MatBottomSheetModule
+    MatBottomSheetModule,
+    MatToolbarModule
   ],
   providers: [
     { provide: CustomMatPaginatorIntl , useClass: CustomMatPaginatorIntl}
