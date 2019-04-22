@@ -67,7 +67,7 @@
         <mat-chip-list class="mat-input">
           <mat-chip
             *ngFor="let location of profileForm.get('locations').value"
-            (removed)="remove(location)"
+            (removed)="removeSelectedLocations(location)"
             >{{ location }}
             <mat-icon matChipRemove>cancel</mat-icon>
           </mat-chip>
@@ -80,7 +80,6 @@
           <input
             matInput
             placeholder="RFID token"
-            formControlName="RFIDToken"
             [type]="hide ? 'password' : 'text'"
           />
           <mat-icon matSuffix (click)="hide = !hide">{{
@@ -111,6 +110,9 @@
         <mat-form-field class="mat-input">
           <mat-label>username</mat-label>
           <input formControlName="username" matInput placeholder="username" />
+          <mat-error>
+            username is <strong>required</strong>
+          </mat-error>
         </mat-form-field>
       </p>
       <p>
@@ -136,7 +138,7 @@
             formControlName="backOfficeRepeatedPassword"
             placeholder="Repeat Back-Office Password "
             [type]="hide2 ? 'password' : 'text'"
-            [errorStateMatcher]="errorMatcher"
+            [errorStateMatcher]="confirmPasswordErrorMatcher"
           />
           <mat-icon matSuffix (click)="hide2 = !hide2">{{
             hide2 ? "visibility_off" : "visibility"
@@ -151,8 +153,8 @@
         <mat-form-field class="mat-input">
           <input
             matInput
-            formControlName="fourDigitPassword"
             placeholder="4 Digits Passcode "
+            formControlName="fourDigitPassword"
             [type]="hide3 ? 'password' : 'text'"
           />
           <mat-icon matSuffix (click)="hide3 = !hide3">{{
