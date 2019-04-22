@@ -1,42 +1,84 @@
-import { Component, OnInit } from '@angular/core';
-import {MatChipInputEvent} from '@angular/material';
-import {COMMA, ENTER} from '@angular/cdk/keycodes';
-import {FormControl} from '@angular/forms';
+import { Component, OnInit } from "@angular/core";
+import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
-  selector: 'app-user-management-form',
-  templateUrl: './user-management-form.component.html',
-  styleUrls: ['./user-management-form.component.scss']
+  selector: "app-user-management-form",
+  templateUrl: "./user-management-form.component.html",
+  styleUrls: ["./user-management-form.component.scss"]
 })
-
 export class UserManagementFormComponent implements OnInit {
-chipsLocations :string[] =[
-  'address1',
-  'address'
-];
-dropDownLocations : string[] = [
-  'address1',
-  'address'
-]
+  locations: string[] = ["address1", "address"];
 
-myControl = new FormControl();
-options: string[] = ['One', 'Two', 'Three'];
-check : boolean = true
-  constructor() { 
-  } 
+  profileForm = this.fb.group({
+    firstName: ['',[
+      Validators.required
+    ]],
+    surname: ['',[
+      Validators.required
+    ]],
+    email: ['',[
+      Validators.required,
+      Validators.email
+    ]],
+    type: ['',[
+      Validators.required
+    ]],
+    locations: ['',
+      [
+      Validators.required
+    ]],
+    RFIDToken: [''],
+    timeAttendance:[''],
+    wage:[''],
+    username:['',[
+      Validators.required
+    ]],
+    backOfficePassword:['',[
+      Validators.required
+    ]],
+    fourDigitPassword:['',[
+      Validators.required,
+      Validators.maxLength(4)
+    ]],
+  });
 
-  ngOnInit() {
+  constructor(private fb: FormBuilder) {}
+
+  ngOnInit() {}
+
+  remove(locations: string): void {
+
   }
-  removable = true;
-  readonly separatorKeysCodes: number[] = [ENTER, COMMA];
-  remove(locations :string): void {
-    const index = this.chipsLocations.indexOf(locations);
 
-    if (index >= 0) {
-      this.chipsLocations.splice(index, 1);
+  validateUserLocations(userLocations, insertedLocation): boolean {
+    // check if the location is valid or not
+    const isLocationValid = this.locations.find(p => p === insertedLocation) !== undefined;
+    let isLocationNonRepetitive = true;
+    if (userLocations) {
+      isLocationNonRepetitive = userLocations.find(p => p === insertedLocation) === undefined;
+    }
+    return isLocationValid && isLocationNonRepetitive;
+  }
+
+  addToLocations(location) {
+    const usersLocations = this.profileForm.get('locations').value as FormArray;
+    debugger;
+    const LocationInterAllowed = this.validateUserLocations(usersLocations, location);
+
+    if (LocationInterAllowed) {
+      if (usersLocations.length === 0) {
+        // if locations array doesn't existed
+        this.profileForm.get('locations').patchValue([location]);
+      } else {
+        usersLocations.push(location);
+        this.profileForm.get('locations').patchValue(usersLocations);
+      }
     }
   }
-  addTOChips(chosenLocation : string){
-    this.chipsLocations.push(chosenLocation)
+
+  returnToList() {
+  }
+  save() {
+
   }
 }

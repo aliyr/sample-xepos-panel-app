@@ -1,56 +1,60 @@
-<mat-toolbar>
-  <mat-toolbar-row>
-    <span>Third Line</span>
-    <span class="header-spacer"></span>
-    <button mat-button class="header-button" aria-hidden="false" aria-label="heart icon">favorite</button>
-    <button mat-button class="header-button" aria-hidden="false" aria-label="delete icon">delete</button>
-  </mat-toolbar-row>
-</mat-toolbar>
-<div class="row">
+<app-form-header title="user management" (confirmed)="save()" (canceled)="returnToList()"></app-form-header>
+<div class="row" [formGroup]="profileForm">
   <div class="col-7">
     <mat-card class="mat-card-container">
       <p>
         <mat-form-field class="mat-input">
-          <mat-label>firstname</mat-label>
-          <input matInput placeholder="firstname" />
+          <mat-label>first name</mat-label>
+          <input matInput placeholder="first name" formControlName="firstName"/>
+          <mat-error>
+            User name is <strong>required</strong>
+          </mat-error>
         </mat-form-field>
       </p>
       <p>
         <mat-form-field class="mat-input">
           <mat-label>surname</mat-label>
-          <input matInput placeholder="surname" />
+          <input matInput placeholder="surname" formControlName="surname"/>
+          <mat-error>
+            surname is <strong>required</strong>
+          </mat-error>
         </mat-form-field>
       </p>
       <p>
         <mat-form-field class="mat-input">
           <mat-label>email address</mat-label>
-          <input matInput placeholder="email address" />
+          <input matInput placeholder="email address" formControlName="email"/>
+          <mat-error>
+            Email is <strong>required</strong>
+          </mat-error>
         </mat-form-field>
       </p>
       <p>
         <mat-form-field class="mat-input">
           <mat-label>type</mat-label>
-          <mat-select placeholder="type">
-            <mat-option value="option">Option</mat-option>
+          <mat-select placeholder="type" formControlName="type">
+            <mat-option value="option">Option1</mat-option>
+            <mat-option value="option">Option2</mat-option>
+            <mat-option value="option">Option3</mat-option>
           </mat-select>
+          <mat-error>
+            Type is <strong>required</strong>
+          </mat-error>
         </mat-form-field>
       </p>
       <p>
         <mat-form-field class="mat-input">
           <mat-label>User's Locations</mat-label>
-
           <input
             type="text"
             #chosenLocation
             placeholder="User's Locations"
-            aria-label="Number"
             matInput
             [matAutocomplete]="auto"
-            (keydown.enter)="addTOChips(chosenLocation.value)"
           />
-          <mat-autocomplete #auto="matAutocomplete">
+          <mat-autocomplete #auto="matAutocomplete" (optionSelected)="addToLocations(chosenLocation.value)">
             <mat-option
-              *ngFor="let location of dropDownLocations"
+              *ngFor="let location of locations"
               [value]="location"
             >
               {{ location }}
@@ -62,10 +66,10 @@
       <p>
         <mat-chip-list class="mat-input">
           <mat-chip
-            *ngFor="let location of chipsLocations"
+            *ngFor="let location of profileForm.get('locations').value"
             (removed)="remove(location)"
             >{{ location }}
-            <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+            <mat-icon matChipRemove>cancel</mat-icon>
           </mat-chip>
         </mat-chip-list>
       </p>
@@ -73,10 +77,10 @@
       <p>
         <mat-form-field class="mat-input">
           <mat-label>RFID token</mat-label>
-
           <input
             matInput
             placeholder="RFID token"
+            formControlName="RFIDToken"
             [type]="hide ? 'password' : 'text'"
           />
           <mat-icon matSuffix (click)="hide = !hide">{{
@@ -89,15 +93,14 @@
       <div>
         time attendance
         <mat-slide-toggle
-          #toggleTimeAttendance
-          [(ngModel)]="check"
+          formControlName="timeAttendance"
         ></mat-slide-toggle>
       </div>
       <div>If it's on the user appears on clocking page.</div>
-      <p *ngIf="check">
+      <p *ngIf="profileForm.get('timeAttendance').value">
         <mat-form-field class="mat-input">
           <mat-label>wage</mat-label>
-          <input matInput placeholder="wage" />
+          <input formControlName="wage" matInput placeholder="wage" />
         </mat-form-field>
       </p>
     </mat-card>
@@ -107,7 +110,7 @@
       <p>
         <mat-form-field class="mat-input">
           <mat-label>username</mat-label>
-          <input matInput placeholder="username" />
+          <input formControlName="username" matInput placeholder="username" />
         </mat-form-field>
       </p>
       <p>
@@ -116,6 +119,7 @@
 
           <input
             matInput
+            formControlName="backOfficePassword"
             placeholder="Back-Office Password "
             [type]="hide1 ? 'password' : 'text'"
           />
@@ -129,6 +133,7 @@
         <mat-form-field class="mat-input">
           <input
             matInput
+            formControlName="backOfficePassword"
             placeholder="Repeat Back-Office Password "
             [type]="hide2 ? 'password' : 'text'"
           />
@@ -142,6 +147,7 @@
         <mat-form-field class="mat-input">
           <input
             matInput
+            formControlName="fourDigitPassword"
             placeholder="4 Digits Passcode "
             [type]="hide3 ? 'password' : 'text'"
           />

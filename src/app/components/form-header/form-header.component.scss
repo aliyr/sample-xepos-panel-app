@@ -1,0 +1,18 @@
+.header-container{
+  margin-bottom: 20px;
+
+  .header-title{
+    text-transform: capitalize;
+  }
+  .header-button {
+    padding: 0 14px;
+    margin-left: 10px;
+    //text-transform: ;
+    color: #fff;
+    min-width: 100px;
+  }
+  .header-spacer {
+    flex: 1 1 auto;
+  }
+
+}
