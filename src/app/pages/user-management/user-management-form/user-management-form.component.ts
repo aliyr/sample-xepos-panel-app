@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormArray, FormBuilder, Validators} from '@angular/forms';
 
 @Component({
   selector: "app-user-management-form",
@@ -62,7 +62,6 @@ export class UserManagementFormComponent implements OnInit {
 
   addToLocations(location) {
     const usersLocations = this.profileForm.get('locations').value as FormArray;
-    debugger;
     const LocationInterAllowed = this.validateUserLocations(usersLocations, location);
 
     if (LocationInterAllowed) {
@@ -75,7 +74,16 @@ export class UserManagementFormComponent implements OnInit {
       }
     }
   }
-
+  removeSelectedLocations(location){
+   let selectedLocations : [] =  this.profileForm.get('locations').value
+   selectedLocations.map( (p , index)  => {
+     if(p === location){
+      selectedLocations.splice(index , 1);
+      this.profileForm.get('locations').patchValue(selectedLocations)
+     }
+   })
+  }
+ 
   returnToList() {
   }
   save() {
