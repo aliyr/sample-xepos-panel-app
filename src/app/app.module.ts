@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
@@ -52,6 +52,7 @@ import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { UserManagementFormComponent } from './pages/user-management/user-management-form/user-management-form.component';
 import { UserManagementComponent } from './pages/user-management/user-management.component';
+import { FormHeaderComponent } from './components/form-header/form-header.component';
 
 @NgModule({
   declarations: [
@@ -64,11 +65,13 @@ import { UserManagementComponent } from './pages/user-management/user-management
     SubNavComponent,
     UserManagementFormComponent,
     UserManagementComponent,
+    FormHeaderComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
     MatAutocompleteModule,
     MatBadgeModule,
     MatButtonModule,

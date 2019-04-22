@@ -16,7 +16,7 @@ export class SearchInputComponentComponent implements OnInit {
 
   ngOnInit() {}
 
-  filterTableList(searchValue) : void {
+  filterTableList(searchValue): void {
     this.filteredValues = this.listValues.filter(elem => {
       const rawData = elem.name.trim().toLowerCase();
       const searchText = searchValue.trim().toLowerCase();
