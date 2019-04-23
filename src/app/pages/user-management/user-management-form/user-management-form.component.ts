@@ -17,6 +17,7 @@ export class UserManagementFormComponent implements OnInit {
       surname: ["", [Validators.required]],
       email: ["", [Validators.required, Validators.email]],
       type: ["", [Validators.required]],
+      locationInput: ["" , []],
       locations: ["", [Validators.required]],
       RFIDToken: [""],
       timeAttendance: [""],
