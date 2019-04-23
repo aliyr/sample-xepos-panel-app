@@ -134,7 +134,7 @@ $mat-dark-theme-background: (
 @include mat-core($fontConfig);
 
 // Theme Config
-
+$mat-success : #79a892;
 $mat-primary: (
   main: #fff,
   lighter: #55c7f2,
