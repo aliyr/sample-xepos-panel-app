@@ -24,9 +24,7 @@ export class UserManagementFormComponent implements OnInit {
       username: ["", [Validators.required]],
       backOfficePassword: ["", [Validators.required]],
       backOfficeRepeatedPassword: ["", [Validators.required]],
-      fourDigitPassword: [
-        "",
-        [
+      fourDigitPassword: ["",[
           Validators.required,
           Validators.maxLength(4),
           Validators.minLength(4),
