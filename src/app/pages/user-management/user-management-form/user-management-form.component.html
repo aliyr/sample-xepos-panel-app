@@ -1,32 +1,34 @@
-<app-form-header title="user management" (confirmed)="save()" (canceled)="returnToList()"></app-form-header>
+<app-form-header
+  title="user management"
+  (confirmed)="save()"
+  (canceled)="returnToList()"
+></app-form-header>
 <div class="row" [formGroup]="profileForm">
   <div class="col-7">
     <mat-card class="mat-card-container">
       <p>
         <mat-form-field class="mat-input">
           <mat-label>first name</mat-label>
-          <input matInput placeholder="first name"  formControlName="firstName"/>
-          <mat-error>
-            User name is <strong>required</strong>
-          </mat-error>
+          <input
+            matInput
+            placeholder="first name"
+            formControlName="firstName"
+          />
+          <mat-error> User name is <strong>required</strong> </mat-error>
         </mat-form-field>
       </p>
       <p>
         <mat-form-field class="mat-input">
           <mat-label>surname</mat-label>
-          <input matInput placeholder="surname" formControlName="surname"/>
-          <mat-error>
-            surname is <strong>required</strong>
-          </mat-error>
+          <input matInput placeholder="surname" formControlName="surname" />
+          <mat-error> surname is <strong>required</strong> </mat-error>
         </mat-form-field>
       </p>
       <p>
         <mat-form-field class="mat-input">
           <mat-label>email address</mat-label>
-          <input matInput placeholder="email address" formControlName="email"/>
-          <mat-error>
-            Email is <strong>required</strong>
-          </mat-error>
+          <input matInput placeholder="email address" formControlName="email" />
+          <mat-error> Email is <strong>required</strong> </mat-error>
         </mat-form-field>
       </p>
       <p>
@@ -37,9 +39,7 @@
             <mat-option value="option">Option2</mat-option>
             <mat-option value="option">Option3</mat-option>
           </mat-select>
-          <mat-error>
-            Type is <strong>required</strong>
-          </mat-error>
+          <mat-error> Type is <strong>required</strong> </mat-error>
         </mat-form-field>
       </p>
       <p>
@@ -52,11 +52,11 @@
             matInput
             [matAutocomplete]="auto"
           />
-          <mat-autocomplete #auto="matAutocomplete" (optionSelected)="addToLocations(chosenLocation.value)">
-            <mat-option
-              *ngFor="let location of locations"
-              [value]="location"
-            >
+          <mat-autocomplete
+            #auto="matAutocomplete"
+            (optionSelected)="addToLocations(chosenLocation.value)"
+          >
+            <mat-option *ngFor="let location of locations" [value]="location">
               {{ location }}
             </mat-option>
           </mat-autocomplete>
@@ -91,9 +91,7 @@
     <mat-card class="mat-card-container">
       <div>
         time attendance
-        <mat-slide-toggle
-          formControlName="timeAttendance"
-        ></mat-slide-toggle>
+        <mat-slide-toggle formControlName="timeAttendance"></mat-slide-toggle>
       </div>
       <div>If it's on the user appears on clocking page.</div>
       <p *ngIf="profileForm.get('timeAttendance').value">
@@ -110,9 +108,7 @@
         <mat-form-field class="mat-input">
           <mat-label>username</mat-label>
           <input formControlName="username" matInput placeholder="username" />
-          <mat-error>
-            username is <strong>required</strong>
-          </mat-error>
+          <mat-error> username is <strong>required</strong> </mat-error>
         </mat-form-field>
       </p>
       <p>
@@ -128,6 +124,7 @@
           <mat-icon matSuffix (click)="hide1 = !hide1">{{
             hide1 ? "visibility_off" : "visibility"
           }}</mat-icon>
+          <mat-error> Password is <strong>required</strong> </mat-error>
         </mat-form-field>
       </p>
 
