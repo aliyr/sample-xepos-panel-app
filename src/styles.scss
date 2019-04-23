@@ -5,3 +5,28 @@
 button:focus, input:focus {
   outline: none;
 }
+
+@mixin md-icon-size($size: 24px) {
+  font-size: $size;
+  height: $size;
+  width: $size;
+}
+
+.centralize {
+   position: absolute;
+   left: 50%;
+   top: 50%;
+   transform: translate(-50%,-50%);
+ }
+
+.vertical-centralize {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.vertical-centralize {
+  position: absolute;
+  top: 50%;
+  transform: translateX(-50%);
+}
