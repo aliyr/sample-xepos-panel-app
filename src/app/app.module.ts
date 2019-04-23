@@ -53,6 +53,7 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { UserManagementFormComponent } from './pages/user-management/user-management-form/user-management-form.component';
 import { UserManagementComponent } from './pages/user-management/user-management.component';
 import { FormHeaderComponent } from './components/form-header/form-header.component';
+import { ImageUploaderComponent } from './components/image-uploader/image-uploader.component';
 
 @NgModule({
   declarations: [
@@ -66,6 +67,7 @@ import { FormHeaderComponent } from './components/form-header/form-header.compon
     UserManagementFormComponent,
     UserManagementComponent,
     FormHeaderComponent,
+    ImageUploaderComponent,
   ],
   imports: [
     BrowserModule,
