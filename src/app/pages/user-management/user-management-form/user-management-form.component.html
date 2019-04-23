@@ -140,12 +140,24 @@
           <mat-icon matSuffix (click)="hide2 = !hide2">{{
             hide2 ? "visibility_off" : "visibility"
           }}</mat-icon>
-          <mat-error *ngIf="profileForm.get('backOfficeRepeatedPassword').hasError('required') && profileForm.get('backOfficeRepeatedPassword').value == ''">
+          <mat-error
+            *ngIf="
+              profileForm
+                .get('backOfficeRepeatedPassword')
+                .hasError('required') &&
+              profileForm.get('backOfficeRepeatedPassword').value == ''
+            "
+          >
             password is <strong>required</strong>
           </mat-error>
-          <mat-error *ngIf="profileForm.hasError('passwordsDoNotMatch') && profileForm.get('backOfficeRepeatedPassword').value.length > 0">
+          <mat-error
+            *ngIf="
+              profileForm.hasError('passwordsDoNotMatch') &&
+              profileForm.get('backOfficeRepeatedPassword').value.length > 0
+            "
+          >
             Passwords do not match!
-           </mat-error>
+          </mat-error>
         </mat-form-field>
       </p>
 
@@ -160,6 +172,18 @@
           <mat-icon matSuffix (click)="hide3 = !hide3">{{
             hide3 ? "visibility_off" : "visibility"
           }}</mat-icon>
+
+          <mat-error
+            *ngIf="profileForm.get('fourDigitPassword').hasError('required')"
+          >
+            4 digit password is <strong>required</strong>
+          </mat-error>
+
+          <mat-error
+            *ngIf="profileForm.get('fourDigitPassword').hasError('pattern')"
+          >
+            your passcode must contain four numbers
+          </mat-error>
         </mat-form-field>
       </p>
     </mat-card>
