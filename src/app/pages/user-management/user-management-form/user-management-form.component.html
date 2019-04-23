@@ -2,6 +2,7 @@
   title="user management"
   (confirmed)="save()"
   (canceled)="returnToList()"
+  [saveDisabled]="!profileForm.valid"
 ></app-form-header>
 <div class="row" [formGroup]="profileForm">
   <div class="col-7">
@@ -162,7 +163,7 @@
             "
           >
             Passwords do not match!
-          </mat-error>
+           </mat-error>
         </mat-form-field>
       </p>
 
