@@ -7,6 +7,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 })
 export class FormHeaderComponent implements OnInit {
   @Input() title: string;
+  @Input() saveDisabled = false;
   @Output() canceled= new EventEmitter<void>();
   @Output() confirmed= new EventEmitter<void>();
   constructor() { }

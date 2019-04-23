@@ -9,7 +9,7 @@ import ErrorStateValidator from "../../../validators/error-state-matcher";
 })
 export class UserManagementFormComponent implements OnInit {
   locations: string[] = ["address1", "address"];
-  confirmPasswordErrorMatcher = new ErrorStateValidator("passwordsDoNotMatch");
+  confirmPasswordErrorMatcher = new ErrorStateValidator();
 
   profileForm = this.fb.group(
     {

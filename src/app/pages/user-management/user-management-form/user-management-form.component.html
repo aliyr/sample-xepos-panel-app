@@ -2,6 +2,7 @@
   title="user management"
   (confirmed)="save()"
   (canceled)="returnToList()"
+  [saveDisabled]="!profileForm.valid"
 ></app-form-header>
 <div class="row" [formGroup]="profileForm">
   <div class="col-7">
@@ -140,7 +141,7 @@
           <mat-icon matSuffix (click)="hide2 = !hide2">{{
             hide2 ? "visibility_off" : "visibility"
           }}</mat-icon>
-          <mat-error *ngIf="profileForm.get('backOfficeRepeatedPassword').hasError('required') && profileForm.get('backOfficeRepeatedPassword').value == ''">
+          <mat-error *ngIf="profileForm.get('backOfficeRepeatedPassword').hasError('required') && profileForm.get('backOfficeRepeatedPassword').value.length == 0">
             password is <strong>required</strong>
           </mat-error>
           <mat-error *ngIf="profileForm.hasError('passwordsDoNotMatch') && profileForm.get('backOfficeRepeatedPassword').value.length > 0">

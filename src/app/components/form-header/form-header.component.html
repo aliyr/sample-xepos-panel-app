@@ -5,7 +5,7 @@
         <span class="header-title">{{title}}</span>
         <span class="header-spacer"></span>
         <button (click)="onCancel()" mat-raised-button class="header-button" color="warn">cancel</button>
-        <button (click)="onConfirm()" mat-raised-button class="header-button" color="accent">save</button>
+        <button (click)="onConfirm()" mat-raised-button class="header-button" [disabled]="saveDisabled" color="accent">save</button>
       </mat-toolbar-row>
     </mat-toolbar>
   </div>
