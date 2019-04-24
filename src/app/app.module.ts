@@ -34,7 +34,6 @@ import {
 } from '@angular/material';
 
 import {MatIconModule} from '@angular/material/icon';
-import { SearchInputComponentComponent } from './components/search-input-component/search-input-component.component';
 import {CustomMatPaginatorIntl} from './ngMaterialCustomization/CustomMatPaginatorIntl';
 import { SubNavComponent } from './components/subNav/sub-nav.component';
 import {MatTreeModule} from '@angular/material/tree';
@@ -52,9 +51,12 @@ import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { UserManagementFormComponent } from './pages/user-management/user-management-form/user-management-form.component';
 import { UserManagementComponent } from './pages/user-management/user-management.component';
-import { FormHeaderComponent } from './components/form-header/form-header.component';
 import { ImageUploaderComponent } from './components/image-uploader/image-uploader.component';
 import { ListHeaderComponent } from './components/list-header/list-header.component';
+import { CompanyDetailsComponent } from './pages/company-details/company-details.component';
+import { CompanyDetailsFormComponent } from './pages/company-details/company-details-form/company-details-form.component';
+import { CompanyDetailsListComponent } from './pages/company-details/company-details-list/company-details-list.component';
+import { CompanyDetailsWizardComponent } from './pages/company-details/company-details-wizard/company-details-wizard.component';
 
 @NgModule({
   declarations: [
@@ -63,13 +65,15 @@ import { ListHeaderComponent } from './components/list-header/list-header.compon
     LoginComponent,
     SignupComponent,
     UserManagementListComponent,
-    SearchInputComponentComponent,
     SubNavComponent,
     UserManagementFormComponent,
     UserManagementComponent,
-    FormHeaderComponent,
     ImageUploaderComponent,
     ListHeaderComponent,
+    CompanyDetailsComponent,
+    CompanyDetailsFormComponent,
+    CompanyDetailsListComponent,
+    CompanyDetailsWizardComponent,
   ],
   imports: [
     BrowserModule,

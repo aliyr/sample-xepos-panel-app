@@ -1,0 +1,90 @@
+<app-list-header
+  title="Companies"
+  description="A list of all of your companies."
+>
+  <button
+    mat-raised-button
+    class="header-button"
+    color="accent"
+    disabled="false"
+    (click)="openWiazrdForm()"
+  >
+    Company Wizard
+  </button>
+</app-list-header>
+
+<mat-card class="mat-elevation-z8">
+  <mat-form-field>
+    <input
+      matInput
+      (keyup)="applyFilter($event.target.value)"
+      placeholder="Filter"
+    />
+  </mat-form-field>
+
+  <table mat-table matSort [dataSource]="dataSource">
+    <ng-container matColumnDef="orderNo">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>orderNo.</th>
+      <td mat-cell *matCellDef="let element">{{ element.orderNo }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+      <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="privateAddress">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>privateAddress</th>
+      <td mat-cell *matCellDef="let element">{{ element.privateAddress }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="lastLogin">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>lastLogin</th>
+      <td mat-cell *matCellDef="let element">{{ element.lastLogin }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="salesToday">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>salesToday</th>
+      <td mat-cell *matCellDef="let element">{{ element.salesToday }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="allTransactions">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>allTransactions</th>
+      <td mat-cell *matCellDef="let element">{{ element.allTransactions }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="lastTransaction">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>lastTransaction</th>
+      <td mat-cell *matCellDef="let element">{{ element.lastTransaction }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="edit">
+      <th mat-header-cell *matHeaderCellDef class="companyListActionRow">
+        edit
+      </th>
+      <td mat-cell *matCellDef="let element" class="companyListActionRow">
+        <i class="material-icons" (click)="updateUser(element.orderNo)">
+          edit
+        </i>
+      </td></ng-container
+    >
+
+    <ng-container matColumnDef="isActive">
+      <th mat-header-cell *matHeaderCellDef class="companyListActionRow">
+        isActive
+      </th>
+      <td mat-cell *matCellDef="let element" class="companyListActionRow">
+        <mat-slide-toggle [(ngModel)]="element.isActive"></mat-slide-toggle>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+
+  <mat-paginator
+    [pageSizeOptions]="[1, 2, 3]"
+    showFirstLastButtons
+    length="1"
+  ></mat-paginator>
+</mat-card>
