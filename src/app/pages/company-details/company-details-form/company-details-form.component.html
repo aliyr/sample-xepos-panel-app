@@ -241,7 +241,8 @@
             placeholder="CRM Order No."
             formControlName="crmOrderNo"
           />
-          <mat-error> CRM Order No. is <strong>required</strong> </mat-error>
+          <mat-error  *ngIf="companyEditForm.get('crmOrderNo').hasError('required')"> CRM Order No. is <strong>required</strong> </mat-error>
+          <mat-error  *ngIf="companyEditForm.get('crmOrderNo').hasError('pattern')"> CRM Order No. includes only <strong>numbers</strong> </mat-error>
         </mat-form-field>
       </p>
     </mat-card>

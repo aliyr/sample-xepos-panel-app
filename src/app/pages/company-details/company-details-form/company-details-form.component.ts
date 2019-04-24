@@ -28,7 +28,7 @@ export class CompanyDetailsFormComponent implements OnInit {
     smtpServer: ["", [Validators.required]],
     portNumber: ["", [Validators.required]],
     Password: ["", [Validators.required]],
-    crmOrderNo: ["", [Validators.required]]
+    crmOrderNo: ["", [Validators.required, Validators.pattern("[0-9]+")]]
   });
   constructor(private fb: FormBuilder, private router: Router) {}
 
