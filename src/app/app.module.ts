@@ -54,6 +54,7 @@ import { UserManagementFormComponent } from './pages/user-management/user-manage
 import { UserManagementComponent } from './pages/user-management/user-management.component';
 import { FormHeaderComponent } from './components/form-header/form-header.component';
 import { ImageUploaderComponent } from './components/image-uploader/image-uploader.component';
+import { ListHeaderComponent } from './components/list-header/list-header.component';
 
 @NgModule({
   declarations: [
@@ -68,6 +69,7 @@ import { ImageUploaderComponent } from './components/image-uploader/image-upload
     UserManagementComponent,
     FormHeaderComponent,
     ImageUploaderComponent,
+    ListHeaderComponent,
   ],
   imports: [
     BrowserModule,
