@@ -57,6 +57,7 @@ import { CompanyDetailsComponent } from './pages/company-details/company-details
 import { CompanyDetailsFormComponent } from './pages/company-details/company-details-form/company-details-form.component';
 import { CompanyDetailsListComponent } from './pages/company-details/company-details-list/company-details-list.component';
 import { CompanyDetailsWizardComponent } from './pages/company-details/company-details-wizard/company-details-wizard.component';
+import { SearchInputComponent } from './components/search-input/search-input.component';
 
 @NgModule({
   declarations: [
@@ -74,6 +75,7 @@ import { CompanyDetailsWizardComponent } from './pages/company-details/company-d
     CompanyDetailsFormComponent,
     CompanyDetailsListComponent,
     CompanyDetailsWizardComponent,
+    SearchInputComponent,
   ],
   imports: [
     BrowserModule,
