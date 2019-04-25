@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SubNavComponent } from './sub-nav.component';
+import {MatIconModule, MatTreeModule} from '@angular/material';
+import {RouterTestingModule} from '@angular/router/testing';
 
 describe('SubNavComponent', () => {
   let component: SubNavComponent;
@@ -8,7 +10,12 @@ describe('SubNavComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SubNavComponent ]
+      declarations: [ SubNavComponent ],
+      imports: [
+        MatTreeModule,
+        RouterTestingModule,
+        MatIconModule
+      ]
     })
     .compileComponents();
   }));

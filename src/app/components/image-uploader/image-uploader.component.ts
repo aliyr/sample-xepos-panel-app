@@ -13,7 +13,7 @@ export class ImageUploaderComponent {
   selectedFile: ImageSnippet;
 
   constructor(
-    private snackbarservice: SnackbarService
+    private snackBarService: SnackbarService
     ) {}
 
   processFile(imageInput: any) {
@@ -21,7 +21,7 @@ export class ImageUploaderComponent {
     const reader = new FileReader();
 
     if (file.type.match(/image\/*/) === null) {
-      this.snackbarservice.toastError(
+      this.snackBarService.toastError(
         "The uploaded file must be an image",
         "close",
         4000
@@ -29,7 +29,7 @@ export class ImageUploaderComponent {
       return;
     }
     if (file.size > 200000) {
-      this.snackbarservice.toastError(
+      this.snackBarService.toastError(
         "Maximum upload size is 2MB",
         "close",
         4000
