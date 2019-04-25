@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { UserManagementListComponent } from './user-management-list.component';
 import {UserManagementComponent} from '../user-management.component';
-import {SearchInputComponentComponent} from '../../../components/search-input-component/search-input-component.component';
+import {SearchInputComponent} from '../../../components/search-input/search-input.component';
 import {MatCardModule, MatInputModule, MatTableModule} from '@angular/material';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -15,7 +15,7 @@ describe('UserManagementComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UserManagementListComponent, SearchInputComponentComponent ],
+      declarations: [ UserManagementListComponent, SearchInputComponent ],
       imports: [
         RouterTestingModule,
         MatTableModule,

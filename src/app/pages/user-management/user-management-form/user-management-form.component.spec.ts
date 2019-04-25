@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { UserManagementFormComponent } from './user-management-form.component';
-import {FormHeaderComponent} from '../../../components/form-header/form-header.component';
+import {ListHeaderComponent} from '../../../components/list-header/list-header.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {
   ErrorStateMatcher,
@@ -24,7 +24,7 @@ describe('UserManagementFormComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UserManagementFormComponent,FormHeaderComponent,ImageUploaderComponent ],
+      declarations: [ UserManagementFormComponent,ListHeaderComponent,ImageUploaderComponent ],
       imports: [
         ReactiveFormsModule,
         MatFormFieldModule,
