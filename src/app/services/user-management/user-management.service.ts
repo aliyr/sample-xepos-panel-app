@@ -1,22 +1,56 @@
-import { Injectable } from '@angular/core';
-import {User} from '../../models/User';
+import { Injectable } from "@angular/core";
+import { User } from "../../models/User";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class UserManagementService {
   ElementData: User[] = [
-    {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-    {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-    {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-    {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-    {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-    {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-    {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-    {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-    {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-    {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
+    {
+      displayName: "jon",
+      firstName: "jon",
+      surname: "joni",
+      emailAddress: "joni@gmail.com",
+      type: "admin",
+      userLocation : "near",
+      RFIDtoken: "1234",
+      timeAttendance: true,
+      wage: "0",
+      username: "jon jon",
+      backOfficePassword: "123456789",
+      fourDigitPassword: "1234",
+      frontOfficeFastLogin: true,
+    },
+    {
+      displayName: "adam",
+      firstName: "adam",
+      surname: "adami",
+      emailAddress: "adam@gmail.com",
+      type: "accountant",
+      userLocation : "far",
+      RFIDtoken: "4321",
+      timeAttendance: false,
+      wage: "2",
+      username: "adam adam1",
+      backOfficePassword: "987654321",
+      fourDigitPassword: "2312",
+      frontOfficeFastLogin: true,
+    },
+    {
+      displayName: "ben",
+      firstName: "ben",
+      surname: "benzade",
+      emailAddress: "ben@gmail.com",
+      type: "admin",
+      userLocation : "near",
+      RFIDtoken: "4316",
+      timeAttendance: true,
+      wage: "4",
+      username: "ben benzade",
+      backOfficePassword: "7467543",
+      fourDigitPassword: "3214",
+      frontOfficeFastLogin: false,
+    },
   ];
-  constructor() { }
-  // dataSource = new MatTableDataSource(this.ElementData);
+  constructor() {}
 }

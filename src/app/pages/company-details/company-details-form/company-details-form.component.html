@@ -26,7 +26,7 @@
       <p>
         <mat-form-field class="mat-input">
           <mat-label>name</mat-label>
-          <input matInput placeholder="name" formControlName="name" />
+          <input matInput placeholder="Name" formControlName="name" />
           <mat-error> name is <strong>required</strong> </mat-error>
         </mat-form-field>
       </p>
@@ -136,16 +136,32 @@
             placeholder="VAT Number"
             formControlName="vatNumber"
           />
-          <mat-error  *ngIf="companyEditForm.get('vatNumber').hasError('required')"> VAT Number is <strong>required</strong> </mat-error>
-          <mat-error  *ngIf="companyEditForm.get('vatNumber').hasError('pattern')"> VAT Number includes only <strong>numbers</strong> </mat-error>
+          <mat-error
+            *ngIf="companyEditForm.get('vatNumber').hasError('required')"
+          >
+            VAT Number is <strong>required</strong>
+          </mat-error>
+          <mat-error
+            *ngIf="companyEditForm.get('vatNumber').hasError('pattern')"
+          >
+            VAT Number includes only <strong>numbers</strong>
+          </mat-error>
         </mat-form-field>
       </p>
       <p>
         <mat-form-field class="mat-input">
           <mat-label>Telephone</mat-label>
           <input matInput placeholder="Telephone" formControlName="telephone" />
-          <mat-error  *ngIf="companyEditForm.get('telephone').hasError('required')"> Telephone is <strong>required</strong> </mat-error>
-          <mat-error  *ngIf="companyEditForm.get('telephone').hasError('pattern')"> Telephone includes only <strong>numbers</strong> </mat-error>
+          <mat-error
+            *ngIf="companyEditForm.get('telephone').hasError('required')"
+          >
+            Telephone is <strong>required</strong>
+          </mat-error>
+          <mat-error
+            *ngIf="companyEditForm.get('telephone').hasError('pattern')"
+          >
+            Telephone includes only <strong>numbers</strong>
+          </mat-error>
         </mat-form-field>
       </p>
       <p>
@@ -156,8 +172,16 @@
             placeholder="mobile Number"
             formControlName="mobileNumber"
           />
-          <mat-error  *ngIf="companyEditForm.get('mobileNumber').hasError('required')"> mobile Number is <strong>required</strong> </mat-error>
-          <mat-error  *ngIf="companyEditForm.get('mobileNumber').hasError('pattern')"> mobile Number includes only <strong>numbers</strong> </mat-error>
+          <mat-error
+            *ngIf="companyEditForm.get('mobileNumber').hasError('required')"
+          >
+            mobile Number is <strong>required</strong>
+          </mat-error>
+          <mat-error
+            *ngIf="companyEditForm.get('mobileNumber').hasError('pattern')"
+          >
+            mobile Number includes only <strong>numbers</strong>
+          </mat-error>
         </mat-form-field>
       </p>
       <p>
@@ -241,8 +265,16 @@
             placeholder="CRM Order No."
             formControlName="crmOrderNo"
           />
-          <mat-error  *ngIf="companyEditForm.get('crmOrderNo').hasError('required')"> CRM Order No. is <strong>required</strong> </mat-error>
-          <mat-error  *ngIf="companyEditForm.get('crmOrderNo').hasError('pattern')"> CRM Order No. includes only <strong>numbers</strong> </mat-error>
+          <mat-error
+            *ngIf="companyEditForm.get('crmOrderNo').hasError('required')"
+          >
+            CRM Order No. is <strong>required</strong>
+          </mat-error>
+          <mat-error
+            *ngIf="companyEditForm.get('crmOrderNo').hasError('pattern')"
+          >
+            CRM Order No. includes only <strong>numbers</strong>
+          </mat-error>
         </mat-form-field>
       </p>
     </mat-card>

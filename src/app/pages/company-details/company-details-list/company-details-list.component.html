@@ -18,13 +18,13 @@
       matInput
       (keyup)="applyFilter($event.target.value)"
       placeholder="Filter"
-      [(ngModel)]="filterValue"
+      [(ngModel)]="filterText"
     />
   </mat-form-field>
  <mat-card>
-  <button mat-raised-button class="btn-margin-right" (click)="applySpecificFilter(true)">Active</button>
-  <button mat-raised-button class="btn-margin-right" (click)="applySpecificFilter(false)">Inactive</button>
-  <button mat-raised-button class="btn-margin-right" (click)="applySpecificFilter(null)">All</button>
+  <button mat-raised-button class="btn-margin-right" [ngClass]="{'active-filter-btn': isActive === true}" (click)="applySpecificFilter(true)">Active</button>
+  <button mat-raised-button class="btn-margin-right" [ngClass]="{'active-filter-btn': isActive === false}" (click)="applySpecificFilter(false)">Inactive</button>
+  <button mat-raised-button class="btn-margin-right" [ngClass]="{'active-filter-btn': isActive === null}" (click)="applySpecificFilter(null)">All</button>
 
  </mat-card>
   <table mat-table matSort [dataSource]="dataSource">

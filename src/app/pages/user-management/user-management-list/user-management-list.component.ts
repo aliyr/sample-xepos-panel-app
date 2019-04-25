@@ -14,10 +14,9 @@ import { Router } from "@angular/router";
 export class UserManagementListComponent implements OnInit {
   dataSource = new MatTableDataSource(this.userManagementService.ElementData);
   displayedColumns: string[] = [
-    "position",
-    "name",
-    "weight",
-    "symbol",
+    "displayName",
+    "type",
+    "userLocation",
     "edit",
     "delete"
   ];
@@ -32,9 +31,9 @@ export class UserManagementListComponent implements OnInit {
     this.updateMaterialTable();
   }
 
-  deleteUser(userID): void {
+  deleteUser(UserName): void {
     this.userManagementService.ElementData.map((elem, index) => {
-      if (userID === elem.position) {
+      if (UserName === elem.displayName) {
         this.userManagementService.ElementData.splice(index, 1);
       }
     });
@@ -52,5 +51,11 @@ export class UserManagementListComponent implements OnInit {
   updateMaterialTable(): void {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+    this.dataSource.filterPredicate = function(data, filter: string): boolean {
+      return (
+        data.firstName.toLowerCase().includes(filter) ||
+        data.type.toString().includes(filter)
+      );
+    };
   }
 }
