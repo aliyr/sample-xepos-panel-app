@@ -1,6 +1,22 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { UserManagementFormComponent } from './user-management-form.component';
+import {FormHeaderComponent} from '../../../components/form-header/form-header.component';
+import {ReactiveFormsModule} from '@angular/forms';
+import {
+  ErrorStateMatcher,
+  MatCardModule,
+  MatChipsModule,
+  MatFormFieldModule,
+  MatIconModule, MatInputModule,
+  MatSelectModule,
+  MatSliderModule, MatToolbarModule
+} from '@angular/material';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {ImageUploaderComponent} from '../../../components/image-uploader/image-uploader.component';
+import {MatSnackBar} from '@angular/material/snack-bar';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 describe('UserManagementFormComponent', () => {
   let component: UserManagementFormComponent;
@@ -8,7 +24,23 @@ describe('UserManagementFormComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UserManagementFormComponent ]
+      declarations: [ UserManagementFormComponent,FormHeaderComponent,ImageUploaderComponent ],
+      imports: [
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatAutocompleteModule,
+        MatSelectModule,
+        MatIconModule,
+        MatChipsModule,
+        MatCardModule,
+        MatSlideToggleModule,
+        MatInputModule,
+        MatToolbarModule,
+        BrowserAnimationsModule
+      ],
+      providers: [
+        MatSnackBar
+      ]
     })
     .compileComponents();
   }));
