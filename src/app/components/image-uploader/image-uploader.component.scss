@@ -33,6 +33,7 @@ input {
   .mat-icon{
     @include md-icon-size(45px);
     cursor: pointer;
+    transition: .2s;
   }
   &:hover{
     color: map-get($mat-accent, darker);

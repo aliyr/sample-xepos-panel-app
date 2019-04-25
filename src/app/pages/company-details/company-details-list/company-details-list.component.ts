@@ -54,18 +54,18 @@ export class CompanyDetailsListComponent implements OnInit {
   updateUser(userID): void {
     this.router.navigate(["/company-details/form", userID]);
   }
-  openWiazrdForm() {
+  openWizardForm() {
     this.router.navigate(["/company-details/wizard"]);
   }
   updateTable() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
-    // filterpredicate is used to limit search datas to specific columns
+    // filter predicate is used to limit search datas to specific columns
     this.dataSource.filterPredicate = function(data, filter: string): boolean {
       return (
         data.name.toLowerCase().includes(filter) ||
         data.privateAddress.toString().includes(filter)
       );
     };
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
   }
 }

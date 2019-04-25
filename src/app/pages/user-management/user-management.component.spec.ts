@@ -2,6 +2,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { UserManagementComponent } from './user-management.component';
 import {RouterTestingModule} from '@angular/router/testing';
+import {ListHeaderComponent} from '../../components/list-header/list-header.component';
+import {MatCardModule} from '@angular/material';
 
 describe('UserManagementComponent', () => {
   let component: UserManagementComponent;
@@ -9,9 +11,10 @@ describe('UserManagementComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UserManagementComponent ],
+      declarations: [ UserManagementComponent, ListHeaderComponent ],
       imports: [
         RouterTestingModule,
+        MatCardModule
       ]
     })
     .compileComponents();

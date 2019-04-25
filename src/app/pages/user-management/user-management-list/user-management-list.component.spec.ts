@@ -8,6 +8,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {RouterTestingModule} from '@angular/router/testing';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {ListHeaderComponent} from '../../../components/list-header/list-header.component';
 
 describe('UserManagementComponent', () => {
   let component: UserManagementListComponent;
@@ -15,7 +16,7 @@ describe('UserManagementComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UserManagementListComponent, SearchInputComponent ],
+      declarations: [ UserManagementListComponent, SearchInputComponent, ListHeaderComponent ],
       imports: [
         RouterTestingModule,
         MatTableModule,
