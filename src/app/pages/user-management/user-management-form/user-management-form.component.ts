@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FormArray, FormBuilder, FormGroup, Validators } from "@angular/forms";
 import ErrorStateValidator from "../../../validators/error-state-matcher";
-
+import { Router } from "@angular/router";
 @Component({
   selector: "app-user-management-form",
   templateUrl: "./user-management-form.component.html",
@@ -33,7 +33,7 @@ export class UserManagementFormComponent implements OnInit {
     { validator: this.passwordValidator }
   );
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder , private router: Router) {}
 
   ngOnInit() {}
 
@@ -84,7 +84,9 @@ export class UserManagementFormComponent implements OnInit {
     });
   }
 
-  returnToList() {}
+  returnToList() {
+      this.router.navigate(["/user-management/list"]);
+  }
   save() {
     const confirmedData = [
       { firstName: this.profileForm.get("firstName").value },

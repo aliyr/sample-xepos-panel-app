@@ -57,3 +57,18 @@ input:focus {
     margin-bottom: 8px;
   }
 }
+
+.uppercase-text{
+  text-transform: uppercase;
+}
+.capitalize-text{
+  text-transform: capitalize;
+}
+.mat-form-field-label,
+.mat-header-cell,
+.mat-sort-header-button{
+  text-transform: capitalize;
+}
+.active-filter-btn{
+  background-color: map-get($mat-primary, lighter);
+}

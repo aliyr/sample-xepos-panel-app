@@ -10,7 +10,8 @@ import { Router } from "@angular/router";
 })
 export class CompanyDetailsListComponent implements OnInit {
   dataSource ;
-  filterValue: string;
+  filterText: string;
+  isActive: boolean = null;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
@@ -36,9 +37,10 @@ export class CompanyDetailsListComponent implements OnInit {
   }
 
   applyFilter() {
-    this.dataSource.filter = this.filterValue.trim().toLowerCase();
+    this.dataSource.filter = this.filterText.trim().toLowerCase();
   }
   applySpecificFilter(filterValue: boolean) {
+    this.isActive = filterValue;
     const newFilteredValues = this.companyDetailsService.ElementData.filter(
       data => {
         if (filterValue === null || data.isActive === filterValue) {
@@ -47,8 +49,9 @@ export class CompanyDetailsListComponent implements OnInit {
       }
     );
     this.dataSource = new MatTableDataSource(newFilteredValues);
-    this.applyFilter();
+
     this.updateTable();
+    this.applyFilter();
   }
 
   updateUser(userID): void {
@@ -65,7 +68,7 @@ export class CompanyDetailsListComponent implements OnInit {
       return (
         data.name.toLowerCase().includes(filter) ||
         data.privateAddress.toString().includes(filter)
-      );
+      );  
     };
   }
 }
