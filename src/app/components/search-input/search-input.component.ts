@@ -1,17 +1,17 @@
 import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { NgLog } from "../../decorators/nglog.decorator";
-import { User } from "../../models/User";
 
 @Component({
-  selector: "app-search-input-component",
-  templateUrl: "./search-input-component.component.html",
-  styleUrls: ["./search-input-component.component.scss"]
+  selector: "app-search-input",
+  templateUrl: "./search-input.component.html",
+  styleUrls: ["./search-input.component.scss"]
 })
 @NgLog()
-export class SearchInputComponentComponent implements OnInit {
-  @Input() listValues: User[];
+export class SearchInputComponent implements OnInit {
+  @Input() listValues;
+  @Input() filterParams: [];
   @Output() onFilter = new EventEmitter();
-  filteredValues: User[];
+  filteredValues;
   constructor() {}
 
   ngOnInit() {}

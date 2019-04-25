@@ -1,20 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
-@import '~bootstrap/dist/css/bootstrap.min.css';
-@import 'app/theme/dark';
+@import "~bootstrap/dist/css/bootstrap.min.css";
+@import "app/theme/dark";
 
-button:focus, input:focus {
+button:focus,
+input:focus {
   outline: none;
 }
-.alert-snackbar{
-  background-color: map-get($mat-primary , darker);
+.alert-snackbar {
+  background-color: map-get($mat-primary, darker);
   color: white;
 }
-.success-snackbar{
-   background-color: $mat-success;
-   color: white;
+.success-snackbar {
+  background-color: $mat-success;
+  color: white;
 }
-.error-snackbar{
-  background-color:map-get($mat-warn, darker);
+.error-snackbar {
+  background-color: map-get($mat-warn, darker);
   color: white;
 }
 
@@ -25,11 +26,11 @@ button:focus, input:focus {
 }
 
 .centralize {
-   position: absolute;
-   left: 50%;
-   top: 50%;
-   transform: translate(-50%,-50%);
- }
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
 
 .vertical-centralize {
   position: absolute;
@@ -41,4 +42,18 @@ button:focus, input:focus {
   position: absolute;
   top: 50%;
   transform: translateX(-50%);
+}
+
+// this class is for buttons in main header
+.header-container {
+  .header-button {
+    padding: 0 14px;
+    margin-left: 10px;
+    text-transform: capitalize;
+    color: #fff;
+    min-width: 100px;
+  }
+  .mat-card-subtitle {
+    margin-bottom: 8px;
+  }
 }

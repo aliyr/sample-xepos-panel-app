@@ -1,9 +1,22 @@
-<app-form-header
-  title="user management"
-  (confirmed)="save()"
-  (canceled)="returnToList()"
-  [saveDisabled]="!profileForm.valid"
-></app-form-header>
+<app-list-header title="this is title" description="lorem ipsum dolor sit">
+  <button
+    (click)="returnToList()"
+    mat-raised-button
+    class="header-button"
+    color="warn"
+  >
+    cancel
+  </button>
+  <button
+    (click)="save()"
+    mat-raised-button
+    class="header-button"
+    color="accent"
+    [disabled]="!profileForm.valid"
+  >
+    save
+  </button>
+</app-list-header>
 <div class="row" [formGroup]="profileForm">
   <div class="col-7">
     <mat-card class="mat-card-container">
@@ -41,9 +54,9 @@
         <mat-form-field class="mat-input">
           <mat-label>type</mat-label>
           <mat-select placeholder="type" formControlName="type">
-            <mat-option value="option">Option1</mat-option>
-            <mat-option value="option">Option2</mat-option>
-            <mat-option value="option">Option3</mat-option>
+            <mat-option value="option1">Option1</mat-option>
+            <mat-option value="option2">Option2</mat-option>
+            <mat-option value="option3">Option3</mat-option>
           </mat-select>
           <mat-error> Type is <strong>required</strong> </mat-error>
         </mat-form-field>
@@ -58,7 +71,7 @@
             matInput
             [matAutocomplete]="auto"
             formControlName="locationInput"
-          />    
+          />
           <mat-autocomplete
             #auto="matAutocomplete"
             (optionSelected)="addToLocations(chosenLocation.value)"
@@ -68,7 +81,14 @@
             </mat-option>
           </mat-autocomplete>
         </mat-form-field>
-        <mat-error *ngIf="profileForm.get('locations').value == '' && profileForm.get('locationInput').touched"> At least one locations is <strong>required</strong> </mat-error>
+        <mat-error
+          *ngIf="
+            profileForm.get('locations').value == '' &&
+            profileForm.get('locationInput').touched
+          "
+        >
+          At least one locations is <strong>required</strong>
+        </mat-error>
       </p>
 
       <p>
@@ -165,7 +185,7 @@
             "
           >
             Passwords do not match!
-           </mat-error>
+          </mat-error>
         </mat-form-field>
       </p>
 

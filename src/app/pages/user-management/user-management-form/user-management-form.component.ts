@@ -17,7 +17,7 @@ export class UserManagementFormComponent implements OnInit {
       surname: ["", [Validators.required]],
       email: ["", [Validators.required, Validators.email]],
       type: ["", [Validators.required]],
-      locationInput: ["" , []],
+      locationInput: ["", []],
       locations: ["", [Validators.required]],
       RFIDToken: [""],
       timeAttendance: [""],
@@ -85,5 +85,21 @@ export class UserManagementFormComponent implements OnInit {
   }
 
   returnToList() {}
-  save() {}
+  save() {
+    const confirmedData = [
+      { firstName: this.profileForm.get("firstName").value },
+      { surname: this.profileForm.get("surname").value },
+      { email: this.profileForm.get("email").value },
+      { type: this.profileForm.get("type").value },
+      { locations: this.profileForm.get("locations").value },
+      { RFIDToken: this.profileForm.get("RFIDToken").value },
+      { timeAttendance: this.profileForm.get("timeAttendance").value },
+      { wage: this.profileForm.get("wage").value },
+      { username: this.profileForm.get("username").value },
+      { backOfficePassword: this.profileForm.get("backOfficePassword").value },
+      { fourDigitPassword: this.profileForm.get("fourDigitPassword").value }
+    ];
+
+    console.log(confirmedData);
+  }
 }

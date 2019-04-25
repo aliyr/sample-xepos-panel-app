@@ -1,0 +1,22 @@
+.header-container{
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+  
+    .header-title{
+      text-transform: capitalize;
+    }
+ 
+    .header-spacer {
+      flex: 1 1 auto;
+    }
+    .header-desc{
+        text-transform: capitalize;
+        font-size: 12px;
+        display: block;
+        clear: both;
+    }
+    .header-mat-row{
+        min-height: 60px !important;
+    }
+  }
