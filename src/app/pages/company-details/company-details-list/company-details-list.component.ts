@@ -9,8 +9,8 @@ import { Router } from "@angular/router";
   styleUrls: ["./company-details-list.component.scss"]
 })
 export class CompanyDetailsListComponent implements OnInit {
-  dataSource = new MatTableDataSource(this.companyDetailsService.ElementData);
-
+  dataSource ;
+  filterValue: string;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
@@ -31,17 +31,41 @@ export class CompanyDetailsListComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+    this.dataSource = new MatTableDataSource(this.companyDetailsService.ElementData);
+    this.updateTable();
   }
 
-  applyFilter(filterValue: string) {
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+  applyFilter() {
+    this.dataSource.filter = this.filterValue.trim().toLowerCase();
   }
+  applySpecificFilter(filterValue: boolean) {
+    const newFilteredValues = this.companyDetailsService.ElementData.filter(
+      data => {
+        if (filterValue === null || data.isActive === filterValue) {
+          return data;
+        }
+      }
+    );
+    this.dataSource = new MatTableDataSource(newFilteredValues);
+    this.applyFilter();
+    this.updateTable();
+  }
+
   updateUser(userID): void {
     this.router.navigate(["/company-details/form", userID]);
   }
   openWiazrdForm() {
     this.router.navigate(["/company-details/wizard"]);
+  }
+  updateTable() {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+    // filterpredicate is used to limit search datas to specific columns
+    this.dataSource.filterPredicate = function(data, filter: string): boolean {
+      return (
+        data.name.toLowerCase().includes(filter) ||
+        data.privateAddress.toString().includes(filter)
+      );
+    };
   }
 }
