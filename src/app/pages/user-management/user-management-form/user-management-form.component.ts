@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { FormArray, FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import ErrorStateValidator from "../../../validators/error-state-matcher";
 import { Router } from "@angular/router";
 @Component({
@@ -16,12 +16,7 @@ export class UserManagementFormComponent implements OnInit {
       firstName: ["", [Validators.required]],
       surname: ["", [Validators.required]],
       email: ["", [Validators.required, Validators.email]],
-      type: ["", [Validators.required]],
-      locationInput: ["", []],
-      locations: ["", [Validators.required]],
-      RFIDToken: [""],
-      timeAttendance: [""],
-      wage: [""],
+      role: ["", [Validators.required]],
       username: ["", [Validators.required]],
       backOfficePassword: ["", [Validators.required]],
       backOfficeRepeatedPassword: ["", [Validators.required]],
@@ -37,51 +32,11 @@ export class UserManagementFormComponent implements OnInit {
 
   ngOnInit() {}
 
-  validateUserLocations(userLocations, insertedLocation): boolean {
-    // check if the location is valid or not
-    const isLocationValid =
-      this.locations.find(p => p === insertedLocation) !== undefined;
-    let isLocationNonRepetitive = true;
-    if (userLocations) {
-      isLocationNonRepetitive =
-        userLocations.find(p => p === insertedLocation) === undefined;
-    }
-    return isLocationValid && isLocationNonRepetitive;
-  }
-
-  addToLocations(location) {
-    const usersLocations = this.profileForm.get("locations").value as FormArray;
-    const LocationInterAllowed = this.validateUserLocations(
-      usersLocations,
-      location
-    );
-
-    if (LocationInterAllowed) {
-      if (usersLocations.length === 0) {
-        // if locations array doesn't existed
-        this.profileForm.get("locations").patchValue([location]);
-      } else {
-        usersLocations.push(location);
-        this.profileForm.get("locations").patchValue(usersLocations);
-      }
-    }
-  }
-
   passwordValidator(form: FormGroup) {
     const condition =
       form.get("backOfficePassword").value !==
       form.get("backOfficeRepeatedPassword").value;
     return condition ? { passwordsDoNotMatch: true } : null;
-  }
-
-  removeSelectedLocations(location) {
-    const selectedLocations: [] = this.profileForm.get("locations").value;
-    selectedLocations.map((p, index) => {
-      if (p === location) {
-        selectedLocations.splice(index, 1);
-        this.profileForm.get("locations").patchValue(selectedLocations);
-      }
-    });
   }
 
   returnToList() {
@@ -92,11 +47,7 @@ export class UserManagementFormComponent implements OnInit {
       { firstName: this.profileForm.get("firstName").value },
       { surname: this.profileForm.get("surname").value },
       { email: this.profileForm.get("email").value },
-      { type: this.profileForm.get("type").value },
-      { locations: this.profileForm.get("locations").value },
-      { RFIDToken: this.profileForm.get("RFIDToken").value },
-      { timeAttendance: this.profileForm.get("timeAttendance").value },
-      { wage: this.profileForm.get("wage").value },
+      { role: this.profileForm.get("role").value },
       { username: this.profileForm.get("username").value },
       { backOfficePassword: this.profileForm.get("backOfficePassword").value },
       { fourDigitPassword: this.profileForm.get("fourDigitPassword").value }
