@@ -1,3 +1,91 @@
-<p>
-  company-details-wizard works!
-</p>
+<app-list-header
+  title="Company Wizard"
+  description="Edit company with all details."
+>
+  <button
+    mat-raised-button
+    class="header-button"
+    color="warn"
+    (click)="cancelCompanyWizardForm()"
+  >
+    cancel
+  </button>
+  <button mat-raised-button class="header-button" color="accent">
+    save
+  </button>
+</app-list-header>
+
+<mat-vertical-stepper linear #stepper class="company-wizard-stepper">
+  <mat-step>
+    <ng-template matStepLabel> Company Details</ng-template>
+    <mat-form-field>
+      <input matInput placeholder="Last name, First name" required />
+    </mat-form-field>
+    <div>
+      <button mat-button matStepperNext>Next</button>
+    </div>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel> Locations </ng-template>
+    <mat-form-field>
+      <input matInput placeholder="Last name, First name" required />
+    </mat-form-field>
+    <div>
+      <button mat-button matStepperNext>Next</button>
+    </div>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel> Admin User</ng-template>
+    <mat-form-field>
+      <input matInput placeholder="Last name, First name" required />
+    </mat-form-field>
+    <div>
+      <button mat-button matStepperNext>Next</button>
+    </div>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel> Areas/tables </ng-template>
+    <mat-form-field>
+      <input matInput placeholder="Last name, First name" required />
+    </mat-form-field>
+    <div>
+      <button mat-button matStepperNext>Next</button>
+    </div>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel> Devices/Registers </ng-template>
+    <mat-form-field>
+      <input matInput placeholder="Last name, First name" required />
+    </mat-form-field>
+    <div>
+      <button mat-button matStepperNext>Next</button>
+    </div>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel> Printers </ng-template>
+    <mat-form-field>
+      <input matInput placeholder="Last name, First name" required />
+    </mat-form-field>
+    <div>
+      <button mat-button matStepperNext>Next</button>
+    </div>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel> Upload Products </ng-template>
+    <mat-form-field>
+      <input matInput placeholder="Last name, First name" required />
+    </mat-form-field>
+    <div>
+      <button mat-button matStepperNext>Next</button>
+    </div>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel> Upload Users </ng-template>
+    <mat-form-field>
+      <input matInput placeholder="Last name, First name" required />
+    </mat-form-field>
+    <div>
+      <button mat-button matStepperNext>Next</button>
+    </div>
+  </mat-step>
+</mat-vertical-stepper>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { FormArray, FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { FormArray, FormBuilder, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 
 @Component({
@@ -14,7 +14,6 @@ export class CompanyDetailsFormComponent implements OnInit {
     name: ["", [Validators.required]],
     sellInput: ["", []],
     sells: ["", [Validators.required]],
-
     addressLine1: ["", [Validators.required]],
     addressLine2: ["", [Validators.required]],
     city: ["", [Validators.required]],
