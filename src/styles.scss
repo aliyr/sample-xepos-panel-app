@@ -72,3 +72,13 @@ input:focus {
 .active-filter-btn{
   background-color: map-get($mat-primary, lighter);
 }
+.company-wizard-stepper{
+  .mat-step-icon-state-number,
+  .mat-step-icon-state-edit{
+    background-color: map-get($mat-primary , darker);
+  }
+  .mat-step-icon-selected{
+    background-color: map-get($mat-primary , lighter);
+  }
+  
+}

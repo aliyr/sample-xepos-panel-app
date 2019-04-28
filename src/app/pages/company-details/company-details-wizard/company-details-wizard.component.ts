@@ -1,4 +1,6 @@
 import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
+import { FormArray, FormBuilder, Validators } from "@angular/forms";
 
 @Component({
   selector: "app-company-details-wizard",
@@ -6,7 +8,11 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./company-details-wizard.component.scss"]
 })
 export class CompanyDetailsWizardComponent implements OnInit {
-  constructor() {}
+  constructor(private router: Router, private fb: FormBuilder) {}
+  companyWizardForm = this.fb.group([]);
 
   ngOnInit() {}
+  cancelCompanyWizardForm() {
+    this.router.navigate(["/company-details/list"]);
+  }
 }
