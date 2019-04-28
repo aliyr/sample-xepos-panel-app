@@ -12,22 +12,17 @@ export class CompanyDetailsFormComponent implements OnInit {
 
   companyEditForm = this.fb.group({
     name: ["", [Validators.required]],
-    sellInput: ["", []],
-    sells: ["", [Validators.required]],
     addressLine1: ["", [Validators.required]],
     addressLine2: ["", [Validators.required]],
     city: ["", [Validators.required]],
     country: ["", [Validators.required]],
     postCode: ["", [Validators.required]],
-    vatNumber: ["", [Validators.required ,  Validators.pattern("[0-9]+")]],
     telephone: ["", [Validators.required,  Validators.pattern("[0-9]+")]],
-    mobileNumber: ["", [Validators.required , Validators.pattern("[0-9]+")]],
     website: ["", [Validators.required]],
     emailSettingIsActive: [],
-    smtpServer: ["", [Validators.required]],
-    portNumber: ["", [Validators.required]],
-    Password: ["", [Validators.required]],
-    crmOrderNo: ["", [Validators.required, Validators.pattern("[0-9]+")]]
+    smtpServer: [""],
+    portNumber: [""],
+    password: [""],
   });
   constructor(private fb: FormBuilder, private router: Router) {}
 
@@ -73,20 +68,13 @@ export class CompanyDetailsFormComponent implements OnInit {
   saveCompanyEditForm() {
     const confirmedData = [
       { name: this.companyEditForm.get("name").value },
-      { sells: this.companyEditForm.get("sells").value },
       { addressLine1: this.companyEditForm.get("addressLine1").value },
       { addressLine2: this.companyEditForm.get("addressLine2").value },
       { city: this.companyEditForm.get("city").value },
       { country: this.companyEditForm.get("country").value },
       { postCode: this.companyEditForm.get("postCode").value },
-      { vatNumber: this.companyEditForm.get("vatNumber").value },
       { telephone: this.companyEditForm.get("telephone").value },
-      { mobileNumber: this.companyEditForm.get("mobileNumber").value },
       { website: this.companyEditForm.get("website").value },
-      { smtpServer: this.companyEditForm.get("smtpServer").value },
-      { portNumber: this.companyEditForm.get("portNumber").value },
-      { Password: this.companyEditForm.get("Password").value },
-      { crmOrderNo: this.companyEditForm.get("crmOrderNo").value }
     ];
     console.log(confirmedData);
   }

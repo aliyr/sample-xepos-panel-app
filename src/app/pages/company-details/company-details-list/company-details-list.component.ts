@@ -11,7 +11,7 @@ import { Router } from "@angular/router";
 export class CompanyDetailsListComponent implements OnInit {
   dataSource ;
   filterText: string;
-  isActive: boolean = null;
+  // isActive: boolean = null;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
@@ -23,7 +23,7 @@ export class CompanyDetailsListComponent implements OnInit {
     "salesToday",
     "allTransactions",
     "lastTransaction",
-    "isActive",
+    "delete",
     "edit"
   ];
   constructor(
@@ -39,19 +39,31 @@ export class CompanyDetailsListComponent implements OnInit {
   applyFilter() {
     this.dataSource.filter = this.filterText.trim().toLowerCase();
   }
-  applySpecificFilter(filterValue: boolean) {
-    this.isActive = filterValue;
-    const newFilteredValues = this.companyDetailsService.ElementData.filter(
-      data => {
-        if (filterValue === null || data.isActive === filterValue) {
-          return data;
-        }
-      }
-    );
-    this.dataSource = new MatTableDataSource(newFilteredValues);
+  // applySpecificFilter(filterValue: boolean) {
+  //   this.isActive = filterValue;
+  //   const newFilteredValues = this.companyDetailsService.ElementData.filter(
+  //     data => {
+  //       if (filterValue === null || data.isActive === filterValue) {
+  //         return data;
+  //       }
+  //     }
+  //   );
+  //   this.dataSource = new MatTableDataSource(newFilteredValues);
+  //
+  //   this.updateTable();
+  //   this.applyFilter();
+  // }
 
+  deleteCompany(companyName): void {
+    this.companyDetailsService.ElementData.map((elem, index) => {
+      if (companyName === elem.name) {
+        this.companyDetailsService.ElementData.splice(index, 1);
+      }
+    });
+    this.dataSource = new MatTableDataSource(
+      this.companyDetailsService.ElementData
+    );
     this.updateTable();
-    this.applyFilter();
   }
 
   updateUser(userID): void {

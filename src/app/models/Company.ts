@@ -6,5 +6,4 @@ export interface Company {
   salesToday: number;
   allTransactions: number;
   lastTransaction: string;
-  isActive: boolean;
 }

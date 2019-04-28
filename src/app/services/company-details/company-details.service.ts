@@ -12,8 +12,7 @@ export class CompanyDetailsService {
       lastLogin: "wasnt that long",
       salesToday: 100,
       allTransactions: 141,
-      lastTransaction: "yesterday",
-      isActive: true
+      lastTransaction: "yesterday"
     },
     {
       orderNo: 2,
@@ -22,8 +21,7 @@ export class CompanyDetailsService {
       lastLogin: "today",
       salesToday: 200,
       allTransactions: 111,
-      lastTransaction: "today",
-      isActive: true
+      lastTransaction: "today"
     },
     {
       orderNo: 3,
@@ -32,8 +30,7 @@ export class CompanyDetailsService {
       lastLogin: "yesterday",
       salesToday: 300,
       allTransactions: 121,
-      lastTransaction: "yesterday",
-      isActive: false
+      lastTransaction: "yesterday"
     }
   ];
 }

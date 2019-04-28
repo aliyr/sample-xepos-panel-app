@@ -32,46 +32,6 @@
       </p>
       <p>
         <mat-form-field class="mat-input">
-          <mat-label>sells</mat-label>
-          <input
-            type="text"
-            #chosenSell
-            placeholder="sells"
-            matInput
-            [matAutocomplete]="auto"
-            formControlName="sellInput"
-          />
-          <mat-autocomplete
-            #auto="matAutocomplete"
-            (optionSelected)="addToSells(chosenSell.value)"
-          >
-            <mat-option *ngFor="let sellType of sells" [value]="sellType">
-              {{ sellType }}
-            </mat-option>
-          </mat-autocomplete>
-        </mat-form-field>
-        <mat-error
-          *ngIf="
-            companyEditForm.get('sells').value == '' &&
-            companyEditForm.get('sellInput').touched
-          "
-        >
-          At least one sellType is <strong>required</strong>
-        </mat-error>
-      </p>
-
-      <p>
-        <mat-chip-list class="mat-input">
-          <mat-chip
-            *ngFor="let sellType of companyEditForm.get('sells').value"
-            (removed)="removeSelectedSells(sellType)"
-            >{{ sellType }}
-            <mat-icon matChipRemove>cancel</mat-icon>
-          </mat-chip>
-        </mat-chip-list>
-      </p>
-      <p>
-        <mat-form-field class="mat-input">
           <mat-label>address line 1</mat-label>
           <input
             matInput
@@ -117,7 +77,7 @@
             </mat-option>
           </mat-autocomplete>
           <mat-error>
-            At least one Country is <strong>required</strong>
+            Country is <strong>required</strong>
           </mat-error>
         </mat-form-field>
       </p>
@@ -126,26 +86,6 @@
           <mat-label>Post Code</mat-label>
           <input matInput placeholder="Post Code" formControlName="postCode" />
           <mat-error> Post Code is <strong>required</strong> </mat-error>
-        </mat-form-field>
-      </p>
-      <p>
-        <mat-form-field class="mat-input">
-          <mat-label>VAT Number</mat-label>
-          <input
-            matInput
-            placeholder="VAT Number"
-            formControlName="vatNumber"
-          />
-          <mat-error
-            *ngIf="companyEditForm.get('vatNumber').hasError('required')"
-          >
-            VAT Number is <strong>required</strong>
-          </mat-error>
-          <mat-error
-            *ngIf="companyEditForm.get('vatNumber').hasError('pattern')"
-          >
-            VAT Number includes only <strong>numbers</strong>
-          </mat-error>
         </mat-form-field>
       </p>
       <p>
@@ -161,26 +101,6 @@
             *ngIf="companyEditForm.get('telephone').hasError('pattern')"
           >
             Telephone includes only <strong>numbers</strong>
-          </mat-error>
-        </mat-form-field>
-      </p>
-      <p>
-        <mat-form-field class="mat-input">
-          <mat-label>mobile Number</mat-label>
-          <input
-            matInput
-            placeholder="mobile Number"
-            formControlName="mobileNumber"
-          />
-          <mat-error
-            *ngIf="companyEditForm.get('mobileNumber').hasError('required')"
-          >
-            mobile Number is <strong>required</strong>
-          </mat-error>
-          <mat-error
-            *ngIf="companyEditForm.get('mobileNumber').hasError('pattern')"
-          >
-            mobile Number includes only <strong>numbers</strong>
           </mat-error>
         </mat-form-field>
       </p>
@@ -207,6 +127,7 @@
         >Outgoing Email Settings
         <mat-slide-toggle
           formControlName="emailSettingIsActive"
+          disabled
         ></mat-slide-toggle
       ></mat-card-content>
       <p>You can edit SMTP server configuration here</p>
@@ -255,28 +176,6 @@
     <mat-card class="mat-card-container">
       <mat-card-title>Company Logo</mat-card-title>
       <app-image-uploader></app-image-uploader>
-    </mat-card>
-    <mat-card class="mat-card-container">
-      <p>
-        <mat-form-field class="mat-input">
-          <mat-label>CRM Order No. </mat-label>
-          <input
-            matInput
-            placeholder="CRM Order No."
-            formControlName="crmOrderNo"
-          />
-          <mat-error
-            *ngIf="companyEditForm.get('crmOrderNo').hasError('required')"
-          >
-            CRM Order No. is <strong>required</strong>
-          </mat-error>
-          <mat-error
-            *ngIf="companyEditForm.get('crmOrderNo').hasError('pattern')"
-          >
-            CRM Order No. includes only <strong>numbers</strong>
-          </mat-error>
-        </mat-form-field>
-      </p>
     </mat-card>
   </div>
 </div>
