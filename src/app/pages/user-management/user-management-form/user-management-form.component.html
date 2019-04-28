@@ -1,4 +1,4 @@
-<app-list-header title="this is title" description="lorem ipsum dolor sit">
+<app-list-header title="Edit User Information" description="lorem ipsum dolor sit">
   <button
     (click)="returnToList()"
     mat-raised-button
@@ -52,80 +52,13 @@
       </p>
       <p>
         <mat-form-field class="mat-input">
-          <mat-label>type</mat-label>
-          <mat-select placeholder="type" formControlName="type">
+          <mat-label>role</mat-label>
+          <mat-select placeholder="type" formControlName="role">
             <mat-option value="option1">Option1</mat-option>
             <mat-option value="option2">Option2</mat-option>
             <mat-option value="option3">Option3</mat-option>
           </mat-select>
           <mat-error> Type is <strong>required</strong> </mat-error>
-        </mat-form-field>
-      </p>
-      <p>
-        <mat-form-field class="mat-input">
-          <mat-label>User's Locations</mat-label>
-          <input
-            type="text"
-            #chosenLocation
-            placeholder="User's Locations"
-            matInput
-            [matAutocomplete]="auto"
-            formControlName="locationInput"
-          />
-          <mat-autocomplete
-            #auto="matAutocomplete"
-            (optionSelected)="addToLocations(chosenLocation.value)"
-          >
-            <mat-option *ngFor="let location of locations" [value]="location">
-              {{ location }}
-            </mat-option>
-          </mat-autocomplete>
-        </mat-form-field>
-        <mat-error
-          *ngIf="
-            profileForm.get('locations').value == '' &&
-            profileForm.get('locationInput').touched
-          "
-        >
-          At least one locations is <strong>required</strong>
-        </mat-error>
-      </p>
-
-      <p>
-        <mat-chip-list class="mat-input">
-          <mat-chip
-            *ngFor="let location of profileForm.get('locations').value"
-            (removed)="removeSelectedLocations(location)"
-            >{{ location }}
-            <mat-icon matChipRemove>cancel</mat-icon>
-          </mat-chip>
-        </mat-chip-list>
-      </p>
-
-      <p>
-        <mat-form-field class="mat-input">
-          <mat-label>RFID token</mat-label>
-          <input
-            matInput
-            placeholder="RFID token"
-            [type]="hide ? 'password' : 'text'"
-          />
-          <mat-icon matSuffix (click)="hide = !hide">{{
-            hide ? "visibility_off" : "visibility"
-          }}</mat-icon>
-        </mat-form-field>
-      </p>
-    </mat-card>
-    <mat-card class="mat-card-container">
-      <div>
-        time attendance
-        <mat-slide-toggle formControlName="timeAttendance"></mat-slide-toggle>
-      </div>
-      <div>If it's on the user appears on clocking page.</div>
-      <p *ngIf="profileForm.get('timeAttendance').value">
-        <mat-form-field class="mat-input">
-          <mat-label>wage</mat-label>
-          <input formControlName="wage" matInput placeholder="wage" />
         </mat-form-field>
       </p>
     </mat-card>
