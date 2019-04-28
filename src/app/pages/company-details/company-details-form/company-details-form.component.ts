@@ -28,40 +28,6 @@ export class CompanyDetailsFormComponent implements OnInit {
 
   ngOnInit() {}
 
-  validateUserSells(usersSells, sellType): boolean {
-    // check if the sell is valid or not
-    const isSellValid = this.sells.find(p => p === sellType) !== undefined;
-    let isSellNonRepetitive = true;
-
-    if (usersSells) {
-      isSellNonRepetitive = usersSells.find(p => p === sellType) === undefined;
-    }
-    return isSellValid && isSellNonRepetitive;
-  }
-  addToSells(sellType) {
-    const usersSells = this.companyEditForm.get("sells").value as FormArray;
-
-    const sellInterAllowed = this.validateUserSells(usersSells, sellType);
-
-    if (sellInterAllowed) {
-      if (usersSells.length === 0) {
-        // if sell array doesn't existed
-        this.companyEditForm.get("sells").patchValue([sellType]);
-      } else {
-        usersSells.push(sellType);
-        this.companyEditForm.get("sells").patchValue(usersSells);
-      }
-    }
-  }
-  removeSelectedSells(sell) {
-    const selectedSells: [] = this.companyEditForm.get("sells").value;
-    selectedSells.map((p, index) => {
-      if (p === sell) {
-        selectedSells.splice(index, 1);
-        this.companyEditForm.get("sells").patchValue(selectedSells);
-      }
-    });
-  }
   cancelCompanyEditForm() {
     this.router.navigate(["/company-details/list"]);
   }
