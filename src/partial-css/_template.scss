@@ -1,0 +1,22 @@
+.centralize {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.vertical-centralize {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.mat-card-container {
+  margin-bottom: 20px;
+}
+
+.mat-input {
+  width: 100%;
+}
+.chip-list {
+  width: 100%;
+}

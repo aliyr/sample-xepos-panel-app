@@ -1,5 +1,10 @@
 <mat-drawer-container class="drawer-container" hasBackdrop="false" autosize>
-  <mat-drawer #drawer mode="side" class="left-side-nav" opened>
+  <mat-drawer
+    #drawer
+    mode="side"
+    class="left-side-nav"
+    [opened]="isMenuOpenDefault"
+  >
     <nav>
       <app-sub-nav></app-sub-nav>
     </nav>

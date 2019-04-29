@@ -1,0 +1,22 @@
+table {
+  width: 100%;
+}
+.mat-table {
+  box-shadow: none;
+}
+th.mat-sort-header-sorted {
+  color: black;
+}
+.list-action-row {
+  i {
+    cursor: pointer;
+  }
+  padding-right: 5px;
+  width: 60px;
+  cursor: pointer;
+}
+.mat-form-field-label,
+.mat-header-cell,
+.mat-sort-header-button {
+  text-transform: capitalize;
+}

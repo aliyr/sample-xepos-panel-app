@@ -1,48 +1,30 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~bootstrap/dist/css/bootstrap.min.css";
 @import "app/theme/dark";
+@import 'partial-css/text';
+@import 'partial-css/snackbar';
+@import 'partial-css/custom-scroll';
+@import 'partial-css/mixins';
+@import 'partial-css/list';
+@import 'partial-css/template';
+@import 'partial-css/button';
+
 
 button:focus,
 input:focus {
   outline: none;
 }
-.alert-snackbar {
-  background-color: map-get($mat-primary, darker);
-  color: white;
-}
-.success-snackbar {
-  background-color: $mat-success;
-  color: white;
-}
-.error-snackbar {
-  background-color: map-get($mat-warn, darker);
-  color: white;
+.company-wizard-stepper{
+  .mat-step-icon-state-number,
+  .mat-step-icon-state-edit{
+    background-color: map-get($mat-primary , darker);
+  }
+  .mat-step-icon-selected{
+    background-color: map-get($mat-primary , lighter);
+  }
+  
 }
 
-@mixin md-icon-size($size: 24px) {
-  font-size: $size;
-  height: $size;
-  width: $size;
-}
-
-.centralize {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.vertical-centralize {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-.vertical-centralize {
-  position: absolute;
-  top: 50%;
-  transform: translateX(-50%);
-}
 
 // this class is for buttons in main header
 .header-container {
@@ -56,29 +38,4 @@ input:focus {
   .mat-card-subtitle {
     margin-bottom: 8px;
   }
-}
-
-.uppercase-text{
-  text-transform: uppercase;
-}
-.capitalize-text{
-  text-transform: capitalize;
-}
-.mat-form-field-label,
-.mat-header-cell,
-.mat-sort-header-button{
-  text-transform: capitalize;
-}
-.active-filter-btn{
-  background-color: map-get($mat-primary, lighter);
-}
-.company-wizard-stepper{
-  .mat-step-icon-state-number,
-  .mat-step-icon-state-edit{
-    background-color: map-get($mat-primary , darker);
-  }
-  .mat-step-icon-selected{
-    background-color: map-get($mat-primary , lighter);
-  }
-  
 }

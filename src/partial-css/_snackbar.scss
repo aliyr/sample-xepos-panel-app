@@ -1,0 +1,12 @@
+.alert-snackbar {
+    background-color: map-get($mat-primary, darker);
+    color: white;
+  }
+  .success-snackbar {
+    background-color: $mat-success;
+    color: white;
+  }
+  .error-snackbar {
+    background-color: map-get($mat-warn, darker);
+    color: white;
+  }

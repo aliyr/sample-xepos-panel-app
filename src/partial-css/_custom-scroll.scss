@@ -1,0 +1,15 @@
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: $dark-background;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: map-get($mat-primary, 200);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: map-get($mat-primary, 200);
+}

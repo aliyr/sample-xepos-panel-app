@@ -36,16 +36,11 @@
       <td mat-cell *matCellDef="let element">{{ element.userLocation }}</td>
     </ng-container>
 
-
     <ng-container matColumnDef="edit">
-      <th mat-header-cell *matHeaderCellDef class="userManagementListActionRow">
+      <th mat-header-cell *matHeaderCellDef class="list-action-row">
         Edit
       </th>
-      <td
-        mat-cell
-        *matCellDef="let element"
-        class="userManagementListActionRow"
-      >
+      <td mat-cell *matCellDef="let element" class="list-action-row">
         <i class="material-icons" (click)="updateUser(element.displayName)">
           edit
         </i>
@@ -53,14 +48,10 @@
     >
 
     <ng-container matColumnDef="delete">
-      <th mat-header-cell *matHeaderCellDef class="userManagementListActionRow">
+      <th mat-header-cell *matHeaderCellDef class="list-action-row">
         Delete
       </th>
-      <td
-        mat-cell
-        *matCellDef="let element"
-        class="userManagementListActionRow"
-      >
+      <td mat-cell *matCellDef="let element" class="list-action-row">
         <i class="material-icons" (click)="deleteUser(element.displayName)">
           delete
         </i>
