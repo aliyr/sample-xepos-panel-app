@@ -15,77 +15,196 @@
   </button>
 </app-list-header>
 
-<mat-vertical-stepper linear #stepper class="company-wizard-stepper">
+<mat-horizontal-stepper
+  class="company-wizard-stepper"
+  [formGroup]="companyWizardForm"
+>
   <mat-step>
     <ng-template matStepLabel> Company Details</ng-template>
-    <mat-form-field>
-      <input matInput placeholder="Last name, First name" required />
-    </mat-form-field>
-    <div>
-      <button mat-button matStepperNext>Next</button>
+    <div class="form-group-container">
+      <div>
+        <div class="form-control-container">
+          <mat-form-field class="mat-input">
+            <mat-label>business name</mat-label>
+            <input matInput formControlName="businessName" />
+            <mat-error> Business name is <strong>required</strong> </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="form-control-container">
+          <mat-form-field class="mat-input">
+            <mat-label>address line 1</mat-label>
+            <input matInput formControlName="address1" />
+          </mat-form-field>
+        </div>
+        <div class="form-control-container">
+          <mat-form-field class="mat-input">
+            <mat-label>address line 2</mat-label>
+            <input matInput formControlName="address2" />
+          </mat-form-field>
+        </div>
+        <div class="form-control-container">
+          <mat-form-field class="mat-input">
+            <mat-label>town</mat-label>
+            <input matInput formControlName="town" />
+          </mat-form-field>
+        </div>
+        <div class="form-control-container">
+          <mat-form-field class="mat-input">
+            <mat-label>country</mat-label>
+            <input matInput formControlName="country" />
+          </mat-form-field>
+        </div>
+        <div class="form-control-container">
+          <mat-form-field class="mat-input">
+            <mat-label>postcode</mat-label>
+            <input matInput formControlName="postcode" />
+            <mat-error> Postcode is <strong>required</strong></mat-error>
+          </mat-form-field>
+        </div>
+        <div class="form-control-container">
+          <mat-form-field class="mat-input">
+            <mat-label>Phone number</mat-label>
+            <input matInput formControlName="phoneNumber" />
+          </mat-form-field>
+        </div>
+        <div class="form-control-container">
+          <mat-form-field class="mat-input">
+            <mat-label>private address</mat-label>
+            <input matInput formControlName="privateAddress" />
+          </mat-form-field>
+        </div>
+        <div class="form-control-container">
+          <mat-form-field class="mat-input">
+            <mat-label>email</mat-label>
+            <input matInput formControlName="email" />
+          </mat-form-field>
+        </div>
+        <div class="form-control-container">
+          <mat-form-field class="mat-input">
+            <mat-label>CRM Order Number</mat-label>
+            <input
+              matInput
+              formControlName="CRMOrderNumber"
+              [disabled]="true"
+            />
+          </mat-form-field>
+        </div>
+        <button mat-button mat-raised-button matStepperNext color="accent">
+          Next
+        </button>
+      </div>
     </div>
   </mat-step>
   <mat-step>
     <ng-template matStepLabel> Locations </ng-template>
-    <mat-form-field>
-      <input matInput placeholder="Last name, First name" required />
-    </mat-form-field>
-    <div>
-      <button mat-button matStepperNext>Next</button>
+    <div formArrayName="locations" class="form-group-container">
+      <mat-accordion>
+        <mat-expansion-panel
+          *ngFor="let location of locationsFormArray.controls; let i = index"
+          [formGroupName]="i"
+        >
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              {{ location.get("name").value || "New Location" }}
+            </mat-panel-title>
+            <mat-panel-description>
+              <mat-icon
+                *ngIf="i !== 0"
+                (click)="removeLocationFromLocationsFormArray(i)"
+                >delete</mat-icon
+              >
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <div>
+            <div class="form-control-container">
+              <mat-form-field class="mat-input">
+                <mat-label>name</mat-label>
+                <input matInput placeholder="Name" formControlName="name" />
+                <mat-error> Name is <strong>required</strong> </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="form-control-container">
+              <mat-form-field class="mat-input">
+                <mat-label>address 1</mat-label>
+                <input
+                  matInput
+                  placeholder="Address 1"
+                  formControlName="address1"
+                />
+                <mat-error> Address 1 is <strong>required</strong> </mat-error>
+              </mat-form-field>
+            </div>
+
+            <div class="form-control-container">
+              <mat-form-field class="mat-input">
+                <mat-label>Address 2</mat-label>
+                <input
+                  matInput
+                  placeholder="Address 1"
+                  formControlName="address2"
+                />
+                <mat-error> Address 2 is <strong>required</strong> </mat-error>
+              </mat-form-field>
+            </div>
+
+            <div class="form-control-container">
+              <mat-form-field class="mat-input">
+                <mat-label>town</mat-label>
+                <input matInput placeholder="Town" formControlName="town" />
+                <mat-error> Town is <strong>required</strong> </mat-error>
+              </mat-form-field>
+            </div>
+
+            <div class="form-control-container">
+              <mat-form-field class="mat-input">
+                <mat-label>country</mat-label>
+                <input
+                  matInput
+                  placeholder="Country"
+                  formControlName="country"
+                />
+                <mat-error> Country is <strong>required</strong> </mat-error>
+              </mat-form-field>
+            </div>
+
+            <div class="form-control-container">
+              <mat-form-field class="mat-input">
+                <mat-label>currency</mat-label>
+                <input
+                  matInput
+                  placeholder="Currency"
+                  formControlName="currency"
+                />
+                <mat-error> Currency is <strong>required</strong> </mat-error>
+              </mat-form-field>
+            </div>
+
+            <div class="form-control-container">
+              <mat-form-field class="mat-input">
+                <mat-label>postcode</mat-label>
+                <input
+                  matInput
+                  placeholder="Postcode"
+                  formControlName="postcode"
+                />
+                <mat-error> Postcode is <strong>required</strong> </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+      <div class="button-container">
+        <button
+          mat-raised-button
+          color="accent"
+          (click)="addLocationToLocationsFormArray()"
+        >
+          Add Location
+        </button>
+      </div>
     </div>
   </mat-step>
   <mat-step>
-    <ng-template matStepLabel> Admin User</ng-template>
-    <mat-form-field>
-      <input matInput placeholder="Last name, First name" required />
-    </mat-form-field>
-    <div>
-      <button mat-button matStepperNext>Next</button>
-    </div>
+    <ng-template matStepLabel> Done</ng-template>
   </mat-step>
-  <mat-step>
-    <ng-template matStepLabel> Areas/tables </ng-template>
-    <mat-form-field>
-      <input matInput placeholder="Last name, First name" required />
-    </mat-form-field>
-    <div>
-      <button mat-button matStepperNext>Next</button>
-    </div>
-  </mat-step>
-  <mat-step>
-    <ng-template matStepLabel> Devices/Registers </ng-template>
-    <mat-form-field>
-      <input matInput placeholder="Last name, First name" required />
-    </mat-form-field>
-    <div>
-      <button mat-button matStepperNext>Next</button>
-    </div>
-  </mat-step>
-  <mat-step>
-    <ng-template matStepLabel> Printers </ng-template>
-    <mat-form-field>
-      <input matInput placeholder="Last name, First name" required />
-    </mat-form-field>
-    <div>
-      <button mat-button matStepperNext>Next</button>
-    </div>
-  </mat-step>
-  <mat-step>
-    <ng-template matStepLabel> Upload Products </ng-template>
-    <mat-form-field>
-      <input matInput placeholder="Last name, First name" required />
-    </mat-form-field>
-    <div>
-      <button mat-button matStepperNext>Next</button>
-    </div>
-  </mat-step>
-  <mat-step>
-    <ng-template matStepLabel> Upload Users </ng-template>
-    <mat-form-field>
-      <input matInput placeholder="Last name, First name" required />
-    </mat-form-field>
-    <div>
-      <button mat-button matStepperNext>Next</button>
-    </div>
-  </mat-step>
-</mat-vertical-stepper>
+</mat-horizontal-stepper>

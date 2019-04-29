@@ -23,14 +23,14 @@
 <div class="row" [formGroup]="companyEditForm">
   <div class="col-7">
     <mat-card class="mat-card-container">
-      <p>
+      <div>
         <mat-form-field class="mat-input">
           <mat-label>name</mat-label>
           <input matInput placeholder="Name" formControlName="name" />
           <mat-error> name is <strong>required</strong> </mat-error>
         </mat-form-field>
-      </p>
-      <p>
+      </div>
+      <div>
         <mat-form-field class="mat-input">
           <mat-label>address line 1</mat-label>
           <input
@@ -40,8 +40,8 @@
           />
           <mat-error> address line 1 is <strong>required</strong> </mat-error>
         </mat-form-field>
-      </p>
-      <p>
+      </div>
+      <div>
         <mat-form-field class="mat-input">
           <mat-label>address line 2</mat-label>
           <input
@@ -51,16 +51,16 @@
           />
           <mat-error> address line 2 is <strong>required</strong> </mat-error>
         </mat-form-field>
-      </p>
-      <p>
+      </div>
+      <div>
         <mat-form-field class="mat-input">
           <mat-label>city</mat-label>
           <input matInput placeholder="city" formControlName="city" />
           <mat-error> city is <strong>required</strong> </mat-error>
         </mat-form-field>
-      </p>
+      </div>
 
-      <p>
+      <div>
         <mat-form-field class="mat-input">
           <mat-label>country</mat-label>
           <input
@@ -80,15 +80,15 @@
             Country is <strong>required</strong>
           </mat-error>
         </mat-form-field>
-      </p>
-      <p>
+      </div>
+      <div>
         <mat-form-field class="mat-input">
           <mat-label>Post Code</mat-label>
           <input matInput placeholder="Post Code" formControlName="postCode" />
           <mat-error> Post Code is <strong>required</strong> </mat-error>
         </mat-form-field>
-      </p>
-      <p>
+      </div>
+      <div>
         <mat-form-field class="mat-input">
           <mat-label>Telephone</mat-label>
           <input matInput placeholder="Telephone" formControlName="telephone" />
@@ -103,14 +103,14 @@
             Telephone includes only <strong>numbers</strong>
           </mat-error>
         </mat-form-field>
-      </p>
-      <p>
+      </div>
+      <div>
         <mat-form-field class="mat-input">
           <mat-label>Website</mat-label>
           <input matInput placeholder="Website" formControlName="website" />
           <mat-error> Website is <strong>required</strong> </mat-error>
         </mat-form-field>
-      </p>
+      </div>
     </mat-card>
   </div>
   <div class="col-5">
@@ -130,11 +130,11 @@
           disabled
         ></mat-slide-toggle
       ></mat-card-content>
-      <p>You can edit SMTP server configuration here</p>
+      <div>You can edit SMTP server configuration here</div>
       <mat-card-content
         *ngIf="companyEditForm.get('emailSettingIsActive').value"
       >
-        <p>
+        <div>
           <mat-form-field class="mat-input">
             <mat-label>SMTP Server</mat-label>
             <input
@@ -144,8 +144,8 @@
             />
             <mat-error> SMTP Server is <strong>required</strong> </mat-error>
           </mat-form-field>
-        </p>
-        <p>
+        </div>
+        <div>
           <mat-form-field class="mat-input">
             <mat-label>port Number</mat-label>
             <input
@@ -155,8 +155,8 @@
             />
             <mat-error> portNumber is <strong>required</strong> </mat-error>
           </mat-form-field>
-        </p>
-        <p>
+        </div>
+        <div>
           <mat-form-field class="mat-input">
             <mat-label>Password</mat-label>
             <input
@@ -170,12 +170,24 @@
             }}</mat-icon>
             <mat-error> Password is <strong>required</strong> </mat-error>
           </mat-form-field>
-        </p>
+        </div>
       </mat-card-content>
     </mat-card>
     <mat-card class="mat-card-container">
       <mat-card-title>Company Logo</mat-card-title>
       <app-image-uploader></app-image-uploader>
+    </mat-card>
+    <mat-card>
+      <mat-card-title>Company Location</mat-card-title>
+      <p>Drag and drop the pin to locate your position</p>
+      <agm-map [latitude]='latitude' [longitude]='longitude'>
+        <agm-marker
+          [latitude]="companyEditForm.get('companyLat').value"
+          [longitude]="companyEditForm.get('companyLng').value"
+          [markerDraggable]="true"
+          (dragEnd)="markerDragEnd($event)">
+        </agm-marker>
+      </agm-map>
     </mat-card>
   </div>
 </div>
