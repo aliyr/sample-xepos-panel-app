@@ -1,35 +1,37 @@
-<p>
+<div class="mat-chip-container">
   <mat-form-field class="mat-input">
-    <mat-label>User's Locations</mat-label>
+    <mat-label class="capitalize-text">User's {{ inputLabel }}s </mat-label>
     <input
       type="text"
-      #chosenLocation
-      placeholder="User's Locations"
+      #chosenOption
+      placeholder="User's {{ inputLabel }}s"
       matInput
       [matAutocomplete]="auto"
-      formControlName="locationInput"
+      (focus)="isInputTouched = true"
     />
     <mat-autocomplete
       #auto="matAutocomplete"
-      (optionSelected)="addToLocations(chosenLocation.value)"
+      (optionSelected)="addToOptions(chosenOption.value)"
     >
-      <mat-option *ngFor="let location of locations" [value]="location">
-        {{ location }}
+      <mat-option *ngFor="let option of optionsArray" [value]="option">
+        {{ option }}
       </mat-option>
     </mat-autocomplete>
   </mat-form-field>
-  <mat-error>
-    At least one locations is <strong>required</strong>
+  <mat-error
+    *ngIf="
+      this.controlContainer.control.get(controlName).hasError('required') &&
+      isInputTouched
+    "
+  >
+    At least one {{ inputLabel }} is <strong>required</strong>
   </mat-error>
-</p>
-
-<p>
   <mat-chip-list class="mat-input">
     <mat-chip
-      *ngFor="let location of profileForm.get('locations').value"
-      (removed)="removeSelectedLocations(location)"
-      >{{ location }}
+      *ngFor="let option of this.controlContainer.control.get(controlName).value"
+      (removed)="removeSelectedOptions(option)"
+      >{{ option }}
       <mat-icon matChipRemove>cancel</mat-icon>
     </mat-chip>
   </mat-chip-list>
-</p>
+</div>

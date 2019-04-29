@@ -1,52 +1,63 @@
-import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { Component, OnInit, Input } from "@angular/core";
+import { ControlContainer, FormArray } from "@angular/forms";
 
 @Component({
-  selector: 'app-multi-select-chips',
-  templateUrl: './multi-select-chips.component.html',
-  styleUrls: ['./multi-select-chips.component.scss']
+  selector: "app-multi-select-chips",
+  templateUrl: "./multi-select-chips.component.html",
+  styleUrls: ["./multi-select-chips.component.scss"]
 })
 export class MultiSelectChipsComponent implements OnInit {
-  locations: string[] = ["address1", "address"];
-  constructor() { }
+  @Input() optionsArray: string[];
+  @Input() controlName: string;
+  @Input() inputLabel: string;
+  isInputTouched: boolean = false;
 
-  ngOnInit() {
-  }
-  validateUserLocations(userLocations, insertedLocation): boolean {
-    // check if the location is valid or not
-    const isLocationValid =
-      this.locations.find(p => p === insertedLocation) !== undefined;
-    let isLocationNonRepetitive = true;
-    if (userLocations) {
-      isLocationNonRepetitive =
-        userLocations.find(p => p === insertedLocation) === undefined;
+  constructor(private controlContainer: ControlContainer) {}
+
+  ngOnInit() {}
+
+  validateUseroptions(userOptions, insertedOption): boolean {
+    // check if the Option is valid or not
+    const isOptionValid =
+      this.optionsArray.find(p => p === insertedOption) !== undefined;
+    let isOptionNonRepetitive = true;
+    if (userOptions) {
+      isOptionNonRepetitive =
+        userOptions.find(p => p === insertedOption) === undefined;
     }
-    return isLocationValid && isLocationNonRepetitive;
+    return isOptionValid && isOptionNonRepetitive;
   }
 
-  addToLocations(location) {
-    const usersLocations = this.profileForm.get("locations").value as FormArray;
-    const LocationInterAllowed = this.validateUserLocations(
-      usersLocations,
-      location
-    );
+  addToOptions(Option) {
+    const usersOptions = this.controlContainer.control.get(this.controlName)
+      .value as FormArray;
+    const OptionInterAllowed = this.validateUseroptions(usersOptions, Option);
 
-    if (LocationInterAllowed) {
-      if (usersLocations.length === 0) {
-        // if locations array doesn't existed
-        this.profileForm.get("locations").patchValue([location]);
+    if (OptionInterAllowed) {
+      if (usersOptions.length === 0) {
+        // if Options array doesn't existed
+        this.controlContainer.control
+          .get(this.controlName)
+          .patchValue([Option]);
       } else {
-        usersLocations.push(location);
-        this.profileForm.get("locations").patchValue(usersLocations);
+        usersOptions.push(Option);
+        this.controlContainer.control
+          .get(this.controlName)
+          .patchValue(usersOptions);
       }
     }
   }
-  removeSelectedLocations(location) {
-    const selectedLocations: [] = this.profileForm.get("locations").value;
-    selectedLocations.map((p, index) => {
-      if (p === location) {
-        selectedLocations.splice(index, 1);
-        this.profileForm.get("locations").patchValue(selectedLocations);
+
+  removeSelectedOptions(Option: string) {
+    const selectedOptions: [] = this.controlContainer.control.get(
+      this.controlName
+    ).value;
+    selectedOptions.map((p, index) => {
+      if (p === Option) {
+        selectedOptions.splice(index, 1);
+        this.controlContainer.control
+          .get(this.controlName)
+          .patchValue(selectedOptions);
       }
     });
   }
