@@ -17,11 +17,10 @@
 
 <mat-horizontal-stepper
   class="company-wizard-stepper"
-  [formGroup]="companyWizardForm"
 >
-  <mat-step>
+  <mat-step [formGroup]="companyWizardForm" [stepControl]="generalInfoFormGroup">
     <ng-template matStepLabel> Company Details</ng-template>
-    <div class="form-group-container">
+    <div class="form-group-container" formGroupName="generalInfo">
       <div>
         <div class="form-control-container">
           <mat-form-field class="mat-input">
@@ -95,7 +94,7 @@
       </div>
     </div>
   </mat-step>
-  <mat-step>
+  <mat-step [formGroup]="companyWizardForm" [stepControl]="locationsFormArray">
     <ng-template matStepLabel> Locations </ng-template>
     <div formArrayName="locations" class="form-group-container">
       <mat-accordion>
@@ -193,18 +192,29 @@
           </div>
         </mat-expansion-panel>
       </mat-accordion>
-      <div class="button-container">
-        <button
-          mat-raised-button
-          color="accent"
-          (click)="addLocationToLocationsFormArray()"
-        >
-          Add Location
-        </button>
+      <div class="row button-container">
+        <div class="col-6">
+          <button
+            mat-raised-button
+            color="accent"
+            matStepperNext
+          >
+            next
+          </button>
+        </div>
+        <div class="col-6">
+          <button mat-mini-fab (click)="addLocationToLocationsFormArray()">
+            <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
+          </button>
+        </div>
+
       </div>
     </div>
   </mat-step>
   <mat-step>
     <ng-template matStepLabel> Done</ng-template>
+    <h4>
+      Company information
+    </h4>
   </mat-step>
 </mat-horizontal-stepper>
