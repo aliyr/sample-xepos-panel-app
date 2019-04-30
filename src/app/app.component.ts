@@ -1,11 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import {
-  trigger,
-  state,
-  style,
-  animate,
-  transition
-} from "@angular/animations";
+import { trigger, state, style } from "@angular/animations";
 
 @Component({
   selector: "app-root",
@@ -32,7 +26,6 @@ import {
 })
 export class AppComponent implements OnInit {
   isMenuOpenDefault: boolean;
-
   ngOnInit() {
     this.checkWidthOnInit();
   }
@@ -42,5 +35,8 @@ export class AppComponent implements OnInit {
     if (window.innerWidth < 1300) {
       this.isMenuOpenDefault = false;
     }
+  }
+  toggleDrawer() {
+    this.isMenuOpenDefault = !this.isMenuOpenDefault;
   }
 }

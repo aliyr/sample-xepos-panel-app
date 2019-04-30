@@ -1,5 +1,17 @@
 // this class is for buttons in main header
 
-  .active-filter-btn{
-    background-color: map-get($mat-primary, lighter);
+.header-container {
+  .header-button {
+    padding: 0 14px;
+    margin-left: 10px;
+    text-transform: capitalize;
+    color: #fff;
+    min-width: 100px;
   }
+  .mat-card-subtitle {
+    margin-bottom: 8px;
+  }
+}
+button:hover {
+  cursor: pointer;
+}
