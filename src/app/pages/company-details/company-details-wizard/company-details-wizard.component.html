@@ -10,15 +10,14 @@
   >
     cancel
   </button>
-  <button mat-raised-button class="header-button" color="accent">
-    save
-  </button>
+
 </app-list-header>
 
-<mat-horizontal-stepper
-  class="company-wizard-stepper"
->
-  <mat-step [formGroup]="companyWizardForm" [stepControl]="generalInfoFormGroup">
+<mat-horizontal-stepper class="company-wizard-stepper">
+  <mat-step
+    [formGroup]="companyWizardForm"
+    [stepControl]="generalInfoFormGroup"
+  >
     <ng-template matStepLabel> Company Details</ng-template>
     <div class="form-group-container" formGroupName="generalInfo">
       <div>
@@ -88,6 +87,19 @@
             />
           </mat-form-field>
         </div>
+         <div class="form-control-container">
+              <mat-card-title>Company Location</mat-card-title>
+              <p>Drag and drop the pin to locate your position</p>
+              <agm-map [latitude]="latitude" [longitude]="longitude">
+                <agm-marker
+                [latitude]="generalInfoFormGroup.get('companyLat').value"
+                [longitude]="generalInfoFormGroup.get('companyLng').value"
+                [markerDraggable]="true"
+                (dragEnd)="markerDragEnd($event)"
+                >
+                </agm-marker>
+              </agm-map>
+          </div> 
         <button mat-button mat-raised-button matStepperNext color="accent">
           Next
         </button>
@@ -167,15 +179,7 @@
             </div>
 
             <div class="form-control-container">
-              <mat-form-field class="mat-input">
-                <mat-label>currency</mat-label>
-                <input
-                  matInput
-                  placeholder="Currency"
-                  formControlName="currency"
-                />
-                <mat-error> Currency is <strong>required</strong> </mat-error>
-              </mat-form-field>
+              <app-multi-select-chips [optionsArray]='currencyList'  controlName="currency"  inputLabel='currency'></app-multi-select-chips>
             </div>
 
             <div class="form-control-container">
@@ -189,32 +193,53 @@
                 <mat-error> Postcode is <strong>required</strong> </mat-error>
               </mat-form-field>
             </div>
+            <div class="form-control-container">
+                  <mat-card-title>Company Location</mat-card-title>
+                  <p>Drag and drop the pin to locate your position</p>
+                  <agm-map [latitude]="latitude" [longitude]="longitude">
+                    <agm-marker
+                    [latitude]="location.get('companyLat').value"
+                    [longitude]="location.get('companyLng').value"
+                    [markerDraggable]="true"
+                    (dragEnd)="LocationArrayMarkerDragEnd($event , i)"
+                    >
+                    </agm-marker>
+                  </agm-map>
+              </div>
           </div>
         </mat-expansion-panel>
       </mat-accordion>
       <div class="row button-container">
         <div class="col-6">
-          <button
-            mat-raised-button
-            color="accent"
-            matStepperNext
-          >
+          <button mat-raised-button color="accent" matStepperNext>
             next
           </button>
         </div>
         <div class="col-6">
           <button mat-mini-fab (click)="addLocationToLocationsFormArray()">
-            <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
+            <mat-icon aria-label="Example icon-button with a heart icon"
+              >add</mat-icon
+            >
           </button>
         </div>
-
       </div>
     </div>
   </mat-step>
   <mat-step>
-    <ng-template matStepLabel> Done</ng-template>
+    <ng-template matStepLabel> Summary </ng-template>
     <h4>
       Company information
     </h4>
+    <H6 *ngIf="companyWizardForm.valid">your form is completed if you are sure about your company details press save</H6>
+    <h6 *ngIf="!companyWizardForm.valid"> your details are not valid </h6>
+    <button
+    mat-raised-button
+    class="header-button"
+    color="accent"
+    [disabled]="!companyWizardForm.valid"
+    (click)="saveCompanyWizardForm()"
+  >
+    save
+  </button>
   </mat-step>
 </mat-horizontal-stepper>

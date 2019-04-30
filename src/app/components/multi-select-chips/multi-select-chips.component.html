@@ -1,10 +1,10 @@
 <div class="mat-chip-container">
   <mat-form-field class="mat-input">
-    <mat-label class="capitalize-text">User's {{ inputLabel }}s </mat-label>
+    <mat-label class="capitalize-text"> {{ inputLabel }} </mat-label>
     <input
       type="text"
       #chosenOption
-      placeholder="User's {{ inputLabel }}s"
+      placeholder=" {{ inputLabel }}"
       matInput
       [matAutocomplete]="auto"
       (focus)="isInputTouched = true"
