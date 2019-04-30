@@ -35,7 +35,7 @@ import {
 
 import {MatIconModule} from '@angular/material/icon';
 import {CustomMatPaginatorIntl} from './ngMaterialCustomization/CustomMatPaginatorIntl';
-import { SubNavComponent } from './components/subNav/sub-nav.component';
+import { SubNavComponent } from './components/sub-nav/sub-nav.component';
 import {MatTreeModule} from '@angular/material/tree';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatToolbarModule} from '@angular/material/toolbar';

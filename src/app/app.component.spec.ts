@@ -1,7 +1,7 @@
 import { TestBed, async } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
-import {SubNavComponent} from './components/subNav/sub-nav.component';
+import {SubNavComponent} from './components/sub-nav/sub-nav.component';
 import {MatCardModule, MatIconModule, MatSidenavModule, MatTreeModule} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 

@@ -21,16 +21,16 @@
   </button>
 </app-list-header>
 <div class="row" [formGroup]="companyEditForm">
-  <div class="col-7">
+  <div class="col-7 form-group-container">
     <mat-card class="mat-card-container">
-      <div>
+      <div class="form-control-container">
         <mat-form-field class="mat-input">
           <mat-label>name</mat-label>
           <input matInput placeholder="Name" formControlName="name" />
           <mat-error> name is <strong>required</strong> </mat-error>
         </mat-form-field>
       </div>
-      <div>
+      <div class="form-control-container">
         <mat-form-field class="mat-input">
           <mat-label>address line 1</mat-label>
           <input
@@ -41,7 +41,7 @@
           <mat-error> address line 1 is <strong>required</strong> </mat-error>
         </mat-form-field>
       </div>
-      <div>
+      <div class="form-control-container">
         <mat-form-field class="mat-input">
           <mat-label>address line 2</mat-label>
           <input
@@ -52,7 +52,7 @@
           <mat-error> address line 2 is <strong>required</strong> </mat-error>
         </mat-form-field>
       </div>
-      <div>
+      <div class="form-control-container">
         <mat-form-field class="mat-input">
           <mat-label>city</mat-label>
           <input matInput placeholder="city" formControlName="city" />
@@ -60,7 +60,7 @@
         </mat-form-field>
       </div>
 
-      <div>
+      <div class="form-control-container">
         <mat-form-field class="mat-input">
           <mat-label>country</mat-label>
           <input
@@ -81,14 +81,14 @@
           </mat-error>
         </mat-form-field>
       </div>
-      <div>
+      <div class="form-control-container">
         <mat-form-field class="mat-input">
           <mat-label>Post Code</mat-label>
           <input matInput placeholder="Post Code" formControlName="postCode" />
           <mat-error> Post Code is <strong>required</strong> </mat-error>
         </mat-form-field>
       </div>
-      <div>
+      <div class="form-control-container">
         <mat-form-field class="mat-input">
           <mat-label>Telephone</mat-label>
           <input matInput placeholder="Telephone" formControlName="telephone" />
@@ -104,7 +104,7 @@
           </mat-error>
         </mat-form-field>
       </div>
-      <div>
+      <div class="form-control-container">
         <mat-form-field class="mat-input">
           <mat-label>Website</mat-label>
           <input matInput placeholder="Website" formControlName="website" />
@@ -113,7 +113,7 @@
       </div>
     </mat-card>
   </div>
-  <div class="col-5">
+  <div class="col-5 form-group-container">
     <mat-card class="mat-card-container">
       <mat-card-content
         >Company Private Address:
@@ -134,7 +134,7 @@
       <mat-card-content
         *ngIf="companyEditForm.get('emailSettingIsActive').value"
       >
-        <div>
+        <div class="form-control-container">
           <mat-form-field class="mat-input">
             <mat-label>SMTP Server</mat-label>
             <input
@@ -145,7 +145,7 @@
             <mat-error> SMTP Server is <strong>required</strong> </mat-error>
           </mat-form-field>
         </div>
-        <div>
+        <div class="form-control-container">
           <mat-form-field class="mat-input">
             <mat-label>port Number</mat-label>
             <input
@@ -156,7 +156,7 @@
             <mat-error> portNumber is <strong>required</strong> </mat-error>
           </mat-form-field>
         </div>
-        <div>
+        <div class="form-control-container">
           <mat-form-field class="mat-input">
             <mat-label>Password</mat-label>
             <input
