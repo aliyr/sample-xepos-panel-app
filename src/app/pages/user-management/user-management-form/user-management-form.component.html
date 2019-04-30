@@ -18,9 +18,9 @@
   </button>
 </app-list-header>
 <div class="row" [formGroup]="profileForm">
-  <div class="col-7">
+  <div class="col-7 form-group-container">
     <mat-card class="mat-card-container">
-      <p>
+      <div class="form-control-container">
         <mat-form-field class="mat-input">
           <mat-label>first name</mat-label>
           <input
@@ -30,15 +30,15 @@
           />
           <mat-error> User name is <strong>required</strong> </mat-error>
         </mat-form-field>
-      </p>
-      <p>
+      </div>
+      <div class="form-control-container">
         <mat-form-field class="mat-input">
           <mat-label>surname</mat-label>
           <input matInput placeholder="surname" formControlName="surname" />
           <mat-error> surname is <strong>required</strong> </mat-error>
         </mat-form-field>
-      </p>
-      <p>
+      </div>
+      <div class="form-control-container">
         <mat-form-field class="mat-input">
           <mat-label>email address</mat-label>
           <input matInput placeholder="email address" formControlName="email" />
@@ -49,8 +49,8 @@
             your email is not correct
           </mat-error>
         </mat-form-field>
-      </p>
-      <p>
+      </div>
+      <div class="form-control-container">
         <mat-form-field class="mat-input">
           <mat-label>role</mat-label>
           <mat-select placeholder="type" formControlName="role">
@@ -60,19 +60,19 @@
           </mat-select>
           <mat-error> Type is <strong>required</strong> </mat-error>
         </mat-form-field>
-      </p>
+      </div>
     </mat-card>
   </div>
   <div class="col-5">
     <mat-card class="mat-card-container">
-      <p>
+      <div class="form-control-container">
         <mat-form-field class="mat-input">
           <mat-label>username</mat-label>
           <input formControlName="username" matInput placeholder="username" />
           <mat-error> username is <strong>required</strong> </mat-error>
         </mat-form-field>
-      </p>
-      <p>
+      </div>
+      <div class="form-control-container">
         <mat-form-field class="mat-input">
           <mat-label>Back-Office Password</mat-label>
 
@@ -87,9 +87,9 @@
           }}</mat-icon>
           <mat-error> Password is <strong>required</strong> </mat-error>
         </mat-form-field>
-      </p>
+      </div>
 
-      <p>
+      <div class="form-control-container">
         <mat-form-field class="mat-input">
           <input
             matInput
@@ -120,9 +120,9 @@
             Passwords do not match!
           </mat-error>
         </mat-form-field>
-      </p>
+      </div>
 
-      <p>
+      <div class="form-control-container">
         <mat-form-field class="mat-input">
           <input
             matInput
@@ -146,10 +146,10 @@
             your passcode must contain four numbers
           </mat-error>
         </mat-form-field>
-      </p>
-      <p>
+      </div>
+      <div>
         <app-image-uploader></app-image-uploader>
-      </p>
+      </div>
     </mat-card>
   </div>
 </div>

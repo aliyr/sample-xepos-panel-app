@@ -6,7 +6,7 @@ import { trigger, state, style } from "@angular/animations";
   templateUrl: "./app.component.html",
   styleUrls: ["./app.component.scss"],
   animations: [
-    trigger("subNav", [
+    trigger("sub-nav", [
       state(
         "start",
         style({
