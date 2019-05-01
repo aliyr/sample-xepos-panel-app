@@ -8,6 +8,7 @@
       matInput
       [matAutocomplete]="auto"
       (focus)="isInputTouched = true"
+      [required]='isRequired'
     />
     <mat-autocomplete
       #auto="matAutocomplete"
@@ -19,16 +20,18 @@
     </mat-autocomplete>
   </mat-form-field>
   <mat-error
-    *ngIf="
-      this.controlContainer.control.get(controlName).hasError('required') &&
-      isInputTouched
-    "
-  >
-    At least one {{ inputLabel }} is <strong>required</strong>
-  </mat-error>
+  *ngIf="
+    this.controlContainer.control.get(controlName).hasError('required') && isInputTouched && isRequired
+    
+  "
+>
+  At least one {{ inputLabel }} is <strong>required</strong>
+</mat-error>
   <mat-chip-list class="mat-input">
     <mat-chip
-      *ngFor="let option of this.controlContainer.control.get(controlName).value"
+      *ngFor="
+        let option of this.controlContainer.control.get(controlName).value
+      "
       (removed)="removeSelectedOptions(option)"
       >{{ option }}
       <mat-icon matChipRemove>cancel</mat-icon>

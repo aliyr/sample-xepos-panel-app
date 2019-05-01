@@ -12,10 +12,11 @@
   </button>
 </app-list-header>
 
-<mat-horizontal-stepper class="company-wizard-stepper">
+<mat-horizontal-stepper class="company-wizard-stepper" linear>
   <mat-step
     [formGroup]="companyWizardForm"
     [stepControl]="generalInfoFormGroup"
+    optional="false"
   >
     <ng-template matStepLabel> Company Details</ng-template>
     <div class="form-group-container" formGroupName="generalInfo">
@@ -23,7 +24,7 @@
         <div class="form-control-container">
           <mat-form-field class="mat-input">
             <mat-label>business name</mat-label>
-            <input matInput formControlName="businessName" />
+            <input matInput formControlName="businessName" required />
             <mat-error> Business name is <strong>required</strong> </mat-error>
           </mat-form-field>
         </div>
@@ -59,7 +60,7 @@
         <div class="form-control-container">
           <mat-form-field class="mat-input">
             <mat-label>postcode</mat-label>
-            <input matInput formControlName="postcode" />
+            <input matInput formControlName="postcode" required />
             <mat-error> Postcode is <strong>required</strong></mat-error>
           </mat-form-field>
         </div>
@@ -114,7 +115,11 @@
       </div>
     </div>
   </mat-step>
-  <mat-step [formGroup]="companyWizardForm" [stepControl]="locationsFormArray">
+  <mat-step
+    [formGroup]="companyWizardForm"
+    [stepControl]="locationsFormArray"
+    optional="false"
+  >
     <ng-template matStepLabel> Locations </ng-template>
     <div formArrayName="locations" class="form-group-container">
       <mat-accordion>
@@ -138,7 +143,12 @@
             <div class="form-control-container">
               <mat-form-field class="mat-input">
                 <mat-label>name</mat-label>
-                <input matInput placeholder="Name" formControlName="name" />
+                <input
+                  matInput
+                  placeholder="Name"
+                  formControlName="name"
+                  required
+                />
                 <mat-error> Name is <strong>required</strong> </mat-error>
               </mat-form-field>
             </div>
@@ -191,6 +201,7 @@
                 [optionsArray]="currencyList"
                 controlName="currency"
                 inputLabel="currency"
+                isRequired="true"
               ></app-multi-select-chips>
             </div>
 
@@ -201,6 +212,7 @@
                   matInput
                   placeholder="Postcode"
                   formControlName="postcode"
+                  required
                 />
                 <mat-error> Postcode is <strong>required</strong> </mat-error>
               </mat-form-field>
@@ -237,24 +249,17 @@
       </div>
     </div>
   </mat-step>
-  <mat-step>
+  <mat-step optional="false">
     <ng-template matStepLabel> Summary </ng-template>
     <mat-card class="company-result-card">
       <mat-card-title>
-        {{
-          companyWizardForm.valid
-            ? "Form Information Successfully applied"
-            : "Form Validation Failed"
-        }}
+        Form Information Successfully applied
       </mat-card-title>
 
       <mat-card-content>
         <mat-card-subtitle>
-          {{
-            companyWizardForm.valid
-              ? "your form is completed if you are sure about your company details press save"
-              : "you might have entered wrong details or didnt fill all fields "
-          }}
+          your form is completed if you are sure about your company details
+          press save
         </mat-card-subtitle>
 
         <mat-card-actions>

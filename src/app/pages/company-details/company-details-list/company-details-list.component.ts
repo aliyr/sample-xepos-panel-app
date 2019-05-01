@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
-import { CompanyDetailsService } from "../../../services/company-details/company-details.service";
+import {CompanyDetailsService} from 'app/services/company-details/company-details.service';
 import { MatPaginator, MatSort, MatTableDataSource } from "@angular/material";
 import { Router } from "@angular/router";
 

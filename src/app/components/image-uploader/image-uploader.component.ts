@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { SnackbarService } from "../../services/snackbar/snackbar.service";
+import { SnackbarService } from "app/services/snackbar/snackbar.service";
 class ImageSnippet {
   constructor(public src: string, public file: File) {}
 }

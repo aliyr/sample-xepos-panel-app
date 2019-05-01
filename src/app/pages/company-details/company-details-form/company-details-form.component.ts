@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import {FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { Router } from "@angular/router";
 
 @Component({
@@ -47,18 +47,18 @@ export class CompanyDetailsFormComponent implements OnInit {
     this.router.navigate(["/company-details/list"]);
   }
   saveCompanyEditForm() {
-    const confirmedData = [
-      { name: this.companyEditForm.get("name").value },
-      { addressLine1: this.companyEditForm.get("addressLine1").value },
-      { addressLine2: this.companyEditForm.get("addressLine2").value },
-      { city: this.companyEditForm.get("city").value },
-      { country: this.companyEditForm.get("country").value },
-      { postCode: this.companyEditForm.get("postCode").value },
-      { telephone: this.companyEditForm.get("telephone").value },
-      { website: this.companyEditForm.get("website").value },
-      { companyLat: this.companyEditForm.get("companyLat").value },
-      { companyLng: this.companyEditForm.get("companyLng").value }
-    ];
+    const confirmedData = 
+      { name: this.companyEditForm.get("name").value ,
+       addressLine1: this.companyEditForm.get("addressLine1").value ,
+       addressLine2: this.companyEditForm.get("addressLine2").value ,
+       city: this.companyEditForm.get("city").value ,
+       country: this.companyEditForm.get("country").value ,
+       postCode: this.companyEditForm.get("postCode").value ,
+       telephone: this.companyEditForm.get("telephone").value ,
+       website: this.companyEditForm.get("website").value ,
+       companyLat: this.companyEditForm.get("companyLat").value ,
+       companyLng: this.companyEditForm.get("companyLng").value };
+
     console.log(confirmedData);
   }
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import ErrorStateValidator from "../../../validators/error-state-matcher";
+import ErrorStateValidator from "app/validators/error-state-matcher";
 import { Router } from "@angular/router";
 @Component({
   selector: "app-user-management-form",
@@ -28,7 +28,7 @@ export class UserManagementFormComponent implements OnInit {
     { validator: this.passwordValidator }
   );
 
-  constructor(private fb: FormBuilder , private router: Router) {}
+  constructor(private fb: FormBuilder, private router: Router) {}
 
   ngOnInit() {}
 
@@ -40,18 +40,18 @@ export class UserManagementFormComponent implements OnInit {
   }
 
   returnToList() {
-      this.router.navigate(["/user-management/list"]);
+    this.router.navigate(["/user-management/list"]);
   }
   save() {
-    const confirmedData = [
-      { firstName: this.profileForm.get("firstName").value },
-      { surname: this.profileForm.get("surname").value },
-      { email: this.profileForm.get("email").value },
-      { role: this.profileForm.get("role").value },
-      { username: this.profileForm.get("username").value },
-      { backOfficePassword: this.profileForm.get("backOfficePassword").value },
-      { fourDigitPassword: this.profileForm.get("fourDigitPassword").value }
-    ];
+    const confirmedData = {
+      firstName: this.profileForm.get("firstName").value,
+      surname: this.profileForm.get("surname").value,
+      email: this.profileForm.get("email").value,
+      role: this.profileForm.get("role").value,
+      username: this.profileForm.get("username").value,
+      backOfficePassword: this.profileForm.get("backOfficePassword").value,
+      fourDigitPassword: this.profileForm.get("fourDigitPassword").value
+    };
 
     console.log(confirmedData);
   }

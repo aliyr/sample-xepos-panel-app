@@ -1,5 +1,5 @@
 
-import { environment } from '../../environments/environment';
+import { environment } from 'environments/environment';
 export function NgLog(): ClassDecorator {
   return function( constructor: any ) {
     if ( !environment.production ) {

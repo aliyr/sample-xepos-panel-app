@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
-import { UserManagementService } from "../../../services/user-management/user-management.service";
-import { User } from "../../../models/User";
+import { UserManagementService } from "app/services/user-management/user-management.service";
 import { MatPaginator, MatSort, MatTableDataSource } from "@angular/material";
-import { NgLog } from "../../../decorators/nglog.decorator";
+import { NgLog } from "app/decorators/nglog.decorator";
+
 import { Router } from "@angular/router";
 
 @Component({

@@ -1,6 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
-import { NgLog } from "../../decorators/nglog.decorator";
-
+import { NgLog } from "app/decorators/nglog.decorator";
 @Component({
   selector: "app-search-input",
   templateUrl: "./search-input.component.html",

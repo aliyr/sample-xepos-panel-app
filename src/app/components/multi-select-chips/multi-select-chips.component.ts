@@ -10,7 +10,10 @@ export class MultiSelectChipsComponent implements OnInit {
   @Input() optionsArray: string[];
   @Input() controlName: string;
   @Input() inputLabel: string;
+  @Input() isRequired: boolean;
   isInputTouched: boolean = false;
+// workaround
+// problem with list error
 
   constructor(private controlContainer: ControlContainer) {}
 
