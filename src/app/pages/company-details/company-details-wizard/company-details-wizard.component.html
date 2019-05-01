@@ -10,7 +10,6 @@
   >
     cancel
   </button>
-
 </app-list-header>
 
 <mat-horizontal-stepper class="company-wizard-stepper">
@@ -96,19 +95,19 @@
             />
           </mat-form-field>
         </div>
-         <div class="form-control-container">
-              <mat-card-title>Company Location</mat-card-title>
-              <p>Drag and drop the pin to locate your position</p>
-              <agm-map [latitude]="latitude" [longitude]="longitude">
-                <agm-marker
-                [latitude]="generalInfoFormGroup.get('companyLat').value"
-                [longitude]="generalInfoFormGroup.get('companyLng').value"
-                [markerDraggable]="true"
-                (dragEnd)="markerDragEnd($event)"
-                >
-                </agm-marker>
-              </agm-map>
-          </div> 
+        <div class="form-control-container">
+          <mat-card-title>Company Location</mat-card-title>
+          <p>Drag and drop the pin to locate your position</p>
+          <agm-map [latitude]="latitude" [longitude]="longitude">
+            <agm-marker
+              [latitude]="generalInfoFormGroup.get('companyLat').value"
+              [longitude]="generalInfoFormGroup.get('companyLng').value"
+              [markerDraggable]="true"
+              (dragEnd)="markerDragEnd($event)"
+            >
+            </agm-marker>
+          </agm-map>
+        </div>
         <button mat-button mat-raised-button matStepperNext color="accent">
           Next
         </button>
@@ -188,7 +187,11 @@
             </div>
 
             <div class="form-control-container">
-              <app-multi-select-chips [optionsArray]='currencyList'  controlName="currency"  inputLabel='currency'></app-multi-select-chips>
+              <app-multi-select-chips
+                [optionsArray]="currencyList"
+                controlName="currency"
+                inputLabel="currency"
+              ></app-multi-select-chips>
             </div>
 
             <div class="form-control-container">
@@ -203,18 +206,18 @@
               </mat-form-field>
             </div>
             <div class="form-control-container">
-                  <mat-card-title>Company Location</mat-card-title>
-                  <p>Drag and drop the pin to locate your position</p>
-                  <agm-map [latitude]="latitude" [longitude]="longitude">
-                    <agm-marker
-                    [latitude]="location.get('companyLat').value"
-                    [longitude]="location.get('companyLng').value"
-                    [markerDraggable]="true"
-                    (dragEnd)="LocationArrayMarkerDragEnd($event , i)"
-                    >
-                    </agm-marker>
-                  </agm-map>
-              </div>
+              <mat-card-title>Company Location</mat-card-title>
+              <p>Drag and drop the pin to locate your position</p>
+              <agm-map [latitude]="latitude" [longitude]="longitude">
+                <agm-marker
+                  [latitude]="location.get('companyLat').value"
+                  [longitude]="location.get('companyLng').value"
+                  [markerDraggable]="true"
+                  (dragEnd)="LocationArrayMarkerDragEnd($event, i)"
+                >
+                </agm-marker>
+              </agm-map>
+            </div>
           </div>
         </mat-expansion-panel>
       </mat-accordion>
@@ -236,19 +239,36 @@
   </mat-step>
   <mat-step>
     <ng-template matStepLabel> Summary </ng-template>
-    <h4>
-      Company information
-    </h4>
-    <H6 *ngIf="companyWizardForm.valid">your form is completed if you are sure about your company details press save</H6>
-    <h6 *ngIf="!companyWizardForm.valid"> your details are not valid </h6>
-    <button
-    mat-raised-button
-    class="header-button"
-    color="accent"
-    [disabled]="!companyWizardForm.valid"
-    (click)="saveCompanyWizardForm()"
-  >
-    save
-  </button>
+    <mat-card class="company-result-card">
+      <mat-card-title>
+        {{
+          companyWizardForm.valid
+            ? "Form Information Successfully applied"
+            : "Form Validation Failed"
+        }}
+      </mat-card-title>
+
+      <mat-card-content>
+        <mat-card-subtitle>
+          {{
+            companyWizardForm.valid
+              ? "your form is completed if you are sure about your company details press save"
+              : "you might have entered wrong details or didnt fill all fields "
+          }}
+        </mat-card-subtitle>
+
+        <mat-card-actions>
+          <button
+            mat-raised-button
+            class="header-button"
+            color="accent"
+            [disabled]="!companyWizardForm.valid"
+            (click)="saveCompanyWizardForm()"
+          >
+            save
+          </button>
+        </mat-card-actions>
+      </mat-card-content>
+    </mat-card>
   </mat-step>
 </mat-horizontal-stepper>
