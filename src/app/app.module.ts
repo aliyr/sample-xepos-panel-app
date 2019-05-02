@@ -13,7 +13,6 @@ import {
   MatSortModule,
   MatPaginatorModule,
   MatInputModule,
-  MatPaginatorIntl,
   MatSidenavModule,
   MatTooltipModule,
   MatTabsModule,
