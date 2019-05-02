@@ -1,3 +1,5 @@
+// Created by https://materialtheme.arcsine.dev/
+
 
 @import '~@angular/material/theming';
 // Fonts
@@ -22,6 +24,8 @@ $fontConfig: (
 // Foreground Elements
 
 // Light Theme Text
+
+// ======>>>>>> $dark-text custom change by Alious
 $dark-text: #fff;
 $dark-primary-text: rgba($dark-text, 0.87);
 $dark-accent-text: rgba($dark-primary-text, 0.54);
@@ -134,6 +138,8 @@ $mat-dark-theme-background: (
 @include mat-core($fontConfig);
 
 // Theme Config
+
+// ======>>>>>> $mat-success custom change by Khashi
 $mat-success : #79a892;
 $mat-primary: (
   main: #fff,

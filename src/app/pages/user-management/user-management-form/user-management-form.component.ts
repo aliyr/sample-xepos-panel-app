@@ -40,7 +40,7 @@ export class UserManagementFormComponent implements OnInit {
   }
 
   returnToList() {
-    this.router.navigate(["/user-management/list"]);
+    this.router.navigate(["/user-management/details"]);
   }
   save() {
     const confirmedData = {

@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { CompanyDetailsFormComponent } from "./company-details-form.component";
+import { CompanyManagementFormComponent } from "./company-management-form.component";
 import {ListHeaderComponent} from 'app/components/list-header/list-header.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {
@@ -17,13 +17,13 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ImageUploaderComponent} from 'app/components/image-uploader/image-uploader.component';
 import {RouterTestingModule} from '@angular/router/testing';
  
-describe("CompanyDetailsFormComponent", () => {
-  let component: CompanyDetailsFormComponent;
-  let fixture: ComponentFixture<CompanyDetailsFormComponent>;
+describe("CompanyManagementFormComponent", () => {
+  let component: CompanyManagementFormComponent;
+  let fixture: ComponentFixture<CompanyManagementFormComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [CompanyDetailsFormComponent, ListHeaderComponent,ImageUploaderComponent],
+      declarations: [CompanyManagementFormComponent, ListHeaderComponent,ImageUploaderComponent],
       imports: [
         MatFormFieldModule,
         ReactiveFormsModule,
@@ -46,7 +46,7 @@ describe("CompanyDetailsFormComponent", () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CompanyDetailsFormComponent);
+    fixture = TestBed.createComponent(CompanyManagementFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

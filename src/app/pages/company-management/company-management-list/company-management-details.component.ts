@@ -5,10 +5,10 @@ import { Router } from "@angular/router";
 
 @Component({
   selector: "app-company-details-list",
-  templateUrl: "./company-details-list.component.html",
-  styleUrls: ["./company-details-list.component.scss"]
+  templateUrl: "./company-management-details.component.html",
+  styleUrls: ["./company-management-details.component.scss"]
 })
-export class CompanyDetailsListComponent implements OnInit {
+export class CompanyManagementDetailsComponent implements OnInit {
   dataSource ;
   filterText: string;
   // isActive: boolean = null;
@@ -67,10 +67,10 @@ export class CompanyDetailsListComponent implements OnInit {
   }
 
   updateUser(userID): void {
-    this.router.navigate(["/company-details/form", userID]);
+    this.router.navigate(["/company-management/form", userID]);
   }
   openWizardForm() {
-    this.router.navigate(["/company-details/wizard"]);
+    this.router.navigate(["/company-management/wizard"]);
   }
   updateTable() {
     // filter predicate is used to limit search datas to specific columns

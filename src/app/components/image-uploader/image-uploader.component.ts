@@ -1,7 +1,7 @@
 import { Component } from "@angular/core";
 import { SnackbarService } from "app/services/snackbar/snackbar.service";
 
-type ImageSnippet = {
+interface ImageSnippet {
   src: string;
   file: File;
 }
@@ -26,7 +26,6 @@ export class ImageUploaderComponent {
         "close",
         4000
       );
-      return;
     }
     if (file.size > 200000) {
       this.snackBarService.toastError(
@@ -38,7 +37,7 @@ export class ImageUploaderComponent {
     }
 
     reader.addEventListener("load", (event: any) => {
-      this.selectedFile = { src: event.target.result, file: file };
+      this.selectedFile = { src: event.target.result, file };
 
       // this.imageService
       //   .uploadImage(this.selectedFile.file)

@@ -1,15 +1,15 @@
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { CompanyDetailsComponent } from "./company-details.component";
+import { CompanyManagementComponent } from "./company-management.component";
 import {RouterTestingModule} from '@angular/router/testing';
 
-describe("CompanyDetailsComponent", () => {
-  let component: CompanyDetailsComponent;
-  let fixture: ComponentFixture<CompanyDetailsComponent>;
+describe("CompanyManagementComponent", () => {
+  let component: CompanyManagementComponent;
+  let fixture: ComponentFixture<CompanyManagementComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [CompanyDetailsComponent],
+      declarations: [CompanyManagementComponent],
       imports: [
         RouterTestingModule
       ]
@@ -17,7 +17,7 @@ describe("CompanyDetailsComponent", () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CompanyDetailsComponent);
+    fixture = TestBed.createComponent(CompanyManagementComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

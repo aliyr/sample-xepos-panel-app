@@ -53,13 +53,14 @@ import { UserManagementFormComponent } from './pages/user-management/user-manage
 import { UserManagementComponent } from './pages/user-management/user-management.component';
 import { ImageUploaderComponent } from './components/image-uploader/image-uploader.component';
 import { ListHeaderComponent } from './components/list-header/list-header.component';
-import { CompanyDetailsComponent } from './pages/company-details/company-details.component';
-import { CompanyDetailsFormComponent } from './pages/company-details/company-details-form/company-details-form.component';
-import { CompanyDetailsListComponent } from './pages/company-details/company-details-list/company-details-list.component';
-import { CompanyDetailsWizardComponent } from './pages/company-details/company-details-wizard/company-details-wizard.component';
+import { CompanyManagementComponent } from './pages/company-management/company-management.component';
+import { CompanyManagementFormComponent } from './pages/company-management/company-management-form/company-management-form.component';
+import { CompanyManagementDetailsComponent } from './pages/company-management/company-management-list/company-management-details.component';
+import { CompanyManagementWizardComponent } from './pages/company-management/company-management-wizard/company-management-wizard.component';
 import { SearchInputComponent } from './components/search-input/search-input.component';
 import { AgmCoreModule } from '@agm/core';
 import { MultiSelectChipsComponent } from './components/multi-select-chips/multi-select-chips.component';
+import { CustomInputComponent } from './components/custom-input/custom-input.component';
 
 @NgModule({
   declarations: [
@@ -73,10 +74,10 @@ import { MultiSelectChipsComponent } from './components/multi-select-chips/multi
     UserManagementComponent,
     ImageUploaderComponent,
     ListHeaderComponent,
-    CompanyDetailsComponent,
-    CompanyDetailsFormComponent,
-    CompanyDetailsListComponent,
-    CompanyDetailsWizardComponent,
+    CompanyManagementComponent,
+    CompanyManagementFormComponent,
+    CompanyManagementDetailsComponent,
+    CompanyManagementWizardComponent,
     SearchInputComponent,
     MultiSelectChipsComponent,
   ],
