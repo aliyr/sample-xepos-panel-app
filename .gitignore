@@ -45,6 +45,7 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
-
-
-.package-lock.json
+.vs/ProjectSettings.json
+.vs/VSWorkspaceState.json
+.vs/slnx.sqlite
+.vs/sample-xepos-panel-app/v16/.suo

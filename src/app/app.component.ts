@@ -24,19 +24,19 @@ import { trigger, state, style } from "@angular/animations";
     ])
   ]
 })
-export class AppComponent implements OnInit {
-  isMenuOpenDefault: boolean;
-  ngOnInit() {
-    this.checkWidthOnInit();
+export class AppComponent {
+  menuIsOpen = true;
+
+  ngAfterViewInit() {
+    this.setInitialValueForMenuIsOpen();
   }
 
-  checkWidthOnInit() {
-    this.isMenuOpenDefault = true;
+  setInitialValueForMenuIsOpen() {
     if (window.innerWidth < 1300) {
-      this.isMenuOpenDefault = false;
+      this.menuIsOpen = false;
     }
   }
   toggleDrawer() {
-    this.isMenuOpenDefault = !this.isMenuOpenDefault;
+    this.menuIsOpen = !this.menuIsOpen;
   }
 }

@@ -1,8 +1,8 @@
 
 import { environment } from 'environments/environment';
 export function NgLog(): ClassDecorator {
-  return function( constructor: any ) {
-    if ( !environment.production ) {
+  return function NgLogImpl(constructor: any) {
+    if (!environment.production) {
       // You can add/remove events for your needs
       const LIFECYCLE_HOOKS = [
         'ngOnInit',
@@ -11,14 +11,14 @@ export function NgLog(): ClassDecorator {
       ];
       const component = constructor.name;
 
-      LIFECYCLE_HOOKS.forEach(hook => {
+      for (const hook of LIFECYCLE_HOOKS) {
         const original = constructor.prototype[hook];
 
-        constructor.prototype[hook] = function( ...args ) {
+        constructor.prototype[hook] = function (...args) {
           console.log(`%c ${component} - ${hook}`, `color: #4CAF50; font-weight: bold`, ...args);
           original !== undefined && original.apply(this, args);
         };
-      });
+      }
     }
 
   };
