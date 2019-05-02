@@ -13,7 +13,6 @@ import {
   MatSortModule,
   MatPaginatorModule,
   MatInputModule,
-  MatPaginatorIntl,
   MatSidenavModule,
   MatTooltipModule,
   MatTabsModule,
@@ -60,7 +59,6 @@ import { CompanyManagementWizardComponent } from './pages/company-management/com
 import { SearchInputComponent } from './components/search-input/search-input.component';
 import { AgmCoreModule } from '@agm/core';
 import { MultiSelectChipsComponent } from './components/multi-select-chips/multi-select-chips.component';
-import { CustomInputComponent } from './components/custom-input/custom-input.component';
 
 @NgModule({
   declarations: [
