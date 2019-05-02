@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
-import {CompanyDetailsService} from 'app/services/company-details/company-details.service';
+import { CompanyDetailsService } from "app/services/company-details/company-details.service";
 import { MatPaginator, MatSort, MatTableDataSource } from "@angular/material";
 import { Router } from "@angular/router";
 
@@ -9,36 +9,42 @@ import { Router } from "@angular/router";
   styleUrls: ["./company-management-details.component.scss"]
 })
 export class CompanyManagementDetailsComponent implements OnInit {
-  dataSource ;
+  dataSource;
   filterText: string;
   // isActive: boolean = null;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
+  displayedColumns: string[];
+  
 
-  displayedColumns: string[] = [
-    "orderNo",
-    "name",
-    "privateAddress",
-    "lastLogin",
-    "salesToday",
-    "allTransactions",
-    "lastTransaction",
-    "delete",
-    "edit"
-  ];
   constructor(
     private companyDetailsService: CompanyDetailsService,
     private router: Router
   ) {}
 
   ngOnInit() {
-    this.dataSource = new MatTableDataSource(this.companyDetailsService.ElementData);
+    this.displayedColumns= [
+      "orderNo",
+      "name",
+      "privateAddress",
+      "lastLogin",
+      "salesToday",
+      "allTransactions",
+      "lastTransaction",
+      "edit",
+      "delete"
+    ];
+    this.dataSource = new MatTableDataSource(
+      this.companyDetailsService.ElementData
+    );
     this.updateTable();
   }
 
-  applyFilter() {
+  applyFilter(): void {
     this.dataSource.filter = this.filterText.trim().toLowerCase();
   }
+
+  // code for applying additional filter on table
   // applySpecificFilter(filterValue: boolean) {
   //   this.isActive = filterValue;
   //   const newFilteredValues = this.companyDetailsService.ElementData.filter(
@@ -66,19 +72,19 @@ export class CompanyManagementDetailsComponent implements OnInit {
     this.updateTable();
   }
 
-  updateUser(userID): void {
+  updateUser(userID: number): void {
     this.router.navigate(["/company-management/form", userID]);
   }
   openWizardForm() {
     this.router.navigate(["/company-management/wizard"]);
   }
-  updateTable() {
+  updateTable(): void {
     // filter predicate is used to limit search datas to specific columns
     this.dataSource.filterPredicate = function(data, filter: string): boolean {
       return (
         data.name.toLowerCase().includes(filter) ||
         data.privateAddress.toString().includes(filter)
-      );  
+      );
     };
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;

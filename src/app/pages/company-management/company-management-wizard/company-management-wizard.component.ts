@@ -2,7 +2,6 @@ import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { FormArray, FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { STEPPER_GLOBAL_OPTIONS } from "@angular/cdk/stepper";
-import { debug } from 'util';
 
 @Component({
   selector: "app-company-details-wizard",
@@ -18,18 +17,19 @@ import { debug } from 'util';
 export class CompanyManagementWizardComponent implements OnInit {
   latitude = 51.743004;
   longitude = -0.640457;
-  currencyList: Array<string> = [
-    "Dollar",
-    "Euro",
-    "Gambia Dalasi",
-    "Naira",
-    "Pound Sterling",
-  ];
+  currencyList: string[];
 
   constructor(private router: Router, private fb: FormBuilder) {}
   companyWizardForm: FormGroup;
 
   ngOnInit() {
+    this.currencyList = [
+      "Dollar",
+      "Euro",
+      "Gambia Dalasi",
+      "Naira",
+      "Pound Sterling"
+    ];
     this.companyWizardForm = this.fb.group({
       generalInfo: this.fb.group({
         businessName: ["", Validators.required],
@@ -42,14 +42,11 @@ export class CompanyManagementWizardComponent implements OnInit {
         phoneNumber: [""],
         email: [""],
         CRMOrderNumber: [""],
-        companyLng: [],
-        companyLat: []
+        companyLng: [this.latitude],
+        companyLat: [this.longitude]
       }),
       locations: this.fb.array([])
     });
-
-    this.generalInfoFormGroup.get("companyLat").patchValue(this.latitude);
-    this.generalInfoFormGroup.get("companyLng").patchValue(this.longitude);
 
     this.addLocationToLocationsFormArray();
   }
@@ -101,7 +98,6 @@ export class CompanyManagementWizardComponent implements OnInit {
       .patchValue($event.coords.lng);
   }
   saveCompanyWizardForm() {
-    debugger;
     const confirmedData = {
       businessName: this.generalInfoFormGroup.get("businessName").value,
       address1: this.generalInfoFormGroup.get("address1").value,
@@ -116,19 +112,17 @@ export class CompanyManagementWizardComponent implements OnInit {
       companyLng: this.generalInfoFormGroup.get("companyLng").value,
       companyLat: this.generalInfoFormGroup.get("companyLat").value,
       locations: this.locationsFormArray.controls.map(item => {
-        
-        return   {
-            name: item.get("name").value,
-            address1: item.get("address1").value,
-            address2: item.get("address2").value,
-            town: item.get("town").value,
-            country: item.get("country").value,
-            currency: item.get("currency").value,
-            postcode: item.get("postcode").value,
-            companyLng: item.get("companyLng").value,
-            companyLat: item.get("companyLat").value
-          };
-        
+        return {
+          name: item.get("name").value,
+          address1: item.get("address1").value,
+          address2: item.get("address2").value,
+          town: item.get("town").value,
+          country: item.get("country").value,
+          currency: item.get("currency").value,
+          postcode: item.get("postcode").value,
+          companyLng: item.get("companyLng").value,
+          companyLat: item.get("companyLat").value
+        };
       })
     };
     console.log(confirmedData);
