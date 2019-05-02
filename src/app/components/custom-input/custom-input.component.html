@@ -1,0 +1,10 @@
+<div class="form-control-container">
+  <mat-form-field class="mat-input">
+    <mat-label>{{label}}</mat-label>
+    <input matInput placeholder="surname" [formControl]="control" [required]="errors.length > 0" />
+    <ng-template ngFor let-error [ngForOf]="errors" ngProjectAs="mat-error">
+      <mat-error *ngIf="control.hasError(error.title)" [innerHTML]="error.message">
+      </mat-error>
+    </ng-template>
+  </mat-form-field>
+</div>

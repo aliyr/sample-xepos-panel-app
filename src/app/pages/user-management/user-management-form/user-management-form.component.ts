@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import PasswordMatchErrorStateMatcher from "app/validators/Password-match-error-state-matcher";
 import { Router } from "@angular/router";
 @Component({
@@ -11,27 +11,31 @@ export class UserManagementFormComponent implements OnInit {
   locations: string[] = ["address1", "address"];
   confirmPasswordErrorMatcher = new PasswordMatchErrorStateMatcher();
 
-  profileForm = this.fb.group(
-    {
-      firstName: ["", [Validators.required]],
-      surname: ["", [Validators.required]],
-      email: ["", [Validators.required, Validators.email]],
-      role: ["", [Validators.required]],
-      username: ["", [Validators.required]],
-      backOfficePassword: ["", [Validators.required]],
-      backOfficeRepeatedPassword: ["", [Validators.required]],
-      fourDigitPassword: [
-        "",
-        [Validators.required, Validators.pattern("[0-9]{4}")]
-      ]
-    },
-    { validator: this.passwordValidator }
-  );
+  profileForm: FormGroup;
 
   constructor(private fb: FormBuilder, private router: Router) {}
 
   ngOnInit() {
-    this.locations = ["address1", "address"];
+    this.profileForm = this.fb.group(
+      {
+        firstName: ["", [Validators.required]],
+        surname: ["", [Validators.required]],
+        email: ["", [Validators.required, Validators.email]],
+        role: ["", [Validators.required]],
+        username: ["", [Validators.required]],
+        backOfficePassword: ["", [Validators.required]],
+        backOfficeRepeatedPassword: ["", [Validators.required]],
+        fourDigitPassword: [
+          "",
+          [Validators.required, Validators.pattern("[0-9]{4}")]
+        ]
+      },
+      { validator: this.passwordValidator }
+    );
+  }
+
+  profileFormControl(controlName: string) {
+    return (this.profileForm.get(controlName));
   }
 
   passwordValidator(form: FormGroup) {
