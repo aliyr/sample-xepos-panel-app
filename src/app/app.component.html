@@ -3,7 +3,7 @@
     #drawer
     mode="side"
     class="left-side-nav"
-    [opened]="isMenuOpenDefault"
+    [opened]="menuIsOpen"
   >
     <nav>
       <app-sub-nav></app-sub-nav>
@@ -13,7 +13,7 @@
     <div class="container-fluid">
       <mat-card class="page-header">
         user info
-        <button mat-stroked-button (click)="toggleDrawer()" >{{isMenuOpenDefault ?   'close' : 'open'}}</button>
+        <button mat-stroked-button (click)="toggleDrawer()" >{{menuIsOpen ?   'close' : 'open'}}</button>
       </mat-card>
       <router-outlet></router-outlet>
     </div>

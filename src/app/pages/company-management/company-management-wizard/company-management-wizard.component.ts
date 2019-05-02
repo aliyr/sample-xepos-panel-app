@@ -6,8 +6,8 @@ import { debug } from 'util';
 
 @Component({
   selector: "app-company-details-wizard",
-  templateUrl: "./company-details-wizard.component.html",
-  styleUrls: ["./company-details-wizard.component.scss"],
+  templateUrl: "./company-management-wizard.component.html",
+  styleUrls: ["./company-management-wizard.component.scss"],
   providers: [
     {
       provide: STEPPER_GLOBAL_OPTIONS,
@@ -15,7 +15,7 @@ import { debug } from 'util';
     }
   ]
 })
-export class CompanyDetailsWizardComponent implements OnInit {
+export class CompanyManagementWizardComponent implements OnInit {
   latitude = 51.743004;
   longitude = -0.640457;
   currencyList: Array<string> = [
@@ -85,7 +85,7 @@ export class CompanyDetailsWizardComponent implements OnInit {
   }
 
   cancelCompanyWizardForm() {
-    this.router.navigate(["/company-details/list"]);
+    this.router.navigate(["/company-management/details"]);
   }
 
   markerDragEnd($event) {

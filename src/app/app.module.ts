@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
@@ -36,30 +36,31 @@ import {
 import {MatIconModule} from '@angular/material/icon';
 import {CustomMatPaginatorIntl} from './ng-material-customizations/Custom-paginator-intl';
 import { SubNavComponent } from './components/sub-nav/sub-nav.component';
-import {MatTreeModule} from '@angular/material/tree';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatSlideToggleModule} from '@angular/material/slide-toggle';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-import {MatProgressBarModule} from '@angular/material/progress-bar';
-import {MatGridListModule} from '@angular/material/grid-list';
-import {MatExpansionModule} from '@angular/material/expansion';
-import {MatDatepickerModule} from '@angular/material/datepicker';
-import {MatCheckboxModule} from '@angular/material/checkbox';
-import {MatButtonToggleModule} from '@angular/material/button-toggle';
-import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
-import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { MatTreeModule } from '@angular/material/tree';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { UserManagementFormComponent } from './pages/user-management/user-management-form/user-management-form.component';
 import { UserManagementComponent } from './pages/user-management/user-management.component';
 import { ImageUploaderComponent } from './components/image-uploader/image-uploader.component';
 import { ListHeaderComponent } from './components/list-header/list-header.component';
-import { CompanyDetailsComponent } from './pages/company-details/company-details.component';
-import { CompanyDetailsFormComponent } from './pages/company-details/company-details-form/company-details-form.component';
-import { CompanyDetailsListComponent } from './pages/company-details/company-details-list/company-details-list.component';
-import { CompanyDetailsWizardComponent } from './pages/company-details/company-details-wizard/company-details-wizard.component';
+import { CompanyManagementComponent } from './pages/company-management/company-management.component';
+import { CompanyManagementFormComponent } from './pages/company-management/company-management-form/company-management-form.component';
+import { CompanyManagementDetailsComponent } from './pages/company-management/company-management-list/company-management-details.component';
+import { CompanyManagementWizardComponent } from './pages/company-management/company-management-wizard/company-management-wizard.component';
 import { SearchInputComponent } from './components/search-input/search-input.component';
-import {AgmCoreModule} from '@agm/core';
+import { AgmCoreModule } from '@agm/core';
 import { MultiSelectChipsComponent } from './components/multi-select-chips/multi-select-chips.component';
+import { CustomInputComponent } from './components/custom-input/custom-input.component';
 
 @NgModule({
   declarations: [
@@ -73,10 +74,10 @@ import { MultiSelectChipsComponent } from './components/multi-select-chips/multi
     UserManagementComponent,
     ImageUploaderComponent,
     ListHeaderComponent,
-    CompanyDetailsComponent,
-    CompanyDetailsFormComponent,
-    CompanyDetailsListComponent,
-    CompanyDetailsWizardComponent,
+    CompanyManagementComponent,
+    CompanyManagementFormComponent,
+    CompanyManagementDetailsComponent,
+    CompanyManagementWizardComponent,
     SearchInputComponent,
     MultiSelectChipsComponent,
   ],

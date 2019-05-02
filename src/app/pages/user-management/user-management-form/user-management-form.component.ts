@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import ErrorStateValidator from "app/validators/error-state-matcher";
+import PasswordMatchErrorStateMatcher from "app/validators/Password-match-error-state-matcher";
 import { Router } from "@angular/router";
 @Component({
   selector: "app-user-management-form",
@@ -8,8 +8,8 @@ import { Router } from "@angular/router";
   styleUrls: ["./user-management-form.component.scss"]
 })
 export class UserManagementFormComponent implements OnInit {
-  locations: string[];
-  confirmPasswordErrorMatcher = new ErrorStateValidator();
+  locations: string[] = ["address1", "address"];
+  confirmPasswordErrorMatcher = new PasswordMatchErrorStateMatcher();
 
   profileForm = this.fb.group(
     {
@@ -42,7 +42,7 @@ export class UserManagementFormComponent implements OnInit {
   }
 
   returnToList() {
-    this.router.navigate(["/user-management/list"]);
+    this.router.navigate(["/user-management/details"]);
   }
   save() {
     const confirmedData = {

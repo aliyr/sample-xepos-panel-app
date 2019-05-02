@@ -1,50 +1,44 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
-import { CompanyDetailsService } from "app/services/company-details/company-details.service";
+import {CompanyDetailsService} from 'app/services/company-details/company-details.service';
 import { MatPaginator, MatSort, MatTableDataSource } from "@angular/material";
 import { Router } from "@angular/router";
 
 @Component({
   selector: "app-company-details-list",
-  templateUrl: "./company-details-list.component.html",
-  styleUrls: ["./company-details-list.component.scss"]
+  templateUrl: "./company-management-details.component.html",
+  styleUrls: ["./company-management-details.component.scss"]
 })
-export class CompanyDetailsListComponent implements OnInit {
-  dataSource;
+export class CompanyManagementDetailsComponent implements OnInit {
+  dataSource ;
   filterText: string;
-  // checks which additional filter is active
   // isActive: boolean = null;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  displayedColumns: string[];
+  displayedColumns: string[] = [
+    "orderNo",
+    "name",
+    "privateAddress",
+    "lastLogin",
+    "salesToday",
+    "allTransactions",
+    "lastTransaction",
+    "delete",
+    "edit"
+  ];
   constructor(
     private companyDetailsService: CompanyDetailsService,
     private router: Router
   ) {}
 
   ngOnInit() {
-    this.displayedColumns = [
-      "orderNo",
-      "name",
-      "privateAddress",
-      "lastLogin",
-      "salesToday",
-      "allTransactions",
-      "lastTransaction",
-      "edit",
-      "delete"
-    ];
-    this.dataSource = new MatTableDataSource(
-      this.companyDetailsService.ElementData
-    );
+    this.dataSource = new MatTableDataSource(this.companyDetailsService.ElementData);
     this.updateTable();
   }
 
   applyFilter() {
     this.dataSource.filter = this.filterText.trim().toLowerCase();
   }
-
-  // this code is for additional filters
   // applySpecificFilter(filterValue: boolean) {
   //   this.isActive = filterValue;
   //   const newFilteredValues = this.companyDetailsService.ElementData.filter(
@@ -72,11 +66,11 @@ export class CompanyDetailsListComponent implements OnInit {
     this.updateTable();
   }
 
-  updateUser(userID: number): void {
-    this.router.navigate(["/company-details/form", userID]);
+  updateUser(userID): void {
+    this.router.navigate(["/company-management/form", userID]);
   }
   openWizardForm() {
-    this.router.navigate(["/company-details/wizard"]);
+    this.router.navigate(["/company-management/wizard"]);
   }
   updateTable() {
     // filter predicate is used to limit search datas to specific columns
@@ -84,7 +78,7 @@ export class CompanyDetailsListComponent implements OnInit {
       return (
         data.name.toLowerCase().includes(filter) ||
         data.privateAddress.toString().includes(filter)
-      );
+      );  
     };
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
