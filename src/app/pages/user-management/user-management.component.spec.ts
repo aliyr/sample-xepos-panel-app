@@ -1,23 +1,19 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { UserManagementComponent } from './user-management.component';
-import {RouterTestingModule} from '@angular/router/testing';
-import {ListHeaderComponent} from '../../components/list-header/list-header.component';
-import {MatCardModule} from '@angular/material';
+import { UserManagementComponent } from "./user-management.component";
+import { RouterTestingModule } from "@angular/router/testing";
+import { ListHeaderComponent } from "../../components/list-header/list-header.component";
+import { MatCardModule } from "@angular/material";
 
-describe('UserManagementComponent', () => {
+describe("UserManagementComponent", () => {
   let component: UserManagementComponent;
   let fixture: ComponentFixture<UserManagementComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UserManagementComponent, ListHeaderComponent ],
-      imports: [
-        RouterTestingModule,
-        MatCardModule
-      ]
-    })
-    .compileComponents();
+      declarations: [UserManagementComponent, ListHeaderComponent],
+      imports: [RouterTestingModule, MatCardModule]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -26,7 +22,7 @@ describe('UserManagementComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

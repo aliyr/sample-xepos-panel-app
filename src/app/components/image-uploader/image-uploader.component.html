@@ -1,22 +1,23 @@
-
 <mat-card class="img-preview-container">
   <label class="image-upload-container btn btn-bwm centralize">
-    <mat-icon >cloud_upload</mat-icon>
-    <input #imageInput
-           type="file"
-           accept="image/*"
-           (change)="processFile(imageInput)">
+    <mat-icon>cloud_upload</mat-icon>
+    <input
+      #imageInput
+      type="file"
+      accept="image/*"
+      (change)="processFile(imageInput)"
+    />
   </label>
   <div *ngIf="selectedFile">
-    <div class="img-preview centralize"
-         [ngStyle]="{'background-image': 'url('+ selectedFile.src + ')'}">
-    </div>
+    <div
+      class="img-preview centralize"
+      [ngStyle]="{ 'background-image': 'url(' + selectedFile.src + ')' }"
+    ></div>
+
+    <!-- show spinning circle while file is uploading  -->
 
     <!--<div *ngIf="selectedFile.pending" class="img-loading-overlay">-->
-      <!--<div class="img-spinning-circle"></div>-->
+    <!--<div class="img-spinning-circle"></div>-->
     <!--</div>-->
-
-    <!--<div *ngIf="selectedFile.status === 'ok'" class="alert alert-success"> Image Uploaded Successfully!</div>-->
-    <!--<div *ngIf="selectedFile.status === 'fail'" class="alert alert-danger"> Image Upload Failed!</div>-->
   </div>
 </mat-card>

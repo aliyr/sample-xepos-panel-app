@@ -7,22 +7,21 @@ import { NgLog } from "app/decorators/nglog.decorator";
 })
 @NgLog()
 export class SearchInputComponent implements OnInit {
-  @Input() listValues;
-  @Input() filterParams: [];
-  @Output() onFilter = new EventEmitter();
-  filteredValues;
+  @Input() listValues: any[];
+  @Output() newEmittedValues = new EventEmitter();
+  filteredValues: string[];
   constructor() {}
 
   ngOnInit() {}
 
-  filterTableList(searchValue): void {
+  filterTableList(searchValue: string): void {
     this.filteredValues = this.listValues.filter(elem => {
-      const rawData = elem.name.trim().toLowerCase();
+      const rawData = elem.displayName.trim().toLowerCase();
       const searchText = searchValue.trim().toLowerCase();
       if (rawData.includes(searchText)) {
         return elem;
       }
     });
-    this.onFilter.emit(this.filteredValues);
+    this.newEmittedValues.emit(this.filteredValues);
   }
 }

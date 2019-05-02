@@ -126,7 +126,7 @@ import { MultiSelectChipsComponent } from './components/multi-select-chips/multi
     })
   ],
   providers: [
-    { provide: CustomMatPaginatorIntl , useClass: CustomMatPaginatorIntl}
+    { provide: MatPaginatorIntl , useClass: CustomMatPaginatorIntl}
   ],
   bootstrap: [AppComponent]
 })

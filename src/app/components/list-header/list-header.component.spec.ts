@@ -1,20 +1,17 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { ListHeaderComponent } from './list-header.component';
-import {MatCardModule} from '@angular/material';
+import { ListHeaderComponent } from "./list-header.component";
+import { MatCardModule } from "@angular/material";
 
-describe('ListHeaderComponent', () => {
+describe("ListHeaderComponent", () => {
   let component: ListHeaderComponent;
   let fixture: ComponentFixture<ListHeaderComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ListHeaderComponent ],
-      imports: [
-        MatCardModule
-      ]
-    })
-    .compileComponents();
+      declarations: [ListHeaderComponent],
+      imports: [MatCardModule]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -23,7 +20,7 @@ describe('ListHeaderComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

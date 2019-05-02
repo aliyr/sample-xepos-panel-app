@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { FormArray, FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { STEPPER_GLOBAL_OPTIONS } from "@angular/cdk/stepper";
+import { debug } from 'util';
 
 @Component({
   selector: "app-company-details-wizard",
@@ -100,6 +101,7 @@ export class CompanyDetailsWizardComponent implements OnInit {
       .patchValue($event.coords.lng);
   }
   saveCompanyWizardForm() {
+    debugger;
     const confirmedData = {
       businessName: this.generalInfoFormGroup.get("businessName").value,
       address1: this.generalInfoFormGroup.get("address1").value,

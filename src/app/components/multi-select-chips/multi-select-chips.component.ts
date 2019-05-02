@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from "@angular/core";
-import { ControlContainer, FormArray, FormControl } from "@angular/forms";
+import { FormControl } from "@angular/forms";
 
 @Component({
   selector: "app-multi-select-chips",
@@ -8,22 +8,26 @@ import { ControlContainer, FormArray, FormControl } from "@angular/forms";
 })
 export class MultiSelectChipsComponent implements OnInit {
   @Input() optionsArray: string[];
-  @Input() controlName: FormControl;
+  @Input() control: FormControl;
   @Input() inputLabel: string;
   @Input() isRequired: boolean;
-  isInputTouched: boolean = false;
-// workaround
-// problem with list error
+  isInputTouched: boolean;
+  // workaround
+  // problem with list error
 
-  constructor(private controlContainer: ControlContainer) {}
+  constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.isRequired = false;
+    this.control.patchValue([]);
+  }
 
-  validateUseroptions(userOptions, insertedOption): boolean {
+  validateUseroptions(userOptions: string[], insertedOption: string): boolean {
     // check if the Option is valid or not
+    let isOptionNonRepetitive = true;
     const isOptionValid =
       this.optionsArray.find(p => p === insertedOption) !== undefined;
-    let isOptionNonRepetitive = true;
+
     if (userOptions) {
       isOptionNonRepetitive =
         userOptions.find(p => p === insertedOption) === undefined;
@@ -31,27 +35,21 @@ export class MultiSelectChipsComponent implements OnInit {
     return isOptionValid && isOptionNonRepetitive;
   }
 
-  addToOptions(Option) {
-    const usersOptions = this.controlName.value;
+  addToOptions(Option: string) {
+    const usersOptions: string[] = this.control.value;
     const OptionInterAllowed = this.validateUseroptions(usersOptions, Option);
-
     if (OptionInterAllowed) {
-      if (usersOptions.length === 0) {
-        // if Options array doesn't existed
-        this.controlName.patchValue([Option]);
-      } else {
-        usersOptions.push(Option);
-        this.controlName.patchValue(usersOptions);
-      }
+      usersOptions.push(Option);
+      this.control.patchValue(usersOptions);
     }
   }
 
   removeSelectedOptions(Option: string) {
-    const selectedOptions: [] = this.controlName.value;
+    const selectedOptions: string[] = this.control.value;
     selectedOptions.map((p, index) => {
       if (p === Option) {
         selectedOptions.splice(index, 1);
-        this.controlName.patchValue(selectedOptions);
+        this.control.patchValue(selectedOptions);
       }
     });
   }

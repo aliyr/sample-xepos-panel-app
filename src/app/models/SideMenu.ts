@@ -1,5 +1,5 @@
 export interface SideMenu {
-    title: string;
-    items?: SideMenu[];
-    route?: string ;
+  title: string;
+  items?: SideMenu[];
+  route?: string;
 }

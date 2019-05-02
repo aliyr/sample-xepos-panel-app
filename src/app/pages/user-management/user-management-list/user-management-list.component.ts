@@ -2,7 +2,6 @@ import { Component, OnInit, ViewChild } from "@angular/core";
 import { UserManagementService } from "app/services/user-management/user-management.service";
 import { MatPaginator, MatSort, MatTableDataSource } from "@angular/material";
 import { NgLog } from "app/decorators/nglog.decorator";
-
 import { Router } from "@angular/router";
 
 @Component({
@@ -13,13 +12,7 @@ import { Router } from "@angular/router";
 @NgLog()
 export class UserManagementListComponent implements OnInit {
   dataSource = new MatTableDataSource(this.userManagementService.ElementData);
-  displayedColumns: string[] = [
-    "displayName",
-    "type",
-    "userLocation",
-    "edit",
-    "delete"
-  ];
+  displayedColumns: string[];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -28,6 +21,13 @@ export class UserManagementListComponent implements OnInit {
     private router: Router
   ) {}
   ngOnInit() {
+    this.displayedColumns = [
+      "displayName",
+      "type",
+      "userLocation",
+      "edit",
+      "delete"
+    ];
     this.updateMaterialTable();
   }
 

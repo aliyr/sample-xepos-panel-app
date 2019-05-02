@@ -1,4 +1,7 @@
-<app-list-header title="Edit User Information" description="lorem ipsum dolor sit">
+<app-list-header
+  title="Edit User Information"
+  description="lorem ipsum dolor sit"
+>
   <button
     (click)="returnToList()"
     mat-raised-button
@@ -35,14 +38,24 @@
       <div class="form-control-container">
         <mat-form-field class="mat-input">
           <mat-label>surname</mat-label>
-          <input matInput placeholder="surname" formControlName="surname" required />
+          <input
+            matInput
+            placeholder="surname"
+            formControlName="surname"
+            required
+          />
           <mat-error> surname is <strong>required</strong> </mat-error>
         </mat-form-field>
       </div>
       <div class="form-control-container">
         <mat-form-field class="mat-input">
           <mat-label>email address</mat-label>
-          <input matInput placeholder="email address" formControlName="email"  required/>
+          <input
+            matInput
+            placeholder="email address"
+            formControlName="email"
+            required
+          />
           <mat-error *ngIf="profileForm.get('email').hasError('required')">
             Email is <strong>required</strong>
           </mat-error>
@@ -69,7 +82,12 @@
       <div class="form-control-container">
         <mat-form-field class="mat-input">
           <mat-label>username</mat-label>
-          <input formControlName="username" matInput placeholder="username" required/>
+          <input
+            formControlName="username"
+            matInput
+            placeholder="username"
+            required
+          />
           <mat-error> username is <strong>required</strong> </mat-error>
         </mat-form-field>
       </div>

@@ -1,10 +1,17 @@
 import { MatPaginatorIntl } from "@angular/material";
 export class CustomMatPaginatorIntl extends MatPaginatorIntl {
-  itemsPerPageLabel = "items per page";
-  nextPageLabel = "next";
-  previousPageLabel = "previous";
+  itemsPerPageLabel: string;
+  nextPageLabel: string;
+  previousPageLabel: string;
 
-  getRangeLabel = function(page, pageSize, length) {
+  constructor() {
+    super();
+    this.itemsPerPageLabel = "items pasdasdser page";
+    this.nextPageLabel = "nexasdasdt";
+    this.previousPageLabel = "das";
+  }
+  getRangeLabel = function(page: number, pageSize: number, length: number) {
+    // this if triggers when list is null
     if (length === 0 || pageSize === 0) {
       return "0 of " + length;
     }

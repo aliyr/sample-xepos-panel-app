@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
-import {CompanyDetailsService} from 'app/services/company-details/company-details.service';
+import { CompanyDetailsService } from "app/services/company-details/company-details.service";
 import { MatPaginator, MatSort, MatTableDataSource } from "@angular/material";
 import { Router } from "@angular/router";
 
@@ -9,36 +9,42 @@ import { Router } from "@angular/router";
   styleUrls: ["./company-details-list.component.scss"]
 })
 export class CompanyDetailsListComponent implements OnInit {
-  dataSource ;
+  dataSource;
   filterText: string;
+  // checks which additional filter is active
   // isActive: boolean = null;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  displayedColumns: string[] = [
-    "orderNo",
-    "name",
-    "privateAddress",
-    "lastLogin",
-    "salesToday",
-    "allTransactions",
-    "lastTransaction",
-    "delete",
-    "edit"
-  ];
+  displayedColumns: string[];
   constructor(
     private companyDetailsService: CompanyDetailsService,
     private router: Router
   ) {}
 
   ngOnInit() {
-    this.dataSource = new MatTableDataSource(this.companyDetailsService.ElementData);
+    this.displayedColumns = [
+      "orderNo",
+      "name",
+      "privateAddress",
+      "lastLogin",
+      "salesToday",
+      "allTransactions",
+      "lastTransaction",
+      "edit",
+      "delete"
+    ];
+    this.dataSource = new MatTableDataSource(
+      this.companyDetailsService.ElementData
+    );
     this.updateTable();
   }
 
   applyFilter() {
     this.dataSource.filter = this.filterText.trim().toLowerCase();
   }
+
+  // this code is for additional filters
   // applySpecificFilter(filterValue: boolean) {
   //   this.isActive = filterValue;
   //   const newFilteredValues = this.companyDetailsService.ElementData.filter(
@@ -66,7 +72,7 @@ export class CompanyDetailsListComponent implements OnInit {
     this.updateTable();
   }
 
-  updateUser(userID): void {
+  updateUser(userID: number): void {
     this.router.navigate(["/company-details/form", userID]);
   }
   openWizardForm() {
@@ -78,7 +84,7 @@ export class CompanyDetailsListComponent implements OnInit {
       return (
         data.name.toLowerCase().includes(filter) ||
         data.privateAddress.toString().includes(filter)
-      );  
+      );
     };
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;

@@ -1,30 +1,35 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { UserManagementFormComponent } from './user-management-form.component';
-import {ListHeaderComponent} from '../../../components/list-header/list-header.component';
-import {ReactiveFormsModule} from '@angular/forms';
+import { UserManagementFormComponent } from "./user-management-form.component";
+import { ListHeaderComponent } from "app/components/list-header/list-header.component";
+import { ReactiveFormsModule } from "@angular/forms";
 import {
-  ErrorStateMatcher,
   MatCardModule,
   MatChipsModule,
   MatFormFieldModule,
-  MatIconModule, MatInputModule,
+  MatIconModule,
+  MatInputModule,
   MatSelectModule,
-  MatSliderModule, MatToolbarModule
-} from '@angular/material';
-import {MatAutocompleteModule} from '@angular/material/autocomplete';
-import {MatSlideToggleModule} from '@angular/material/slide-toggle';
-import {ImageUploaderComponent} from '../../../components/image-uploader/image-uploader.component';
-import {MatSnackBar} from '@angular/material/snack-bar';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+  MatSliderModule,
+  MatToolbarModule
+} from "@angular/material";
+import { MatAutocompleteModule } from "@angular/material/autocomplete";
+import { MatSlideToggleModule } from "@angular/material/slide-toggle";
+import { ImageUploaderComponent } from "app/components/image-uploader/image-uploader.component";
+import { MatSnackBar } from "@angular/material/snack-bar";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
-describe('UserManagementFormComponent', () => {
+describe("UserManagementFormComponent", () => {
   let component: UserManagementFormComponent;
   let fixture: ComponentFixture<UserManagementFormComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UserManagementFormComponent,ListHeaderComponent,ImageUploaderComponent ],
+      declarations: [
+        UserManagementFormComponent,
+        ListHeaderComponent,
+        ImageUploaderComponent
+      ],
       imports: [
         ReactiveFormsModule,
         MatFormFieldModule,
@@ -38,11 +43,8 @@ describe('UserManagementFormComponent', () => {
         MatToolbarModule,
         BrowserAnimationsModule
       ],
-      providers: [
-        MatSnackBar
-      ]
-    })
-    .compileComponents();
+      providers: [MatSnackBar]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -51,7 +53,7 @@ describe('UserManagementFormComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

@@ -30,12 +30,12 @@ input {
   color: white;
   z-index: 1;
 
-  .mat-icon{
+  .mat-icon {
     @include md-icon-size(45px);
     cursor: pointer;
-    transition: .2s;
+    transition: 0.2s;
   }
-  &:hover{
+  &:hover {
     color: map-get($mat-accent, darker);
   }
 }

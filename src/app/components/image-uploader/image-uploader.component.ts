@@ -12,9 +12,7 @@ class ImageSnippet {
 export class ImageUploaderComponent {
   selectedFile: ImageSnippet;
 
-  constructor(
-    private snackBarService: SnackbarService
-    ) {}
+  constructor(private snackBarService: SnackbarService) {}
 
   processFile(imageInput: any) {
     const file: File = imageInput.files[0];
@@ -40,6 +38,8 @@ export class ImageUploaderComponent {
     reader.addEventListener("load", (event: any) => {
       this.selectedFile = new ImageSnippet(event.target.result, file);
 
+
+      // this code is used for getting file from server
       // this.imageService
       //   .uploadImage(this.selectedFile.file)
       //   .subscribe(res => {}, err => {});

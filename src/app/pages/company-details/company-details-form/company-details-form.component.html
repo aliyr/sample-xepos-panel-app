@@ -7,7 +7,7 @@
     class="header-button"
     color="warn"
     (click)="cancelCompanyEditForm()"
-  > 
+  >
     cancel
   </button>
   <button
@@ -17,7 +17,7 @@
     [disabled]="!companyEditForm.valid"
     (click)="saveCompanyEditForm()"
   >
-    save 
+    save
   </button>
 </app-list-header>
 <div class="row" [formGroup]="companyEditForm">
@@ -76,9 +76,7 @@
               {{ sell }}
             </mat-option>
           </mat-autocomplete>
-          <mat-error>
-            Country is <strong>required</strong>
-          </mat-error>
+          <mat-error> Country is <strong>required</strong> </mat-error>
         </mat-form-field>
       </div>
       <div class="form-control-container">
@@ -180,12 +178,13 @@
     <mat-card>
       <mat-card-title>Company Location</mat-card-title>
       <p>Drag and drop the pin to locate your position</p>
-      <agm-map [latitude]='latitude' [longitude]='longitude'>
+      <agm-map [latitude]="latitude" [longitude]="longitude">
         <agm-marker
           [latitude]="companyEditForm.get('companyLat').value"
           [longitude]="companyEditForm.get('companyLng').value"
           [markerDraggable]="true"
-          (dragEnd)="markerDragEnd($event)">
+          (dragEnd)="markerDragEnd($event)"
+        >
         </agm-marker>
       </agm-map>
     </mat-card>

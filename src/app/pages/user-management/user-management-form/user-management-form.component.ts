@@ -8,7 +8,7 @@ import { Router } from "@angular/router";
   styleUrls: ["./user-management-form.component.scss"]
 })
 export class UserManagementFormComponent implements OnInit {
-  locations: string[] = ["address1", "address"];
+  locations: string[];
   confirmPasswordErrorMatcher = new ErrorStateValidator();
 
   profileForm = this.fb.group(
@@ -30,7 +30,9 @@ export class UserManagementFormComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private router: Router) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.locations = ["address1", "address"];
+  }
 
   passwordValidator(form: FormGroup) {
     const condition =

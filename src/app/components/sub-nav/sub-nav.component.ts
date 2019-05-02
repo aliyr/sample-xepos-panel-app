@@ -127,6 +127,5 @@ export class SubNavComponent {
     this.dataSource.data = this.sideNavItems;
   }
 
-  hasChild = (_: number, node: SideMenu) =>
-    !!node.items && node.items.length > 0;
+  hasChild = (_: number, node: SideMenu) => node.items && node.items.length > 0;
 }

@@ -1,16 +1,15 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { MultiSelectChipsComponent } from './multi-select-chips.component';
+import { MultiSelectChipsComponent } from "./multi-select-chips.component";
 
-describe('MultiSelectChipsComponent', () => {
+describe("MultiSelectChipsComponent", () => {
   let component: MultiSelectChipsComponent;
   let fixture: ComponentFixture<MultiSelectChipsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MultiSelectChipsComponent ]
-    })
-    .compileComponents();
+      declarations: [MultiSelectChipsComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,7 +18,7 @@ describe('MultiSelectChipsComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

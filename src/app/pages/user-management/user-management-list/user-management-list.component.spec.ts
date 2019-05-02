@@ -1,22 +1,29 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { UserManagementListComponent } from './user-management-list.component';
-import {UserManagementComponent} from '../user-management.component';
-import {SearchInputComponent} from '../../../components/search-input/search-input.component';
-import {MatCardModule, MatInputModule, MatTableModule} from '@angular/material';
-import {MatPaginatorModule} from '@angular/material/paginator';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {RouterTestingModule} from '@angular/router/testing';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {ListHeaderComponent} from '../../../components/list-header/list-header.component';
+import { UserManagementListComponent } from "./user-management-list.component";
+import { SearchInputComponent } from "../../../components/search-input/search-input.component";
+import {
+  MatCardModule,
+  MatInputModule,
+  MatTableModule
+} from "@angular/material";
+import { MatPaginatorModule } from "@angular/material/paginator";
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { RouterTestingModule } from "@angular/router/testing";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { ListHeaderComponent } from "../../../components/list-header/list-header.component";
 
-describe('UserManagementComponent', () => {
+describe("UserManagementComponent", () => {
   let component: UserManagementListComponent;
   let fixture: ComponentFixture<UserManagementListComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UserManagementListComponent, SearchInputComponent, ListHeaderComponent ],
+      declarations: [
+        UserManagementListComponent,
+        SearchInputComponent,
+        ListHeaderComponent
+      ],
       imports: [
         RouterTestingModule,
         MatTableModule,
@@ -26,8 +33,7 @@ describe('UserManagementComponent', () => {
         MatInputModule,
         BrowserAnimationsModule
       ]
-    })
-    .compileComponents();
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -36,7 +42,7 @@ describe('UserManagementComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });
