@@ -1,4 +1,7 @@
-<app-list-header title="Edit User Information" description="lorem ipsum dolor sit">
+<app-list-header
+  title="Edit User Information"
+  description="lorem ipsum dolor sit"
+>
   <button
     (click)="returnToList()"
     mat-raised-button
@@ -20,37 +23,28 @@
 <div class="row" [formGroup]="profileForm">
   <div class="col-7 form-group-container">
     <mat-card class="mat-card-container">
-      <div class="form-control-container">
-        <mat-form-field class="mat-input">
-          <mat-label>first name</mat-label>
-          <input
-            matInput
-            placeholder="first name"
-            formControlName="firstName"
-            required
-          />
-          <mat-error> User name is <strong>required</strong> </mat-error>
-        </mat-form-field>
-      </div>
+      <app-custom-input
+        [control]="profileFormControl('firstName')"
+        [errors]="[{ title: 'required', message: 'First name is required' }]"
+        label="First Name"
+      ></app-custom-input>
       <div class="form-control-container">
         <mat-form-field class="mat-input">
           <mat-label>surname</mat-label>
-          <input matInput placeholder="surname" formControlName="surname" required />
+          <input
+            matInput
+            placeholder="surname"
+            formControlName="surname"
+            required
+          />
           <mat-error> surname is <strong>required</strong> </mat-error>
         </mat-form-field>
       </div>
-      <div class="form-control-container">
-        <mat-form-field class="mat-input">
-          <mat-label>email address</mat-label>
-          <input matInput placeholder="email address" formControlName="email"  required/>
-          <mat-error *ngIf="profileForm.get('email').hasError('required')">
-            Email is <strong>required</strong>
-          </mat-error>
-          <mat-error *ngIf="profileForm.get('email').hasError('email')">
-            your email is not correct
-          </mat-error>
-        </mat-form-field>
-      </div>
+      <app-custom-input
+        [control]="profileFormControl('email')"
+        [errors]="[{ title: 'required', message: 'Email is required' }, { title: 'email', message: 'Your email is not correct' }]"
+        label="Email"
+      ></app-custom-input>
       <div class="form-control-container">
         <mat-form-field class="mat-input">
           <mat-label>role</mat-label>
@@ -69,7 +63,12 @@
       <div class="form-control-container">
         <mat-form-field class="mat-input">
           <mat-label>username</mat-label>
-          <input formControlName="username" matInput placeholder="username" required/>
+          <input
+            formControlName="username"
+            matInput
+            placeholder="username"
+            required
+          />
           <mat-error> username is <strong>required</strong> </mat-error>
         </mat-form-field>
       </div>

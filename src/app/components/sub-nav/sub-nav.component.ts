@@ -1,7 +1,7 @@
 import { Component } from "@angular/core";
 import { NestedTreeControl } from "@angular/cdk/tree";
 import { MatTreeNestedDataSource } from "@angular/material";
-import { SideMenu } from "app/models/SideMenu";
+import { SideMenu } from "app/models/side-menu";
 
 @Component({
   selector: "app-sub-nav",
