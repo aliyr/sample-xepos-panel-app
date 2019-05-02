@@ -1,13 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~bootstrap/dist/css/bootstrap.min.css";
-@import "app/theme/dark";
-@import 'partial-css/text';
-@import 'partial-css/snackbar';
-@import 'partial-css/custom-scroll';
-@import 'partial-css/mixins';
-@import 'partial-css/list';
-@import 'partial-css/template';
-@import 'partial-css/button';
+@import "app/themes/dark";
+@import 'partial-styles/text';
+@import 'partial-styles/snackbar';
+@import 'partial-styles/custom-scroll';
+@import 'partial-styles/mixins';
+@import 'partial-styles/list';
+@import 'partial-styles/template';
+@import 'partial-styles/button';
 
 
 button:focus,

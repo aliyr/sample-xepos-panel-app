@@ -33,8 +33,8 @@ import {
   MatBadgeModule
 } from '@angular/material';
 
-import { MatIconModule } from '@angular/material/icon';
-import { CustomMatPaginatorIntl } from './ngMaterialCustomization/CustomMatPaginatorIntl';
+import {MatIconModule} from '@angular/material/icon';
+import {CustomMatPaginatorIntl} from './ng-material-customizations/Custom-paginator-intl';
 import { SubNavComponent } from './components/sub-nav/sub-nav.component';
 import { MatTreeModule } from '@angular/material/tree';
 import { MatSnackBarModule } from '@angular/material/snack-bar';

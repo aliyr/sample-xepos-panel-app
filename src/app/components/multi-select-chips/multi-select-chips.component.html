@@ -21,7 +21,7 @@
   </mat-form-field>
   <mat-error
   *ngIf="
-    this.controlContainer.control.get(controlName).hasError('required') && isInputTouched && isRequired
+    controlName.hasError('required') && isInputTouched && isRequired
     
   "
 >
@@ -30,7 +30,7 @@
   <mat-chip-list class="mat-input">
     <mat-chip
       *ngFor="
-        let option of this.controlContainer.control.get(controlName).value
+        let option of controlName.value
       "
       (removed)="removeSelectedOptions(option)"
       >{{ option }}
