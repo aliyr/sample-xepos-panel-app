@@ -7,7 +7,7 @@ import { UserManagementListComponent } from "./pages/user-management/user-manage
 import {UserManagementFormComponent} from './pages/user-management/user-management-form/user-management-form.component';
 import {UserManagementComponent} from './pages/user-management/user-management.component';
 import {CompanyManagementComponent } from './pages/company-management/company-management.component';
-import {CompanyManagementDetailsComponent} from './pages/company-management/company-management-list/company-management-details.component';
+import {CompanyManagementDetailsComponent} from './pages/company-management/company-management-details/company-management-details.component';
 import {CompanyManagementFormComponent} from './pages/company-management/company-management-form/company-management-form.component';
 import {CompanyManagementWizardComponent} from './pages/company-management/company-management-wizard/company-management-wizard.component';
 

@@ -29,7 +29,8 @@ import {
   MatChipsModule,
   MatCardModule,
   MatButtonModule,
-  MatBadgeModule
+  MatBadgeModule,
+  MatPaginatorIntl
 } from '@angular/material';
 
 import {MatIconModule} from '@angular/material/icon';
@@ -54,7 +55,7 @@ import { ImageUploaderComponent } from './components/image-uploader/image-upload
 import { ListHeaderComponent } from './components/list-header/list-header.component';
 import { CompanyManagementComponent } from './pages/company-management/company-management.component';
 import { CompanyManagementFormComponent } from './pages/company-management/company-management-form/company-management-form.component';
-import { CompanyManagementDetailsComponent } from './pages/company-management/company-management-list/company-management-details.component';
+import { CompanyManagementDetailsComponent } from './pages/company-management/company-management-details/company-management-details.component';
 import { CompanyManagementWizardComponent } from './pages/company-management/company-management-wizard/company-management-wizard.component';
 import { SearchInputComponent } from './components/search-input/search-input.component';
 import { AgmCoreModule } from '@agm/core';
@@ -78,6 +79,7 @@ import { MultiSelectChipsComponent } from './components/multi-select-chips/multi
     CompanyManagementWizardComponent,
     SearchInputComponent,
     MultiSelectChipsComponent,
+
   ],
   imports: [
     BrowserModule,

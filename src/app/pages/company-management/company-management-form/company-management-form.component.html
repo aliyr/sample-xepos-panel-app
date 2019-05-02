@@ -26,7 +26,7 @@
       <div class="form-control-container">
         <mat-form-field class="mat-input">
           <mat-label>name</mat-label>
-          <input matInput placeholder="Name" formControlName="name" />
+          <input matInput placeholder="Name" formControlName="name" required />
           <mat-error> name is <strong>required</strong> </mat-error>
         </mat-form-field>
       </div>
@@ -37,6 +37,7 @@
             matInput
             placeholder="address line 1"
             formControlName="addressLine1"
+            required
           />
           <mat-error> address line 1 is <strong>required</strong> </mat-error>
         </mat-form-field>
@@ -48,6 +49,7 @@
             matInput
             placeholder="address line 2"
             formControlName="addressLine2"
+            required
           />
           <mat-error> address line 2 is <strong>required</strong> </mat-error>
         </mat-form-field>
@@ -55,7 +57,7 @@
       <div class="form-control-container">
         <mat-form-field class="mat-input">
           <mat-label>city</mat-label>
-          <input matInput placeholder="city" formControlName="city" />
+          <input matInput placeholder="city" formControlName="city" required/>
           <mat-error> city is <strong>required</strong> </mat-error>
         </mat-form-field>
       </div>
@@ -70,6 +72,7 @@
             matInput
             [matAutocomplete]="auto2"
             formControlName="country"
+            required
           />
           <mat-autocomplete #auto2="matAutocomplete">
             <mat-option *ngFor="let sell of sells" [value]="sell">
@@ -82,14 +85,14 @@
       <div class="form-control-container">
         <mat-form-field class="mat-input">
           <mat-label>Post Code</mat-label>
-          <input matInput placeholder="Post Code" formControlName="postCode" />
+          <input matInput placeholder="Post Code" formControlName="postCode" required/>
           <mat-error> Post Code is <strong>required</strong> </mat-error>
         </mat-form-field>
       </div>
       <div class="form-control-container">
         <mat-form-field class="mat-input">
           <mat-label>Telephone</mat-label>
-          <input matInput placeholder="Telephone" formControlName="telephone" />
+          <input matInput placeholder="Telephone" formControlName="telephone" required/>
           <mat-error
             *ngIf="companyEditForm.get('telephone').hasError('required')"
           >
@@ -105,7 +108,7 @@
       <div class="form-control-container">
         <mat-form-field class="mat-input">
           <mat-label>Website</mat-label>
-          <input matInput placeholder="Website" formControlName="website" />
+          <input matInput placeholder="Website" formControlName="website" required/>
           <mat-error> Website is <strong>required</strong> </mat-error>
         </mat-form-field>
       </div>
@@ -139,6 +142,7 @@
               matInput
               placeholder="SMTP Server"
               formControlName="smtpServer"
+              required
             />
             <mat-error> SMTP Server is <strong>required</strong> </mat-error>
           </mat-form-field>
@@ -150,6 +154,7 @@
               matInput
               placeholder="port Number"
               formControlName="portNumber"
+              required
             />
             <mat-error> portNumber is <strong>required</strong> </mat-error>
           </mat-form-field>
@@ -162,6 +167,7 @@
               placeholder="Password"
               formControlName="Password"
               [type]="hide ? 'password' : 'text'"
+              required
             />
             <mat-icon matSuffix (click)="hide = !hide">{{
               hide ? "visibility_off" : "visibility"

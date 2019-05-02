@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from "@angular/core";
 import { CompanyDetailsService } from "app/services/company-details/company-details.service";
 import { MatPaginator, MatSort, MatTableDataSource } from "@angular/material";
 import { Router } from "@angular/router";
+import { Company } from "app/models/Company";
 
 @Component({
   selector: "app-company-details-list",
@@ -9,13 +10,12 @@ import { Router } from "@angular/router";
   styleUrls: ["./company-management-details.component.scss"]
 })
 export class CompanyManagementDetailsComponent implements OnInit {
-  dataSource;
+  dataSource: MatTableDataSource<Company>;
   filterText: string;
   // isActive: boolean = null;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   displayedColumns: string[];
-  
 
   constructor(
     private companyDetailsService: CompanyDetailsService,
@@ -23,7 +23,7 @@ export class CompanyManagementDetailsComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.displayedColumns= [
+    this.displayedColumns = [
       "orderNo",
       "name",
       "privateAddress",
@@ -44,7 +44,7 @@ export class CompanyManagementDetailsComponent implements OnInit {
     this.dataSource.filter = this.filterText.trim().toLowerCase();
   }
 
-  // code for applying additional filter on table
+  // >>>>> code for applying additional filter on table
   // applySpecificFilter(filterValue: boolean) {
   //   this.isActive = filterValue;
   //   const newFilteredValues = this.companyDetailsService.ElementData.filter(
@@ -60,7 +60,7 @@ export class CompanyManagementDetailsComponent implements OnInit {
   //   this.applyFilter();
   // }
 
-  deleteCompany(companyName): void {
+  deleteCompany(companyName: string): void {
     this.companyDetailsService.ElementData.map((elem, index) => {
       if (companyName === elem.name) {
         this.companyDetailsService.ElementData.splice(index, 1);

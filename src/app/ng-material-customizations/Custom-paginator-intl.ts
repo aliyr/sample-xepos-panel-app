@@ -6,9 +6,9 @@ export class CustomMatPaginatorIntl extends MatPaginatorIntl {
 
   constructor() {
     super();
-    this.itemsPerPageLabel = "items pasdasdser page";
-    this.nextPageLabel = "nexasdasdt";
-    this.previousPageLabel = "das";
+    this.itemsPerPageLabel = "items on page";
+    this.nextPageLabel = "next";
+    this.previousPageLabel = "prev";
   }
   getRangeLabel = function(page: number, pageSize: number, length: number) {
     // this if triggers when list is null

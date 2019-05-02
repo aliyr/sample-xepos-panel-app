@@ -8,12 +8,11 @@ import { SideMenu } from "app/models/SideMenu";
   templateUrl: "./sub-nav.component.html",
   styleUrls: ["./sub-nav.component.scss"]
 })
-export class SubNavComponent implements OnInit{
+export class SubNavComponent {
   treeControl = new NestedTreeControl<SideMenu>(node => node.items);
   dataSource = new MatTreeNestedDataSource<SideMenu>();
   sideNavItems: SideMenu[];
-
-  ngOnInit() {
+  constructor() {
     this.sideNavItems = [
       {
         title: "dashboard",
@@ -126,9 +125,7 @@ export class SubNavComponent implements OnInit{
         ]
       }
     ];
-  }
-  
-  constructor() {
+
     this.dataSource.data = this.sideNavItems;
   }
 

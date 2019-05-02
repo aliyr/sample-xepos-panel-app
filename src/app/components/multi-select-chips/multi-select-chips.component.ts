@@ -15,10 +15,11 @@ export class MultiSelectChipsComponent implements OnInit {
   // workaround
   // problem with list error
 
-  constructor() {}
+  constructor() {
+    this.isRequired = false;
+  }
 
   ngOnInit() {
-    this.isRequired = false;
     this.control.patchValue([]);
   }
 
