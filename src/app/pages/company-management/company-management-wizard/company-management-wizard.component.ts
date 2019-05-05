@@ -50,7 +50,6 @@ export class CompanyManagementWizardComponent implements OnInit {
 
     this.addLocationToLocationsFormArray();
   }
-
   createLocationFormGroup(): FormGroup {
     return this.fb.group({
       name: ["", Validators.required],

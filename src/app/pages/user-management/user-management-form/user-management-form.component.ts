@@ -1,5 +1,11 @@
 import { Component, OnInit } from "@angular/core";
-import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {
+  AbstractControl,
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators
+} from "@angular/forms";
 import PasswordMatchErrorStateMatcher from "app/validators/Password-match-error-state-matcher";
 import { Router } from "@angular/router";
 @Component({
@@ -32,10 +38,6 @@ export class UserManagementFormComponent implements OnInit {
       },
       { validator: this.passwordValidator }
     );
-  }
-
-  profileFormControl(controlName: string) {
-    return (this.profileForm.get(controlName));
   }
 
   passwordValidator(form: FormGroup) {

@@ -20,99 +20,67 @@
   >
     <ng-template matStepLabel> Company Details</ng-template>
     <div class="form-group-container" formGroupName="generalInfo">
-      <div>
-        <div class="form-control-container">
-          <mat-form-field class="mat-input">
-            <mat-label>business name</mat-label>
-            <input matInput formControlName="businessName" required />
-            <mat-error> Business name is <strong>required</strong> </mat-error>
-          </mat-form-field>
-        </div>
+      <app-custom-input
+        controlName="businessName"
+        [errors]="[{ title: 'required', message: 'business name is required' }]"
+        label="bussines name"
+      ></app-custom-input>
 
-        <div class="form-control-container">
-          <mat-form-field class="mat-input">
-            <mat-label>address line 1</mat-label>
-            <input matInput formControlName="address1" />
-          </mat-form-field>
-        </div>
+      <app-custom-input
+        controlName="address1"
+        label="address 1"
+      ></app-custom-input>
 
-        <div class="form-control-container">
-          <mat-form-field class="mat-input">
-            <mat-label>address line 2</mat-label>
-            <input matInput formControlName="address2" />
-          </mat-form-field>
-        </div>
+      <app-custom-input
+        controlName="address2"
+        label="address line 2"
+      ></app-custom-input>
 
-        <div class="form-control-container">
-          <mat-form-field class="mat-input">
-            <mat-label>town</mat-label>
-            <input matInput formControlName="town" />
-          </mat-form-field>
-        </div>
+      <app-custom-input controlName="town" label="town"></app-custom-input>
+      <app-custom-input
+        controlName="country"
+        label="country"
+      ></app-custom-input>
 
-        <div class="form-control-container">
-          <mat-form-field class="mat-input">
-            <mat-label>country</mat-label>
-            <input matInput formControlName="country" />
-          </mat-form-field>
-        </div>
+      <app-custom-input
+        controlName="postcode"
+        label="postcode"
+        [errors]="[{ title: 'required', message: 'post code is required' }]"
+      ></app-custom-input>
 
-        <div class="form-control-container">
-          <mat-form-field class="mat-input">
-            <mat-label>postcode</mat-label>
-            <input matInput formControlName="postcode" required />
-            <mat-error> Postcode is <strong>required</strong></mat-error>
-          </mat-form-field>
-        </div>
+      <app-custom-input
+        controlName="phoneNumber"
+        label="Phone number"
+      ></app-custom-input>
 
-        <div class="form-control-container">
-          <mat-form-field class="mat-input">
-            <mat-label>Phone number</mat-label>
-            <input matInput formControlName="phoneNumber" />
-          </mat-form-field>
-        </div>
+      <app-custom-input
+        controlName="privateAddress"
+        label="private address"
+      ></app-custom-input>
 
-        <div class="form-control-container">
-          <mat-form-field class="mat-input">
-            <mat-label>private address</mat-label>
-            <input matInput formControlName="privateAddress" />
-          </mat-form-field>
-        </div>
+      <app-custom-input controlName="email" label="email"></app-custom-input>
 
-        <div class="form-control-container">
-          <mat-form-field class="mat-input">
-            <mat-label>email</mat-label>
-            <input matInput formControlName="email" />
-          </mat-form-field>
-        </div>
+      <app-custom-input
+        controlName="CRMOrderNumber"
+        label="CRM Order Number"
+      ></app-custom-input>
 
-        <div class="form-control-container">
-          <mat-form-field class="mat-input">
-            <mat-label>CRM Order Number</mat-label>
-            <input
-              matInput
-              formControlName="CRMOrderNumber"
-              [disabled]="true"
-            />
-          </mat-form-field>
-        </div>
-        <div class="form-control-container">
-          <mat-card-title>Company Location</mat-card-title>
-          <p>Drag and drop the pin to locate your position</p>
-          <agm-map [latitude]="latitude" [longitude]="longitude">
-            <agm-marker
-              [latitude]="generalInfoFormGroup.get('companyLat').value"
-              [longitude]="generalInfoFormGroup.get('companyLng').value"
-              [markerDraggable]="true"
-              (dragEnd)="markerDragEnd($event)"
-            >
-            </agm-marker>
-          </agm-map>
-        </div>
-        <button mat-button mat-raised-button matStepperNext color="accent">
-          Next
-        </button>
+      <div class="form-control-container">
+        <mat-card-title>Company Location</mat-card-title>
+        <p>Drag and drop the pin to locate your position</p>
+        <agm-map [latitude]="latitude" [longitude]="longitude">
+          <agm-marker
+            [latitude]="generalInfoFormGroup.get('companyLat').value"
+            [longitude]="generalInfoFormGroup.get('companyLng').value"
+            [markerDraggable]="true"
+            (dragEnd)="markerDragEnd($event)"
+          >
+          </agm-marker>
+        </agm-map>
       </div>
+      <button mat-button mat-raised-button matStepperNext color="accent">
+        Next
+      </button>
     </div>
   </mat-step>
   <mat-step
@@ -140,83 +108,43 @@
             </mat-panel-description>
           </mat-expansion-panel-header>
           <div>
-            <div class="form-control-container">
-              <mat-form-field class="mat-input">
-                <mat-label>name</mat-label>
-                <input
-                  matInput
-                  placeholder="Name"
-                  formControlName="name"
-                  required
-                />
-                <mat-error> Name is <strong>required</strong> </mat-error>
-              </mat-form-field>
-            </div>
-            <div class="form-control-container">
-              <mat-form-field class="mat-input">
-                <mat-label>address 1</mat-label>
-                <input
-                  matInput
-                  placeholder="Address 1"
-                  formControlName="address1"
-                />
-                <mat-error> Address 1 is <strong>required</strong> </mat-error>
-              </mat-form-field>
-            </div>
+            <app-custom-input
+              controlName="name"
+              [errors]="[{ title: 'required', message: 'name is required' }]"
+              label="name"
+            ></app-custom-input>
+            <app-custom-input
+              controlName="address1"
+              label="address 1 "
+            ></app-custom-input>
+            <app-custom-input
+              controlName="address2"
+              label="address 2"
+            ></app-custom-input>
+            <app-custom-input
+              controlName="town"
+              label="town"
+            ></app-custom-input>
+            <app-custom-input
+              controlName="country"
+              label="country"
+            ></app-custom-input>
 
-            <div class="form-control-container">
-              <mat-form-field class="mat-input">
-                <mat-label>Address 2</mat-label>
-                <input
-                  matInput
-                  placeholder="Address 1"
-                  formControlName="address2"
-                />
-                <mat-error> Address 2 is <strong>required</strong> </mat-error>
-              </mat-form-field>
-            </div>
+            <app-multi-select-chips
+              [optionsArray]="currencyList"
+              controlName="currency"
+              inputLabel="currency"
+              isRequired="true"
+            ></app-multi-select-chips>
 
-            <div class="form-control-container">
-              <mat-form-field class="mat-input">
-                <mat-label>town</mat-label>
-                <input matInput placeholder="Town" formControlName="town" />
-                <mat-error> Town is <strong>required</strong> </mat-error>
-              </mat-form-field>
-            </div>
+            <app-custom-input
+              controlName="postcode"
+              [errors]="[
+                { title: 'required', message: 'postcode is required' }
+              ]"
+              label="postcode"
+            ></app-custom-input>
 
-            <div class="form-control-container">
-              <mat-form-field class="mat-input">
-                <mat-label>country</mat-label>
-                <input
-                  matInput
-                  placeholder="Country"
-                  formControlName="country"
-                />
-                <mat-error> Country is <strong>required</strong> </mat-error>
-              </mat-form-field>
-            </div>
-
-            <div class="form-control-container">
-              <app-multi-select-chips
-                [optionsArray]="currencyList"
-                [control]="location.get('currency')"
-                inputLabel="currency"
-                isRequired="true"
-              ></app-multi-select-chips>
-            </div>
-
-            <div class="form-control-container">
-              <mat-form-field class="mat-input">
-                <mat-label>postcode</mat-label>
-                <input
-                  matInput
-                  placeholder="Postcode"
-                  formControlName="postcode"
-                  required
-                />
-                <mat-error> Postcode is <strong>required</strong> </mat-error>
-              </mat-form-field>
-            </div>
             <div class="form-control-container">
               <mat-card-title>Company Location</mat-card-title>
               <p>Drag and drop the pin to locate your position</p>

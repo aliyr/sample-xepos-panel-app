@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from "@angular/core";
-import { FormControl } from "@angular/forms";
+import { FormControl, ControlContainer } from "@angular/forms";
+import { controlNameBinding } from "@angular/forms/src/directives/reactive_directives/form_control_name";
 
 @Component({
   selector: "app-multi-select-chips",
@@ -8,18 +9,22 @@ import { FormControl } from "@angular/forms";
 })
 export class MultiSelectChipsComponent implements OnInit {
   @Input() optionsArray: string[];
-  @Input() control: FormControl;
+  @Input() controlName: string;
   @Input() inputLabel: string;
   @Input() isRequired: boolean;
+  control: FormControl;
   isInputTouched: boolean;
   // workaround
   // problem with list error
 
-  constructor() {
+  constructor(private controlContainer: ControlContainer) {
     this.isRequired = false;
   }
 
   ngOnInit() {
+    this.control = this.controlContainer.control.get(
+      this.controlName
+    ) as FormControl;
     this.control.patchValue([]);
   }
 

@@ -1,9 +1,24 @@
 <div class="form-control-container">
   <mat-form-field class="mat-input">
-    <mat-label>{{label}}</mat-label>
-    <input matInput placeholder="surname" [formControl]="control" [required]="errors.length > 0" />
+    <mat-label>{{ label }}</mat-label>
+    <input
+      matInput
+      [placeholder]="label"
+      [formControl]="control"
+      [required]="errors.length > 0"
+      [type]="hide ? 'password' : 'text'"
+    />
+    <mat-icon
+      matSuffix
+      (click)="hide = !hide"
+      *ngIf="inputType === 'password'"
+      >{{ hide ? "visibility_off" : "visibility" }}</mat-icon
+    >
     <ng-template ngFor let-error [ngForOf]="errors" ngProjectAs="mat-error">
-      <mat-error *ngIf="control.hasError(error.title)" [innerHTML]="error.message">
+      <mat-error
+        *ngIf="control.hasError(error.title)"
+        [innerHTML]="error.message"
+      >
       </mat-error>
     </ng-template>
   </mat-form-field>

@@ -1,16 +1,15 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { CustomInputComponent } from './custom-input.component';
+import { CustomInputComponent } from "./custom-input.component";
 
-describe('CustomInputComponent', () => {
+describe("CustomInputComponent", () => {
   let component: CustomInputComponent;
   let fixture: ComponentFixture<CustomInputComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CustomInputComponent ]
-    })
-    .compileComponents();
+      declarations: [CustomInputComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,7 +18,7 @@ describe('CustomInputComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });
