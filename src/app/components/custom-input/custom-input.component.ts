@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { FormControl, ControlContainer } from "@angular/forms";
-import { Error } from "app/models/custom-input-error";
+import { Error } from "app/models/input-error";
 
 @Component({
   selector: "app-custom-input",
@@ -16,15 +16,14 @@ export class CustomInputComponent implements OnInit {
 
   constructor(private controlContainer: ControlContainer) {
     this.inputType = "text";
-    this.errors = [];
   }
-  getvalue() {
+  getValue() {
     console.log(this.controlContainer);
     this.control = this.controlContainer.control.get(
       this.controlName
     ) as FormControl;
   }
   ngOnInit() {
-    this.getvalue();
+    this.getValue();
   }
 }

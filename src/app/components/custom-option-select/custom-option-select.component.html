@@ -1,19 +1,15 @@
 <div class="form-control-container">
   <mat-form-field class="mat-input">
     <mat-label>{{ label }}</mat-label>
-    <input
-      matInput
+    <mat-select
       [placeholder]="label"
       [formControl]="control"
       [required]="errors"
-      [type]="hide ? 'password' : 'text'"
-    />
-    <mat-icon
-      matSuffix
-      (click)="hide = !hide"
-      *ngIf="inputType === 'password'"
-      >{{ hide ? "visibility_off" : "visibility" }}</mat-icon
     >
+      <mat-option *ngFor="let option of optionsArray" [value]="option">{{
+        option
+      }}</mat-option>
+    </mat-select>
     <ng-template ngFor let-error [ngForOf]="errors" ngProjectAs="mat-error">
       <mat-error
         *ngIf="control.hasError(error.title)"

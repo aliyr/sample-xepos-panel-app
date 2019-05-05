@@ -1,11 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import {
-  AbstractControl,
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators
-} from "@angular/forms";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import PasswordMatchErrorStateMatcher from "app/validators/Password-match-error-state-matcher";
 import { Router } from "@angular/router";
 @Component({
@@ -15,6 +9,7 @@ import { Router } from "@angular/router";
 })
 export class UserManagementFormComponent implements OnInit {
   locations: string[] = ["address1", "address"];
+  roles: string[] = ["admin", "manager", " customer ", "cashier"];
   confirmPasswordErrorMatcher = new PasswordMatchErrorStateMatcher();
 
   profileForm: FormGroup;

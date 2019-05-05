@@ -41,17 +41,13 @@
         ]"
         label="Email"
       ></app-custom-input>
-      <div class="form-control-container">
-        <mat-form-field class="mat-input">
-          <mat-label>role</mat-label>
-          <mat-select placeholder="type" formControlName="role" required>
-            <mat-option value="option1">Option1</mat-option>
-            <mat-option value="option2">Option2</mat-option>
-            <mat-option value="option3">Option3</mat-option>
-          </mat-select>
-          <mat-error> Type is <strong>required</strong> </mat-error>
-        </mat-form-field>
-      </div>
+
+      <app-custom-option-select
+        [optionsArray]="roles"
+        controlName="role"
+        label="role"
+        [errors]="[{ title: 'required', message: 'role is required' }]"
+      ></app-custom-option-select>
     </mat-card>
   </div>
   <div class="col-5">
@@ -61,57 +57,16 @@
         [errors]="[{ title: 'required', message: 'username is required' }]"
         label="username"
       ></app-custom-input>
-      <div class="form-control-container">
-        <mat-form-field class="mat-input">
-          <mat-label>Back-Office Password</mat-label>
 
-          <input
-            matInput
-            formControlName="backOfficePassword"
-            placeholder="Back-Office Password "
-            [type]="hide1 ? 'password' : 'text'"
-            required
-          />
-          <mat-icon matSuffix (click)="hide1 = !hide1">{{
-            hide1 ? "visibility_off" : "visibility"
-          }}</mat-icon>
-          <mat-error> Password is <strong>required</strong> </mat-error>
-        </mat-form-field>
-      </div>
+      <app-custom-double-check-input
+        inputType="password"
+        label="password"
+        firstControlName="backOfficePassword"
+        secondControlName="backOfficeRepeatedPassword"
+        [errors]="[{ title: 'required', message: ' password is required' }]"
+      >
+      </app-custom-double-check-input>
 
-      <div class="form-control-container">
-        <mat-form-field class="mat-input">
-          <input
-            matInput
-            formControlName="backOfficeRepeatedPassword"
-            placeholder="Repeat Back-Office Password "
-            [type]="hide2 ? 'password' : 'text'"
-            [errorStateMatcher]="confirmPasswordErrorMatcher"
-            required
-          />
-          <mat-icon matSuffix (click)="hide2 = !hide2">{{
-            hide2 ? "visibility_off" : "visibility"
-          }}</mat-icon>
-          <mat-error
-            *ngIf="
-              profileForm
-                .get('backOfficeRepeatedPassword')
-                .hasError('required') &&
-              profileForm.get('backOfficeRepeatedPassword').value == ''
-            "
-          >
-            password is <strong>required</strong>
-          </mat-error>
-          <mat-error
-            *ngIf="
-              profileForm.hasError('passwordsDoNotMatch') &&
-              profileForm.get('backOfficeRepeatedPassword').value.length > 0
-            "
-          >
-            Passwords do not match!
-          </mat-error>
-        </mat-form-field>
-      </div>
       <app-custom-input
         controlName="fourDigitPassword"
         [errors]="[

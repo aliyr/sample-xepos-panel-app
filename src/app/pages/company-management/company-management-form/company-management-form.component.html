@@ -23,95 +23,60 @@
 <div class="row" [formGroup]="companyEditForm">
   <div class="col-7 form-group-container">
     <mat-card class="mat-card-container">
-      <div class="form-control-container">
-        <mat-form-field class="mat-input">
-          <mat-label>name</mat-label>
-          <input matInput placeholder="Name" formControlName="name" required />
-          <mat-error> name is <strong>required</strong> </mat-error>
-        </mat-form-field>
-      </div>
-      <div class="form-control-container">
-        <mat-form-field class="mat-input">
-          <mat-label>address line 1</mat-label>
-          <input
-            matInput
-            placeholder="address line 1"
-            formControlName="addressLine1"
-            required
-          />
-          <mat-error> address line 1 is <strong>required</strong> </mat-error>
-        </mat-form-field>
-      </div>
-      <div class="form-control-container">
-        <mat-form-field class="mat-input">
-          <mat-label>address line 2</mat-label>
-          <input
-            matInput
-            placeholder="address line 2"
-            formControlName="addressLine2"
-            required
-          />
-          <mat-error> address line 2 is <strong>required</strong> </mat-error>
-        </mat-form-field>
-      </div>
-      <div class="form-control-container">
-        <mat-form-field class="mat-input">
-          <mat-label>city</mat-label>
-          <input matInput placeholder="city" formControlName="city" required/>
-          <mat-error> city is <strong>required</strong> </mat-error>
-        </mat-form-field>
-      </div>
+      <app-custom-input
+        controlName="name"
+        [errors]="[{ title: 'required', message: 'name is required' }]"
+        label="name"
+      ></app-custom-input>
 
-      <div class="form-control-container">
-        <mat-form-field class="mat-input">
-          <mat-label>country</mat-label>
-          <input
-            type="text"
-            #chosenCountry
-            placeholder="country"
-            matInput
-            [matAutocomplete]="auto2"
-            formControlName="country"
-            required
-          />
-          <mat-autocomplete #auto2="matAutocomplete">
-            <mat-option *ngFor="let sell of sells" [value]="sell">
-              {{ sell }}
-            </mat-option>
-          </mat-autocomplete>
-          <mat-error> Country is <strong>required</strong> </mat-error>
-        </mat-form-field>
-      </div>
-      <div class="form-control-container">
-        <mat-form-field class="mat-input">
-          <mat-label>Post Code</mat-label>
-          <input matInput placeholder="Post Code" formControlName="postCode" required/>
-          <mat-error> Post Code is <strong>required</strong> </mat-error>
-        </mat-form-field>
-      </div>
-      <div class="form-control-container">
-        <mat-form-field class="mat-input">
-          <mat-label>Telephone</mat-label>
-          <input matInput placeholder="Telephone" formControlName="telephone" required/>
-          <mat-error
-            *ngIf="companyEditForm.get('telephone').hasError('required')"
-          >
-            Telephone is <strong>required</strong>
-          </mat-error>
-          <mat-error
-            *ngIf="companyEditForm.get('telephone').hasError('pattern')"
-          >
-            Telephone includes only <strong>numbers</strong>
-          </mat-error>
-        </mat-form-field>
-      </div>
-      <div class="form-control-container">
-        <mat-form-field class="mat-input">
-          <mat-label>Website</mat-label>
-          <input matInput placeholder="Website" formControlName="website" required/>
-          <mat-error> Website is <strong>required</strong> </mat-error>
-        </mat-form-field>
-      </div>
+      <app-custom-input
+        controlName="addressLine1"
+        [errors]="[
+          { title: 'required', message: 'address line 1 is required' }
+        ]"
+        label="address line 1"
+      ></app-custom-input>
+      <app-custom-input
+        controlName="addressLine2"
+        [errors]="[
+          { title: 'required', message: 'address line 2 is required' }
+        ]"
+        label="address line 2"
+      ></app-custom-input>
+
+      <app-custom-input
+        controlName="city"
+        [errors]="[{ title: 'required', message: 'city is required' }]"
+        label="city"
+      ></app-custom-input>
+
+      <app-custom-autocomplete-input
+        [optionsArray]="sells"
+        controlName="country"
+        label="country"
+        [errors]="[{ title: 'required', message: 'country is required' }]"
+      ></app-custom-autocomplete-input>
+
+      <app-custom-input
+        controlName="postCode"
+        [errors]="[{ title: 'required', message: 'post code is required' }]"
+        label="post code"
+      ></app-custom-input>
+
+      <app-custom-input
+        controlName="telephone"
+        [errors]="[
+          { title: 'required', message: 'telephone is required' },
+          { title: 'pattern', message: 'telephone incluudes on;y numbers' }
+        ]"
+        label="telephone"
+      ></app-custom-input>
+
+      <app-custom-input
+        controlName="website"
+        [errors]="[{ title: 'required', message: 'website is required' }]"
+        label="website"
+      ></app-custom-input>
     </mat-card>
   </div>
   <div class="col-5 form-group-container">
@@ -135,46 +100,24 @@
       <mat-card-content
         *ngIf="companyEditForm.get('emailSettingIsActive').value"
       >
-        <div class="form-control-container">
-          <mat-form-field class="mat-input">
-            <mat-label>SMTP Server</mat-label>
-            <input
-              matInput
-              placeholder="SMTP Server"
-              formControlName="smtpServer"
-              required
-            />
-            <mat-error> SMTP Server is <strong>required</strong> </mat-error>
-          </mat-form-field>
-        </div>
-        <div class="form-control-container">
-          <mat-form-field class="mat-input">
-            <mat-label>port Number</mat-label>
-            <input
-              matInput
-              placeholder="port Number"
-              formControlName="portNumber"
-              required
-            />
-            <mat-error> portNumber is <strong>required</strong> </mat-error>
-          </mat-form-field>
-        </div>
-        <div class="form-control-container">
-          <mat-form-field class="mat-input">
-            <mat-label>Password</mat-label>
-            <input
-              matInput
-              placeholder="Password"
-              formControlName="Password"
-              [type]="hide ? 'password' : 'text'"
-              required
-            />
-            <mat-icon matSuffix (click)="hide = !hide">{{
-              hide ? "visibility_off" : "visibility"
-            }}</mat-icon>
-            <mat-error> Password is <strong>required</strong> </mat-error>
-          </mat-form-field>
-        </div>
+        <app-custom-input
+          controlName="smtpServer"
+          [errors]="[{ title: 'required', message: 'SMTP Server is required' }]"
+          label="SMTP Server"
+        ></app-custom-input>
+
+        <app-custom-input
+          controlName="portNumber"
+          [errors]="[{ title: 'required', message: 'port Number is required' }]"
+          label="port Number"
+        ></app-custom-input>
+
+        <app-custom-input
+          controlName="Password"
+          [errors]="[{ title: 'required', message: 'Password is required' }]"
+          label="Password"
+          inputType="password"
+        ></app-custom-input>
       </mat-card-content>
     </mat-card>
     <mat-card class="mat-card-container">
