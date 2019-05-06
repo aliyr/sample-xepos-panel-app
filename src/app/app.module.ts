@@ -63,6 +63,9 @@ import { MultiSelectChipsComponent } from "./components/multi-select-chips/multi
 import { CustomInputComponent } from "./components/custom-input/custom-input.component";
 import { CustomOptionSelectComponent } from "./components/custom-options-select/custom-options-select.component";
 import { CustomAutocompleteInputComponent } from "./components/custom-autocomplete-input/custom-autocomplete-input.component";
+import { DevicesDetailsComponent } from "./pages/devices/devices-details/devices-details.component";
+import { DevicesFormComponent } from "./pages/devices/devices-form/devices-form.component";
+import { DevicesComponent } from "./pages/devices/devices.component";
 
 @NgModule({
   declarations: [
@@ -84,7 +87,10 @@ import { CustomAutocompleteInputComponent } from "./components/custom-autocomple
     MultiSelectChipsComponent,
     CustomInputComponent,
     CustomOptionSelectComponent,
-    CustomAutocompleteInputComponent
+    CustomAutocompleteInputComponent,
+    DevicesDetailsComponent,
+    DevicesFormComponent,
+    DevicesComponent
   ],
   imports: [
     BrowserModule,
