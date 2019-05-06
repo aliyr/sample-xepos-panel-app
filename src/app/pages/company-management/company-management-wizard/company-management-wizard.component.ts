@@ -42,8 +42,8 @@ export class CompanyManagementWizardComponent implements OnInit {
         phoneNumber: [""],
         email: [""],
         CRMOrderNumber: [""],
-        companyLng: [this.latitude],
-        companyLat: [this.longitude]
+        companyLat: [this.latitude],
+        companyLng: [this.longitude],
       }),
       locations: this.fb.array([])
     });

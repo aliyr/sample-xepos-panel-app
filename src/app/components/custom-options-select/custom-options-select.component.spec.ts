@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { CustomOptionSelectComponent } from "./custom-option-select.component";
+import { CustomOptionSelectComponent } from "./custom-options-select.component";
 
 describe("CustomOptionSelectComponent", () => {
   let component: CustomOptionSelectComponent;

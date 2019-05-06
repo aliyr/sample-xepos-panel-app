@@ -61,8 +61,7 @@ import { SearchInputComponent } from "./components/search-input/search-input.com
 import { AgmCoreModule } from "@agm/core";
 import { MultiSelectChipsComponent } from "./components/multi-select-chips/multi-select-chips.component";
 import { CustomInputComponent } from "./components/custom-input/custom-input.component";
-import { CustomOptionSelectComponent } from "./components/custom-option-select/custom-option-select.component";
-import { CustomDoubleCheckInputComponent } from "./components/custom-double-check-input/custom-double-check-input.component";
+import { CustomOptionSelectComponent } from "./components/custom-options-select/custom-options-select.component";
 import { CustomAutocompleteInputComponent } from "./components/custom-autocomplete-input/custom-autocomplete-input.component";
 
 @NgModule({
@@ -85,7 +84,6 @@ import { CustomAutocompleteInputComponent } from "./components/custom-autocomple
     MultiSelectChipsComponent,
     CustomInputComponent,
     CustomOptionSelectComponent,
-    CustomDoubleCheckInputComponent,
     CustomAutocompleteInputComponent
   ],
   imports: [

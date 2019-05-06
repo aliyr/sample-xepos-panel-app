@@ -3,9 +3,9 @@ import { Error } from "app/models/input-error";
 import { FormControl, ControlContainer } from "@angular/forms";
 
 @Component({
-  selector: "app-custom-option-select",
-  templateUrl: "./custom-option-select.component.html",
-  styleUrls: ["./custom-option-select.component.scss"]
+  selector: "app-custom-options-select",
+  templateUrl: "./custom-options-select.component.html",
+  styleUrls: ["./custom-options-select.component.scss"]
 })
 export class CustomOptionSelectComponent implements OnInit {
   @Input() optionsArray: [];

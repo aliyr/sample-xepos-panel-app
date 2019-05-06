@@ -18,7 +18,6 @@ export class CustomInputComponent implements OnInit {
     this.inputType = "text";
   }
   getValue() {
-    console.log(this.controlContainer);
     this.control = this.controlContainer.control.get(
       this.controlName
     ) as FormControl;
