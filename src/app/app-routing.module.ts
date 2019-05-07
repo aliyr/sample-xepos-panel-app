@@ -13,26 +13,40 @@ import {CompanyManagementWizardComponent} from './pages/company-management/compa
 import {RegistersComponent} from './pages/registers/registers.component';
 import {RegistersDetailsComponent} from './pages/registers/registers-details/registers-details.component';
 import {RegistersFormComponent} from './pages/registers/registers-form/registers-form.component';
+import { DevicesFormComponent } from "app/pages/devices/devices-form/devices-form.component";
+import { DevicesDetailsComponent } from "app/pages/devices/devices-details/devices-details.component";
+import { DevicesComponent } from "app/pages/devices/devices.component";
 
 const routes: Routes = [
   { path: "", component: DashboardComponent },
   { path: "login", component: LoginComponent },
   { path: "sign-up", component: SignupComponent },
   {
-    path: "user-management", component: UserManagementComponent,
+    path: "user-management",
+    component: UserManagementComponent,
     children: [
-      { path: "", redirectTo: 'details', pathMatch: 'full' },
+      { path: "", redirectTo: "details", pathMatch: "full" },
       { path: "form/:id", component: UserManagementFormComponent },
       { path: "details", component: UserManagementDetailsComponent }
     ]
   },
   {
-    path: "company-management", component: CompanyManagementComponent,
+    path: "company-management",
+    component: CompanyManagementComponent,
     children: [
-      { path: "", redirectTo: 'details', pathMatch: 'full' },
+      { path: "", redirectTo: "details", pathMatch: "full" },
       { path: "form/:id", component: CompanyManagementFormComponent },
       { path: "details", component: CompanyManagementDetailsComponent },
-      { path: "wizard", component:CompanyManagementWizardComponent }
+      { path: "wizard", component: CompanyManagementWizardComponent }
+    ]
+  },
+  {
+    path: "devices",
+    component: DevicesComponent,
+    children: [
+      { path: "", redirectTo: "details", pathMatch: "full" },
+      { path: "form/:id", component: DevicesFormComponent },
+      { path: "details", component: DevicesDetailsComponent }
     ]
   },
   {

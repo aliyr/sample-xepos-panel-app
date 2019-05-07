@@ -68,6 +68,9 @@ import { RegistersDetailsComponent } from './pages/registers/registers-details/r
 import { RegistersFormComponent } from './pages/registers/registers-form/registers-form.component';
 import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 import { TimePickerComponent } from './components/time-picker/time-picker.component';
+import { DevicesDetailsComponent } from "./pages/devices/devices-details/devices-details.component";
+import { DevicesFormComponent } from "./pages/devices/devices-form/devices-form.component";
+import { DevicesComponent } from "./pages/devices/devices.component";
 
 @NgModule({
   declarations: [
@@ -94,6 +97,9 @@ import { TimePickerComponent } from './components/time-picker/time-picker.compon
     RegistersDetailsComponent,
     RegistersFormComponent,
     TimePickerComponent
+    DevicesDetailsComponent,
+    DevicesFormComponent,
+    DevicesComponent
   ],
   imports: [
     BrowserModule,
