@@ -3,13 +3,16 @@ import { Routes, RouterModule } from "@angular/router";
 import { DashboardComponent } from "./pages/dashboard/dashboard.component";
 import { LoginComponent } from "./pages/login/login.component";
 import { SignupComponent } from "./pages/signup/signup.component";
-import { UserManagementListComponent } from "./pages/user-management/user-management-list/user-management-list.component";
+import { UserManagementDetailsComponent } from "./pages/user-management/user-management-details/user-management-details.component";
 import {UserManagementFormComponent} from './pages/user-management/user-management-form/user-management-form.component';
 import {UserManagementComponent} from './pages/user-management/user-management.component';
 import {CompanyManagementComponent } from './pages/company-management/company-management.component';
 import {CompanyManagementDetailsComponent} from './pages/company-management/company-management-details/company-management-details.component';
 import {CompanyManagementFormComponent} from './pages/company-management/company-management-form/company-management-form.component';
 import {CompanyManagementWizardComponent} from './pages/company-management/company-management-wizard/company-management-wizard.component';
+import {RegistersComponent} from './pages/registers/registers.component';
+import {RegistersDetailsComponent} from './pages/registers/registers-details/registers-details.component';
+import {RegistersFormComponent} from './pages/registers/registers-form/registers-form.component';
 
 const routes: Routes = [
   { path: "", component: DashboardComponent },
@@ -20,7 +23,7 @@ const routes: Routes = [
     children: [
       { path: "", redirectTo: 'details', pathMatch: 'full' },
       { path: "form/:id", component: UserManagementFormComponent },
-      { path: "details", component: UserManagementListComponent }
+      { path: "details", component: UserManagementDetailsComponent }
     ]
   },
   {
@@ -30,6 +33,14 @@ const routes: Routes = [
       { path: "form/:id", component: CompanyManagementFormComponent },
       { path: "details", component: CompanyManagementDetailsComponent },
       { path: "wizard", component:CompanyManagementWizardComponent }
+    ]
+  },
+  {
+    path: "registers", component: RegistersComponent,
+    children: [
+      { path: "", redirectTo: 'details', pathMatch: 'full' },
+      { path: "form/:id", component: RegistersFormComponent },
+      { path: "details", component: RegistersDetailsComponent },
     ]
   }
 ];

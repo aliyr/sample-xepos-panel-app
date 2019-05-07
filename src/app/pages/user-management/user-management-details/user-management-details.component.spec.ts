@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { UserManagementListComponent } from "./user-management-list.component";
+import { UserManagementDetailsComponent } from "./user-management-details.component";
 import { SearchInputComponent } from "../../../components/search-input/search-input.component";
 import {
   MatCardModule,
@@ -14,13 +14,13 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { ListHeaderComponent } from "../../../components/list-header/list-header.component";
 
 describe("UserManagementComponent", () => {
-  let component: UserManagementListComponent;
-  let fixture: ComponentFixture<UserManagementListComponent>;
+  let component: UserManagementDetailsComponent;
+  let fixture: ComponentFixture<UserManagementDetailsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
-        UserManagementListComponent,
+        UserManagementDetailsComponent,
         SearchInputComponent,
         ListHeaderComponent
       ],
@@ -37,7 +37,7 @@ describe("UserManagementComponent", () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(UserManagementListComponent);
+    fixture = TestBed.createComponent(UserManagementDetailsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

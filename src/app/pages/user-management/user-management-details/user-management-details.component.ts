@@ -6,11 +6,11 @@ import { Router } from "@angular/router";
 
 @Component({
   selector: "app-user-management-list",
-  templateUrl: "./user-management-list.component.html",
-  styleUrls: ["./user-management-list.component.scss"]
+  templateUrl: "./user-management-details.component.html",
+  styleUrls: ["./user-management-details.component.scss"]
 })
 @NgLog()
-export class UserManagementListComponent implements OnInit {
+export class UserManagementDetailsComponent implements OnInit {
   dataSource = new MatTableDataSource(this.userManagementService.ElementData);
   displayedColumns: string[];
 

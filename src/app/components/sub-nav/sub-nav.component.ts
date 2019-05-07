@@ -84,7 +84,7 @@ export class SubNavComponent {
             items: [
               { title: "locations", route: "" },
               { title: "devices", route: "" },
-              { title: "registers", route: "" }
+              { title: "registers", route: "/registers" }
             ]
           },
           {

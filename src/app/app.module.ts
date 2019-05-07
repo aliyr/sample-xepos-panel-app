@@ -7,7 +7,7 @@ import { AppComponent } from "./app.component";
 import { DashboardComponent } from "./pages/dashboard/dashboard.component";
 import { LoginComponent } from "./pages/login/login.component";
 import { SignupComponent } from "./pages/signup/signup.component";
-import { UserManagementListComponent } from "./pages/user-management/user-management-list/user-management-list.component";
+import { UserManagementDetailsComponent } from "./pages/user-management/user-management-details/user-management-details.component";
 import {
   MatTableModule,
   MatSortModule,
@@ -63,6 +63,11 @@ import { MultiSelectChipsComponent } from "./components/multi-select-chips/multi
 import { CustomInputComponent } from "./components/custom-input/custom-input.component";
 import { CustomOptionSelectComponent } from "./components/custom-options-select/custom-options-select.component";
 import { CustomAutocompleteInputComponent } from "./components/custom-autocomplete-input/custom-autocomplete-input.component";
+import { RegistersComponent } from './pages/registers/registers.component';
+import { RegistersDetailsComponent } from './pages/registers/registers-details/registers-details.component';
+import { RegistersFormComponent } from './pages/registers/registers-form/registers-form.component';
+import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
+import { TimePickerComponent } from './components/time-picker/time-picker.component';
 
 @NgModule({
   declarations: [
@@ -70,7 +75,7 @@ import { CustomAutocompleteInputComponent } from "./components/custom-autocomple
     DashboardComponent,
     LoginComponent,
     SignupComponent,
-    UserManagementListComponent,
+    UserManagementDetailsComponent,
     SubNavComponent,
     UserManagementFormComponent,
     UserManagementComponent,
@@ -84,13 +89,18 @@ import { CustomAutocompleteInputComponent } from "./components/custom-autocomple
     MultiSelectChipsComponent,
     CustomInputComponent,
     CustomOptionSelectComponent,
-    CustomAutocompleteInputComponent
+    CustomAutocompleteInputComponent,
+    RegistersComponent,
+    RegistersDetailsComponent,
+    RegistersFormComponent,
+    TimePickerComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
+    NgxMaterialTimepickerModule,
     MatAutocompleteModule,
     MatBadgeModule,
     MatButtonModule,

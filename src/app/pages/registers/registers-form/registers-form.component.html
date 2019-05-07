@@ -1,0 +1,49 @@
+<app-list-header
+  title="Edit Register Information"
+  description="lorem ipsum dolor sit"
+>
+  <button
+    (click)="returnToList()"
+    mat-raised-button
+    class="header-button"
+    color="warn"
+  >
+    cancel
+  </button>
+  <button
+    (click)="save()"
+    mat-raised-button
+    class="header-button"
+    color="accent"
+    [disabled]="!registerForm.valid"
+  >
+    save
+  </button>
+</app-list-header>
+<div class="row" [formGroup]="registerForm">
+  <div class="col-12 form-group-container">
+    <mat-card class="mat-card-container">
+      <app-custom-input
+        controlName="name"
+        [errors]="[{ title: 'required', message: 'Register name is required' }]"
+        label="Register name"
+      ></app-custom-input>
+      <app-custom-options-select
+        [optionsArray]="locations"
+        controlName="location"
+        label="Register location"
+        [errors]="[{ title: 'required', message: 'Register location is required' }]"
+      ></app-custom-options-select>
+      <app-time-picker
+        controlName="openTime"
+        [error]="{ title: 'required', message: 'Open time is required' }"
+        label="Open time"
+      ></app-time-picker>
+      <app-time-picker
+        controlName="closeTime"
+        [error]="{ title: 'required', message: 'Close time is required' }"
+        label="Close time"
+      ></app-time-picker>
+    </mat-card>
+  </div>
+</div>
