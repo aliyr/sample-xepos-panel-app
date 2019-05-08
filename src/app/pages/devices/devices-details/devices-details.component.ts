@@ -11,7 +11,6 @@ import { Device } from "app/models/device";
 export class DevicesDetailsComponent implements OnInit {
   displayedColumns: string[];
   dataSource: MatTableDataSource<Device>;
-  filterText: string;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   constructor(private devicesService: DevicesService, private router: Router) {}
@@ -22,8 +21,8 @@ export class DevicesDetailsComponent implements OnInit {
     this.dataSource = new MatTableDataSource(this.devicesService.ElementData);
     this.updateTable();
   }
-  applyFilter(): void {
-    this.dataSource.filter = this.filterText.trim().toLowerCase();
+  applyFilter(filterValue: string): void {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
   deleteCompany(companyName: string): void {

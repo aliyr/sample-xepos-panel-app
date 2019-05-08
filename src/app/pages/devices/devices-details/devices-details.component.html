@@ -14,7 +14,6 @@
       matInput
       (keyup)="applyFilter($event.target.value)"
       placeholder="Filter"
-      [(ngModel)]="filterText"
     />
   </mat-form-field>
   <table mat-table matSort [dataSource]="dataSource">

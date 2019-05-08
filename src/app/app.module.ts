@@ -66,6 +66,7 @@ import { CustomAutocompleteInputComponent } from "./components/custom-autocomple
 import { DevicesDetailsComponent } from "./pages/devices/devices-details/devices-details.component";
 import { DevicesFormComponent } from "./pages/devices/devices-form/devices-form.component";
 import { DevicesComponent } from "./pages/devices/devices.component";
+import { CustomTableComponent } from './components/custom-table/custom-table.component';
 
 @NgModule({
   declarations: [
@@ -90,7 +91,8 @@ import { DevicesComponent } from "./pages/devices/devices.component";
     CustomAutocompleteInputComponent,
     DevicesDetailsComponent,
     DevicesFormComponent,
-    DevicesComponent
+    DevicesComponent,
+    CustomTableComponent
   ],
   imports: [
     BrowserModule,
