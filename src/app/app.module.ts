@@ -71,6 +71,7 @@ import { TimePickerComponent } from './components/time-picker/time-picker.compon
 import { DevicesDetailsComponent } from "./pages/devices/devices-details/devices-details.component";
 import { DevicesFormComponent } from "./pages/devices/devices-form/devices-form.component";
 import { DevicesComponent } from "./pages/devices/devices.component";
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -96,7 +97,7 @@ import { DevicesComponent } from "./pages/devices/devices.component";
     RegistersComponent,
     RegistersDetailsComponent,
     RegistersFormComponent,
-    TimePickerComponent
+    TimePickerComponent,
     DevicesDetailsComponent,
     DevicesFormComponent,
     DevicesComponent
@@ -107,6 +108,7 @@ import { DevicesComponent } from "./pages/devices/devices.component";
     BrowserAnimationsModule,
     ReactiveFormsModule,
     NgxMaterialTimepickerModule,
+    HttpClientModule,
     MatAutocompleteModule,
     MatBadgeModule,
     MatButtonModule,

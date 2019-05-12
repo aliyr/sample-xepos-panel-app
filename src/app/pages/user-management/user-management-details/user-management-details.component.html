@@ -18,30 +18,32 @@
       matInput
       (keyup)="applyFilter($event.target.value)"
       placeholder="Filter"
+      #filterTable
+      [(ngModel)]="filterText"
     />
   </mat-form-field>
   <table mat-table matSort [dataSource]="dataSource">
-    <ng-container matColumnDef="displayName">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Display Name</th>
-      <td mat-cell *matCellDef="let element">{{ element.displayName }}</td>
+    <ng-container matColumnDef="Name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+      <td mat-cell *matCellDef="let element">{{ element.Name }}</td>
     </ng-container>
 
-    <ng-container matColumnDef="type">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>type</th>
-      <td mat-cell *matCellDef="let element">{{ element.type }}</td>
-    </ng-container>
+    <!--<ng-container matColumnDef="type">-->
+      <!--<th mat-header-cell *matHeaderCellDef mat-sort-header>type</th>-->
+      <!--<td mat-cell *matCellDef="let element">{{ element.type }}</td>-->
+    <!--</ng-container>-->
 
-    <ng-container matColumnDef="userLocation">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>user's Location</th>
-      <td mat-cell *matCellDef="let element">{{ element.userLocation }}</td>
-    </ng-container>
+    <!--<ng-container matColumnDef="userLocation">-->
+      <!--<th mat-header-cell *matHeaderCellDef mat-sort-header>user's Location</th>-->
+      <!--<td mat-cell *matCellDef="let element">{{ element.userLocation }}</td>-->
+    <!--</ng-container>-->
 
     <ng-container matColumnDef="edit">
       <th mat-header-cell *matHeaderCellDef class="list-action-row">
         Edit
       </th>
       <td mat-cell *matCellDef="let element" class="list-action-row">
-        <i class="material-icons" (click)="updateUser(element.displayName)">
+        <i class="material-icons" (click)="updateUser(element.Name)">
           edit
         </i>
       </td></ng-container
@@ -65,6 +67,6 @@
   <mat-paginator
     [pageSizeOptions]="[6, 12, 18]"
     showFirstLastButtons
-    length="5"
+    [length]="resultsLength"
   ></mat-paginator>
 </mat-card>
