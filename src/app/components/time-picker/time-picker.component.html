@@ -1,0 +1,16 @@
+<div class="form-control-container">
+  <mat-form-field class="mat-input">
+    <mat-label>{{ label }}</mat-label>
+    <input
+      matInput
+      [placeholder]="label"
+      [formControl]="control"
+      [required]="error"
+      [ngxTimepicker]="timePicker"
+    />
+    <mat-error *ngIf="control.hasError(error.title)">
+      {{error.message}}
+    </mat-error>
+    <ngx-material-timepicker id="time-picker" #timePicker [ngxMaterialTimepickerTheme]="theme"></ngx-material-timepicker>
+  </mat-form-field>
+</div>

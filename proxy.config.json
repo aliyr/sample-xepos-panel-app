@@ -1,0 +1,8 @@
+{
+  "/odata/XBack/*": {
+    "target": "http://localhost:9092",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin": true
+  }
+}

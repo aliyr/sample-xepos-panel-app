@@ -1,15 +1,15 @@
 <app-list-header
-  title="Users Management"
-  description="A list of all of your users."
+  title="Registers"
+  description="A list of all of your registers."
 >
   <button
     mat-raised-button
     class="header-button"
     color="accent"
     disabled="false"
-    (click)="addNewUser()"
+    (click)="addNewRegister()"
   >
-    Add New User
+    Add New Register
   </button>
 </app-list-header>
 <mat-card class="mat-elevation-z8">
@@ -21,19 +21,24 @@
     />
   </mat-form-field>
   <table mat-table matSort [dataSource]="dataSource">
-    <ng-container matColumnDef="displayName">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Display Name</th>
-      <td mat-cell *matCellDef="let element">{{ element.displayName }}</td>
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Register Name</th>
+      <td mat-cell *matCellDef="let element">{{ element.name }}</td>
     </ng-container>
 
-    <ng-container matColumnDef="type">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>type</th>
-      <td mat-cell *matCellDef="let element">{{ element.type }}</td>
+    <ng-container matColumnDef="openTime">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>open time</th>
+      <td mat-cell *matCellDef="let element">{{ element.openTime }}</td>
     </ng-container>
 
-    <ng-container matColumnDef="userLocation">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>user's Location</th>
-      <td mat-cell *matCellDef="let element">{{ element.userLocation }}</td>
+    <ng-container matColumnDef="closeTime">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>close time</th>
+      <td mat-cell *matCellDef="let element">{{ element.closeTime }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="location">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>location</th>
+      <td mat-cell *matCellDef="let element">{{ element.assignedLocation }}</td>
     </ng-container>
 
     <ng-container matColumnDef="edit">
@@ -41,7 +46,7 @@
         Edit
       </th>
       <td mat-cell *matCellDef="let element" class="list-action-row">
-        <i class="material-icons" (click)="updateUser(element.displayName)">
+        <i class="material-icons" (click)="updateRegister(element.name)">
           edit
         </i>
       </td></ng-container
@@ -52,7 +57,7 @@
         Delete
       </th>
       <td mat-cell *matCellDef="let element" class="list-action-row">
-        <i class="material-icons" (click)="deleteUser(element.displayName)">
+        <i class="material-icons" (click)="deleteRegister(element.name)">
           delete
         </i>
       </td>

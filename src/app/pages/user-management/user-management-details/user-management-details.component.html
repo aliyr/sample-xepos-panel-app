@@ -1,0 +1,72 @@
+<app-list-header
+  title="Users Management"
+  description="A list of all of your users."
+>
+  <button
+    mat-raised-button
+    class="header-button"
+    color="accent"
+    disabled="false"
+    (click)="addNewUser()"
+  >
+    Add New User
+  </button>
+</app-list-header>
+<mat-card class="mat-elevation-z8">
+  <mat-form-field>
+    <input
+      matInput
+      (keyup)="applyFilter($event.target.value)"
+      placeholder="Filter"
+      #filterTable
+      [(ngModel)]="filterText"
+    />
+  </mat-form-field>
+  <table mat-table matSort [dataSource]="dataSource">
+    <ng-container matColumnDef="Name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+      <td mat-cell *matCellDef="let element">{{ element.Name }}</td>
+    </ng-container>
+
+    <!--<ng-container matColumnDef="type">-->
+      <!--<th mat-header-cell *matHeaderCellDef mat-sort-header>type</th>-->
+      <!--<td mat-cell *matCellDef="let element">{{ element.type }}</td>-->
+    <!--</ng-container>-->
+
+    <!--<ng-container matColumnDef="userLocation">-->
+      <!--<th mat-header-cell *matHeaderCellDef mat-sort-header>user's Location</th>-->
+      <!--<td mat-cell *matCellDef="let element">{{ element.userLocation }}</td>-->
+    <!--</ng-container>-->
+
+    <ng-container matColumnDef="edit">
+      <th mat-header-cell *matHeaderCellDef class="list-action-row">
+        Edit
+      </th>
+      <td mat-cell *matCellDef="let element" class="list-action-row">
+        <i class="material-icons" (click)="updateUser(element.Name)">
+          edit
+        </i>
+      </td></ng-container
+    >
+
+    <ng-container matColumnDef="delete">
+      <th mat-header-cell *matHeaderCellDef class="list-action-row">
+        Delete
+      </th>
+      <td mat-cell *matCellDef="let element" class="list-action-row">
+        <i class="material-icons" (click)="deleteUser(element.displayName)">
+          delete
+        </i>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+
+  <mat-paginator
+    [pageSizeOptions]="[6, 12, 18]"
+    showFirstLastButtons
+    [length]="resultsLength"
+  ></mat-paginator>
+</mat-card>

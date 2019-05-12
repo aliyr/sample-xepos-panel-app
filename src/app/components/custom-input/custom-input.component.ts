@@ -17,12 +17,12 @@ export class CustomInputComponent implements OnInit {
   constructor(private controlContainer: ControlContainer) {
     this.inputType = "text";
   }
-  getValue() {
+  getControlValue() {
     this.control = this.controlContainer.control.get(
       this.controlName
     ) as FormControl;
   }
   ngOnInit() {
-    this.getValue();
+    this.getControlValue();
   }
 }

@@ -8,10 +8,9 @@ import { Router } from "@angular/router";
   styleUrls: ["./user-management-form.component.scss"]
 })
 export class UserManagementFormComponent implements OnInit {
-  locations: string[] = ["address1", "address"];
-  roles: string[] = ["admin", "manager", " customer ", "cashier"];
-  confirmPasswordErrorMatcher = new PasswordMatchErrorStateMatcher();
-
+  locations: string[];
+  roles: string[];
+  confirmPasswordErrorMatcher;
   profileForm: FormGroup;
 
   constructor(private fb: FormBuilder, private router: Router) {}
@@ -33,6 +32,10 @@ export class UserManagementFormComponent implements OnInit {
       },
       { validator: this.passwordValidator }
     );
+
+    this.locations = ["address1", "address"];
+    this.roles = ["admin", "manager", " customer ", "cashier"];
+    this.confirmPasswordErrorMatcher = new PasswordMatchErrorStateMatcher();
   }
 
   passwordValidator(form: FormGroup) {
