@@ -16,10 +16,10 @@
   <mat-form-field>
     <input
       matInput
-      (keyup)="applyFilter($event.target.value)"
+      (keyup)="applyFilter"
       placeholder="Filter"
-      #filterTable
-      [(ngModel)]="filterText"
+      [(ngModel)]="filterValue"
+      #filterInput
     />
   </mat-form-field>
   <table mat-table matSort [dataSource]="dataSource">
