@@ -3,7 +3,8 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 @Injectable({
   providedIn: "root"
-}) //  and (contains(tolower(Name),''))
+})
+
 export class UserManagementService {
 
   constructor(private http: HttpClient) {}

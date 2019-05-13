@@ -23,7 +23,6 @@ export class UserManagementDetailsComponent implements OnInit, AfterViewInit {
   dataSource = new MatTableDataSource([]);
   displayedColumns: string[];
   resultsLength = 0;
-  filterSubject$ = new Subject<string>();
   filterValue: string;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -70,35 +69,12 @@ export class UserManagementDetailsComponent implements OnInit, AfterViewInit {
         console.log(this.dataSource.data);
       });
   }
-  //
-  // deleteUser(UserName): void {
-  //   this.userManagementService.ElementData.map((elem, index) => {
-  //     if (UserName === elem.displayName) {
-  //       this.userManagementService.ElementData.splice(index, 1);
-  //     }
-  //   });
-  //   this.dataSource = new MatTableDataSource(
-  //     this.userManagementService.ElementData
-  //   );
-  //   // this.updateMaterialTable();
-  // }
+
 
   updateUser(userID): void {
     this.router.navigate(["/user-management/form", userID]);
   }
 
-  applyFilter(filterValue: string) {
-    this.filterSubject$.asObservable();
-  }
 
-  // updateMaterialTable(): void {
-  //   this.dataSource.paginator = this.paginator;
-  //   this.dataSource.sort = this.sort;
-  //   this.dataSource.filterPredicate = function(data, filter: string): boolean {
-  //     return (
-  //       data.firstName.toLowerCase().includes(filter) ||
-  //       data.type.toString().includes(filter)
-  //     );
-  //   };
-  // }
+
 }
