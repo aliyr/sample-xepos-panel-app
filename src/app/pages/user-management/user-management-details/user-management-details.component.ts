@@ -9,10 +9,10 @@ import { UserManagementService } from "app/services/user-management/user-managem
 import { MatPaginator, MatSort, MatTableDataSource } from "@angular/material";
 import { NgLog } from "app/decorators/nglog.decorator";
 import { Router } from "@angular/router";
-import { merge, Subject} from 'rxjs';
-import { startWith, switchMap } from "rxjs/operators";
+import { iif, merge, Subject } from "rxjs";
+import {delay, distinctUntilChanged, every, filter, mergeMap, skipUntil, skipWhile, startWith, switchMap} from 'rxjs/operators';
 import { map } from "rxjs/operators";
-import { fromEvent } from 'rxjs';
+import { fromEvent } from "rxjs";
 @Component({
   selector: "app-user-management-list",
   templateUrl: "./user-management-details.component.html",
@@ -28,22 +28,27 @@ export class UserManagementDetailsComponent implements OnInit, AfterViewInit {
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-  @ViewChild('filterInput') filterInput: ElementRef;
+  @ViewChild("filterInput") filterInput: ElementRef;
+
   constructor(
     private userManagementService: UserManagementService,
     private router: Router
   ) {}
+
   ngOnInit() {
     this.displayedColumns = ["Name", "edit", "delete"];
   }
 
   ngAfterViewInit() {
-
-   const filterEvent = fromEvent(this.filterInput.nativeElement , 'keyup');
+    const filterEvent = fromEvent(this.filterInput.nativeElement, "keyup").pipe(
+      filter( () => (this.filterValue.length > 2 || this.filterValue.length === 0)),
+      delay(150),
+      distinctUntilChanged()
+    );
     // back to first page for sorting
     this.sort.sortChange.subscribe(() => (this.paginator.pageIndex = 0));
 
-   merge(this.sort.sortChange, this.paginator.page ,filterEvent)
+    merge(this.sort.sortChange, this.paginator.page, filterEvent)
       .pipe(
         startWith({}),
         switchMap(() => {
@@ -51,7 +56,8 @@ export class UserManagementDetailsComponent implements OnInit, AfterViewInit {
             "/odata/XBack/products/XBack.getProductsForGridView",
             this.paginator.pageIndex + 1,
             { name: this.sort.active, direction: this.sort.direction },
-            this.paginator.pageSize , this.filterValue
+            this.paginator.pageSize,
+            this.filterValue
           );
         }),
         map(data => {
