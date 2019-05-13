@@ -39,9 +39,7 @@ export class UserManagementDetailsComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
 
-   const filterEvent = fromEvent(this.filterInput.nativeElement , 'keypress');
-
-    debugger;
+   const filterEvent = fromEvent(this.filterInput.nativeElement , 'keyup');
     // back to first page for sorting
     this.sort.sortChange.subscribe(() => (this.paginator.pageIndex = 0));
 
@@ -53,7 +51,7 @@ export class UserManagementDetailsComponent implements OnInit, AfterViewInit {
             "/odata/XBack/products/XBack.getProductsForGridView",
             this.paginator.pageIndex + 1,
             { name: this.sort.active, direction: this.sort.direction },
-            this.paginator.pageSize
+            this.paginator.pageSize , this.filterValue
           );
         }),
         map(data => {
