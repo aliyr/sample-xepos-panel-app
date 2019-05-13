@@ -9,8 +9,14 @@ import { UserManagementService } from "app/services/user-management/user-managem
 import { MatPaginator, MatSort, MatTableDataSource } from "@angular/material";
 import { NgLog } from "app/decorators/nglog.decorator";
 import { Router } from "@angular/router";
-import { iif, merge, Subject } from "rxjs";
-import {delay, distinctUntilChanged, every, filter, mergeMap, skipUntil, skipWhile, startWith, switchMap} from 'rxjs/operators';
+import { merge } from "rxjs";
+import {
+  delay,
+  distinctUntilChanged,
+  filter,
+  startWith,
+  switchMap
+} from "rxjs/operators";
 import { map } from "rxjs/operators";
 import { fromEvent } from "rxjs";
 @Component({
@@ -39,11 +45,11 @@ export class UserManagementDetailsComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    const filterEvent = fromEvent(this.filterInput.nativeElement, "keyup").pipe(
-      filter( () => (this.filterValue.length > 2 || this.filterValue.length === 0)),
-      delay(150),
-      distinctUntilChanged()
+    const filterEvent = this.createFilterEvent(
+      this.filterInput,
+      this.filterValue
     );
+    const sortEvent = this.createSortEvent(this.sort);
     // back to first page for sorting
     this.sort.sortChange.subscribe(() => (this.paginator.pageIndex = 0));
 
@@ -64,17 +70,26 @@ export class UserManagementDetailsComponent implements OnInit, AfterViewInit {
           return data;
         })
       )
-      .subscribe(data => {
+      .subscribe((data: { value }) => {
         (this.dataSource.data as any) = data.value;
-        console.log(this.dataSource.data);
       });
   }
-
 
   updateUser(userID): void {
     this.router.navigate(["/user-management/form", userID]);
   }
 
+  // it returns a observable that observes the changes of table filter input
+  // and it should be async because the 'element' wasn't created when the function gets called
+  async createFilterEvent(element, filterValue) {
+    return fromEvent(element, "keyup").pipe(
+      filter(() => filterValue.length > 2 || filterValue.length === 0),
+      delay(150),
+      distinctUntilChanged()
+    );
+  }
 
-
+  createSortEvent(element) {
+    return element;
+  }
 }
