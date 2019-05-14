@@ -9,9 +9,10 @@ import {
   filter,
   startWith,
   switchMap,
-  tap
+  tap,
+  map
 } from "rxjs/operators";
-import { map } from "rxjs/operators";
+
 import { fromEvent } from "rxjs";
 
 @Injectable({
@@ -27,8 +28,10 @@ export class TableManagementService {
 
   constructor(private userManagementService: UserManagementService ) {}
 
- 
+  // observes the sort and paginator changes
    mergeData(apiMainUrl) {
+
+    // return to first page if sorting is changed
     this.sortEvent.sortChange.subscribe(
       () => (this.paginationEvent.pageIndex = 0)
     );
@@ -62,9 +65,10 @@ export class TableManagementService {
       });
   }
 
+  // observes the filter input text changes
+  // it should be asynchronous because the element won't be generated when the function gets called
   async createFilterEvent(element) {
     this.filterEvent = fromEvent(element.nativeElement, "keyup").pipe(
-    
       filter(() => element.nativeElement.value.length > 2 || element.nativeElement.value.length === 0),
       delay(150),
       distinctUntilChanged(),
@@ -77,6 +81,7 @@ export class TableManagementService {
   async createSortEvent(element) {
     this.sortEvent = element;
   }
+
   async createPaginationEvent(element) {
     this.paginationEvent = element;
   }

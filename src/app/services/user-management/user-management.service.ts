@@ -30,7 +30,7 @@ export class UserManagementService {
     let headers = new HttpHeaders();
     const token = localStorage.getItem("token");
 
-    const apiEndPoint = this.urlGenerator.URLGenerator(
+    const apiEndPoint = this.urlGenerator.generateTableURL(
       mainUrl,
       page,
       orderBy,

@@ -40,10 +40,9 @@ export class UserManagementDetailsComponent implements OnInit, AfterViewInit {
     this.tableManagementService.createPaginationEvent(this.paginator);
     this.tableManagementService.mergeData("/odata/XBack/products/XBack.getProductsForGridView");
   }
+
   updateUser(userID): void {
     this.router.navigate(["/user-management/form", userID]);
   }
 
-  // it returns an observable that observes the changes of table filter input
-  // and it should be async because the 'element' wasn't created when the function gets called
 }
