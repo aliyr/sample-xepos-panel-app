@@ -6,6 +6,7 @@ import URLGenerator from "app/utils/url-generator";
 })
 export class UserManagementService {
   urlGenerator;
+
   constructor(private http: HttpClient) {
     this.urlGenerator = new URLGenerator();
   }

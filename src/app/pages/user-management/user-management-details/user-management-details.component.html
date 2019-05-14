@@ -10,7 +10,7 @@
     Add New User
   </button>
 </app-list-header>
-<mat-card class="mat-elevation-z8">
+<mat-card class="mat-elevation-z8 list-container">
   <mat-form-field>
     <input
       matInput
@@ -50,7 +50,13 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
   </table>
-
+  <div class="parent-overlay list-loading" *ngIf="tableManagementService.isLoading">
+    <mat-progress-spinner
+      color="primary"
+      mode="indeterminate"
+    class="loading-spinner">
+    </mat-progress-spinner>
+  </div>
   <mat-paginator
     [pageSizeOptions]="[6, 12, 18]"
     showFirstLastButtons

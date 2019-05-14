@@ -18,7 +18,7 @@
   position: absolute;
   left: 50%;
   top: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) ;
 }
 
 .vertical-centralize {
@@ -35,4 +35,19 @@
 }
 .chip-list {
   width: 100%;
+}
+
+.parent-overlay{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+}
+
+.list-loading{
+  background-color: #36485f;
+  min-height: 500px;
+  z-index: 2;
 }

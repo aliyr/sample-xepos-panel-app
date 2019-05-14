@@ -25,12 +25,12 @@ export class TableManagementService {
   dataSource: MatTableDataSource<[]> = new MatTableDataSource([]);
   filterValue;
   resultsLength = 0;
+  isLoading = false;
 
   constructor(private userManagementService: UserManagementService ) {}
 
   // observes the sort and paginator changes
    mergeData(apiMainUrl) {
-
     // return to first page if sorting is changed
     this.sortEvent.sortChange.subscribe(
       () => (this.paginationEvent.pageIndex = 0)
@@ -43,6 +43,9 @@ export class TableManagementService {
     )
       .pipe(
         startWith({}),
+        tap(() => {
+          this.isLoading = true;
+        }),
         switchMap(() => {
           return this.userManagementService.getUsers(
             apiMainUrl,
@@ -61,6 +64,7 @@ export class TableManagementService {
         })
       )
       .subscribe((data: { value }) => {
+        this.isLoading = false;
         this.dataSource.data = data.value;
       });
   }
