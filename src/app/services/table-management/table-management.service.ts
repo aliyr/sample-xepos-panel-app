@@ -1,52 +1,83 @@
-import { Injectable } from '@angular/core';
-import { Component, OnInit, ViewChild } from "@angular/core";
-import { MatPaginator, MatSort, MatTableDataSource } from "@angular/material";
+import { Injectable } from "@angular/core";
+import { MatTableDataSource } from "@angular/material";
+import { UserManagementService } from "app/services/user-management/user-management.service";
+
+import { merge } from "rxjs";
+import {
+  delay,
+  distinctUntilChanged,
+  filter,
+  startWith,
+  switchMap,
+  tap
+} from "rxjs/operators";
+import { map } from "rxjs/operators";
+import { fromEvent } from "rxjs";
+
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
-export class TableManagementService  {
-  elementData;
-  dataSource: MatTableDataSource<any> = new MatTableDataSource(this.elementData);
+export class TableManagementService {
+  filterEvent;
+  sortEvent;
+  paginationEvent;
+  dataSource: MatTableDataSource<[]> = new MatTableDataSource([]);
+  filterValue;
+  resultsLength = 0;
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
-  constructor() {
-
-    console.log('aaaa');
-    this.dataSource =new MatTableDataSource(this.elementData);
-
-    this.updateTable();
-   }
-
-    applyFilter(filterValue: string): void {
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-  }
+  constructor(private userManagementService: UserManagementService ) {}
 
  
+   mergeData(apiMainUrl) {
+    this.sortEvent.sortChange.subscribe(
+      () => (this.paginationEvent.pageIndex = 0)
+    );
 
-
-    deleteCompany(companyName: string): void {
-    this.elementData.ElementData.map((elem, index) => {
-      if (companyName === elem.name) {
-        this.elementData.ElementData.splice(index, 1);
-      }
-    });
-    this.dataSource = new MatTableDataSource(this.elementData.ElementData);
-    this.updateTable();
+    merge(
+      this.sortEvent.sortChange,
+      this.paginationEvent.page,
+      this.filterEvent
+    )
+      .pipe(
+        startWith({}),
+        switchMap(() => {
+          return this.userManagementService.getUsers(
+            apiMainUrl,
+            this.paginationEvent.pageIndex + 1,
+            {
+              name: this.sortEvent.active,
+              direction: this.sortEvent.direction
+            },
+            this.paginationEvent.pageSize,
+            this.filterValue
+          );
+        }),
+        map(data => {
+          this.resultsLength = data["@odata.count"];
+          return data;
+        })
+      )
+      .subscribe((data: { value }) => {
+        this.dataSource.data = data.value;
+      });
   }
 
-  updateTable(): void {
-    // filter predicate is used to limit search datas to specific columns
-    this.dataSource.filterPredicate = function(data, filter: string): boolean {
-      return (
-        data.name.toLowerCase().includes(filter) ||
-        data.name.toString().includes(filter)
-      );
-    };
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+  async createFilterEvent(element) {
+    this.filterEvent = fromEvent(element.nativeElement, "keyup").pipe(
+    
+      filter(() => element.nativeElement.value.length > 2 || element.nativeElement.value.length === 0),
+      delay(150),
+      distinctUntilChanged(),
+      tap(()=> {
+        this.filterValue = element.nativeElement.value;
+      })
+    );
   }
 
+  async createSortEvent(element) {
+    this.sortEvent = element;
+  }
+  async createPaginationEvent(element) {
+    this.paginationEvent = element;
+  }
 }
-
- 
