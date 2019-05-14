@@ -10,22 +10,6 @@ export class UserManagementService {
     this.urlGenerator = new URLGenerator();
   }
 
-  static URLGenerator(
-    mainUrl,
-    page,
-    orderBy: { name; direction },
-    pageLength,
-    pageFilter
-  ): string {
-    return `${mainUrl}?$count=true&$filter=((IsActive eq true)${
-      pageFilter ? " and (contains(tolower(Name),'" + pageFilter + "'))" : ""
-    })${orderBy.name ? "&$orderby=" + orderBy.name : ""}${
-      orderBy.direction === "desc" ? " desc" : ""
-    }${
-      page !== 1 ? "&$skip=" + pageLength * (page - 1) : ""
-    }&$top=${pageLength} `;
-  }
-
   async getUsers(mainUrl, page, orderBy, pageLength, pageFilter) {
     let headers = new HttpHeaders();
     const token = localStorage.getItem("token");
