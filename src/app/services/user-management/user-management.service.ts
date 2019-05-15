@@ -22,6 +22,7 @@ export class UserManagementService {
       pageLength,
       pageFilter
     );
+
     headers = headers
       .set("Content-Type", "application/json; charset=utf-8")
       .set("Authorization", token);

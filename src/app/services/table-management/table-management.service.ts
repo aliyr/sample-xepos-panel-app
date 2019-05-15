@@ -14,6 +14,7 @@ import {
 } from "rxjs/operators";
 
 import { fromEvent } from "rxjs";
+import { Router } from "@angular/router";
 
 @Injectable({
   providedIn: "root"
@@ -25,18 +26,23 @@ export class TableManagementService {
   dataSource: MatTableDataSource<[]> = new MatTableDataSource([]);
   filterValue;
   resultsLength = 0;
-  isLoading = false;
+  isLoading: boolean;
 
-  constructor(private userManagementService: UserManagementService ) {}
+  constructor(
+    private userManagementService: UserManagementService,
+    private router: Router
+  ) {
+    this.isLoading=true;
+  }
 
   // observes the sort and paginator changes
-   mergeData(apiMainUrl) {
+  mergeData(apiMainUrl) {
     // return to first page if sorting is changed
     this.sortEvent.sortChange.subscribe(
       () => (this.paginationEvent.pageIndex = 0)
     );
 
-    merge(
+     merge(
       this.sortEvent.sortChange,
       this.paginationEvent.page,
       this.filterEvent
@@ -73,10 +79,14 @@ export class TableManagementService {
   // it should be asynchronous because the element won't be generated when the function gets called
   async createFilterEvent(element) {
     this.filterEvent = fromEvent(element.nativeElement, "keyup").pipe(
-      filter(() => element.nativeElement.value.length > 2 || element.nativeElement.value.length === 0),
+      filter(
+        () =>
+          element.nativeElement.value.length > 2 ||
+          element.nativeElement.value.length === 0
+      ),
       delay(150),
       distinctUntilChanged(),
-      tap(()=> {
+      tap(() => {
         this.filterValue = element.nativeElement.value;
       })
     );
@@ -88,5 +98,8 @@ export class TableManagementService {
 
   async createPaginationEvent(element) {
     this.paginationEvent = element;
+  }
+  cancelRequest() {
+    this.router.navigate(["/"]);
   }
 }

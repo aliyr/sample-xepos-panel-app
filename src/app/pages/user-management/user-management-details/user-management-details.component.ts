@@ -3,8 +3,7 @@ import {
   Component,
   ElementRef,
   OnInit,
-  ViewChild
-} from "@angular/core";
+  ViewChild} from "@angular/core";
 import { TableManagementService } from "app/services/table-management/table-management.service";
 
 import { MatPaginator, MatSort } from "@angular/material";
@@ -17,7 +16,7 @@ import { Router } from "@angular/router";
   styleUrls: ["./user-management-details.component.scss"]
 })
 @NgLog()
-export class UserManagementDetailsComponent implements OnInit, AfterViewInit {
+export class UserManagementDetailsComponent implements OnInit, AfterViewInit  {
   displayedColumns: string[];
   dataSource;
 
@@ -38,11 +37,12 @@ export class UserManagementDetailsComponent implements OnInit, AfterViewInit {
     this.tableManagementService.createFilterEvent(this.filterInput);
     this.tableManagementService.createSortEvent(this.sort);
     this.tableManagementService.createPaginationEvent(this.paginator);
-    this.tableManagementService.mergeData("/odata/XBack/products/XBack.getProductsForGridView");
+    this.tableManagementService.mergeData(
+      "/odata/XBack/products/XBack.getProductsForGridView"
+    );
   }
 
   updateUser(userID): void {
     this.router.navigate(["/user-management/form", userID]);
   }
-
 }

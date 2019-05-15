@@ -18,7 +18,7 @@
       #filterInput
     />
   </mat-form-field>
-  <table mat-table matSort [dataSource]="tableManagementService.dataSource">
+  <table mat-table matSort [dataSource]="tableManagementService.dataSource"  matSortActive="Name" matSortDirection="asc">
 
     <ng-container matColumnDef="Name">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
@@ -56,6 +56,12 @@
       mode="indeterminate"
     class="loading-spinner">
     </mat-progress-spinner>
+    <button
+    mat-raised-button
+    class="cancel-request-btn"
+    color="accent"
+    (click)="tableManagementService.cancelRequest()"
+  > cancel </button>
   </div>
   <mat-paginator
     [pageSizeOptions]="[6, 12, 18]"

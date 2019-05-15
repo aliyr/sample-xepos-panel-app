@@ -3,7 +3,7 @@
 
   table {
     width: 100%;
-  }
+  }  
   .mat-table {
     box-shadow: none;
   }
@@ -26,6 +26,7 @@
   .list-loading{
     justify-content: center;
     align-items: center;
+    flex-direction: column
   }
 }
 

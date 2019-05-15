@@ -1,5 +1,4 @@
 export default class URLGenerator {
-
   generateTableURL(
     mainUrl,
     page,
@@ -7,11 +6,13 @@ export default class URLGenerator {
     pageLength,
     pageFilter
   ): string {
-
-    const pageFilterString = pageFilter ? " and (contains(tolower(Name),'" + pageFilter + "'))" : "";
+    const pageFilterString = pageFilter
+      ? " and (contains(tolower(Name),'" + pageFilter + "'))"
+      : "";
     const orderByName = orderBy.name ? "&$orderby=" + orderBy.name : "";
     const orderByDirectionString = orderBy.direction === "desc" ? " desc" : "";
-    const pageLengthString = page !== 1 ? "&$skip=" + pageLength * (page - 1) : "";
+    const pageLengthString =
+      page !== 1 ? "&$skip=" + pageLength * (page - 1) : "";
 
     return (
       mainUrl +
@@ -24,6 +25,5 @@ export default class URLGenerator {
       "&$top=" +
       pageLength
     );
-
   }
 }
