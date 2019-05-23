@@ -40,6 +40,7 @@ export class UserManagementDetailsComponent implements OnInit, AfterViewInit  {
     this.tableManagementService.mergeData(
       "/odata/XBack/products/getProductsForGridView"
     );
+
   }
 
   updateUser(userID): void {

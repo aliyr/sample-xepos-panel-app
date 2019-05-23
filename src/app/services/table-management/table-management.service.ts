@@ -51,7 +51,7 @@ export class TableManagementService {
     )
       .pipe(
         startWith({}),
-        tap(() => {
+        switchMap(() => {
           this.isLoading = true;
           return this.userManagementService.getUsers(
             apiMainUrl,
@@ -71,6 +71,7 @@ export class TableManagementService {
       )
       .subscribe((data: { value: [] }) => {
         this.isLoading = false;
+       
         this.dataSource.data = data.value;
       });
   }
