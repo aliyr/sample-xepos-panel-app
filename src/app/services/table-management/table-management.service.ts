@@ -53,8 +53,6 @@ export class TableManagementService {
         startWith({}),
         tap(() => {
           this.isLoading = true;
-        }),
-        switchMap(() => {
           return this.userManagementService.getUsers(
             apiMainUrl,
             this.paginationEvent.pageIndex + 1,

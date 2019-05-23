@@ -1,4 +1,5 @@
-export default class URLGenerator {
+export default class UrlGenerator {
+
   generateTableURL(
     mainUrl,
     page,

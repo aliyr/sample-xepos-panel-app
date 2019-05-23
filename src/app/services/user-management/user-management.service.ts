@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import URLGenerator from "app/utils/url-generator";
+import UrlGenerator from "app/utils/url-generator";
 @Injectable({
   providedIn: "root"
 })
@@ -8,7 +8,7 @@ export class UserManagementService {
   urlGenerator;
 
   constructor(private http: HttpClient) {
-    this.urlGenerator = new URLGenerator();
+    this.urlGenerator = new UrlGenerator();
   }
 
   async getUsers(mainUrl, page, orderBy, pageLength, pageFilter) {

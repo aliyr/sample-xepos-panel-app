@@ -38,7 +38,7 @@ export class UserManagementDetailsComponent implements OnInit, AfterViewInit  {
     this.tableManagementService.createSortEvent(this.sort);
     this.tableManagementService.createPaginationEvent(this.paginator);
     this.tableManagementService.mergeData(
-      "/odata/XBack/products/XBack.getProductsForGridView"
+      "/odata/XBack/products/getProductsForGridView"
     );
   }
 
