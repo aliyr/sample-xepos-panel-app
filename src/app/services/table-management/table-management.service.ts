@@ -1,8 +1,8 @@
-import { Injectable } from "@angular/core";
-import { MatTableDataSource } from "@angular/material";
+import { Injectable, ElementRef,  } from "@angular/core";
+import { MatTableDataSource, MatPaginator, MatSort } from "@angular/material";
 import { UserManagementService } from "app/services/user-management/user-management.service";
 
-import { merge } from "rxjs";
+import { merge, Observable } from "rxjs";
 import {
   delay,
   distinctUntilChanged,
@@ -20,29 +20,31 @@ import { Router } from "@angular/router";
   providedIn: "root"
 })
 export class TableManagementService {
-  filterEvent;
-  sortEvent;
-  paginationEvent;
-  dataSource: MatTableDataSource<[]> = new MatTableDataSource([]);
-  filterValue;
-  resultsLength = 0;
+  filterEvent: Observable<{}>;
+  sortEvent: MatSort;
+  paginationEvent: MatPaginator;
+  dataSource: MatTableDataSource<[]>;
+  filterValue: string;
+  resultsLength: number;
   isLoading: boolean;
 
   constructor(
     private userManagementService: UserManagementService,
-    private router: Router
+    private router: Router,
   ) {
-    this.isLoading=true;
+    this.resultsLength=0;
+    this.dataSource = new MatTableDataSource([]);
+    this.isLoading=true; 
   }
 
   // observes the sort and paginator changes
-  mergeData(apiMainUrl) {
+  mergeData(apiMainUrl: string): void {
     // return to first page if sorting is changed
     this.sortEvent.sortChange.subscribe(
       () => (this.paginationEvent.pageIndex = 0)
     );
 
-     merge(
+    merge(
       this.sortEvent.sortChange,
       this.paginationEvent.page,
       this.filterEvent
@@ -69,7 +71,7 @@ export class TableManagementService {
           return data;
         })
       )
-      .subscribe((data: { value }) => {
+      .subscribe((data: { value: [] }) => {
         this.isLoading = false;
         this.dataSource.data = data.value;
       });
@@ -77,7 +79,7 @@ export class TableManagementService {
 
   // observes the filter input text changes
   // it should be asynchronous because the element won't be generated when the function gets called
-  async createFilterEvent(element) {
+   createFilterEvent(element: ElementRef): void {
     this.filterEvent = fromEvent(element.nativeElement, "keyup").pipe(
       filter(
         () =>
@@ -92,14 +94,14 @@ export class TableManagementService {
     );
   }
 
-  async createSortEvent(element) {
+   createSortEvent(element: MatSort): void {
     this.sortEvent = element;
   }
 
-  async createPaginationEvent(element) {
+   createPaginationEvent(element: MatPaginator): void {
     this.paginationEvent = element;
   }
-  cancelRequest() {
+  cancelRequest(): void {
     this.router.navigate(["/"]);
   }
 }

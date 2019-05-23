@@ -12,11 +12,11 @@
     Company Wizard
   </button>
 </app-list-header>
-<mat-card class="mat-elevation-z8">
+<mat-card class="mat-elevation-z8 list-container">
   <mat-form-field>
     <input
       matInput
-      (keyup)="applyFilter($event.target.value)"
+      (keyup)="applyFilter()"
       placeholder="Filter"
       [(ngModel)]="filterText"
     />

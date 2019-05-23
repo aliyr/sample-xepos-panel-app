@@ -25,8 +25,8 @@ export class UserManagementDetailsComponent implements OnInit, AfterViewInit  {
   @ViewChild("filterInput") filterInput: ElementRef;
 
   constructor(
-    private tableManagementService: TableManagementService,
-    private router: Router
+    public tableManagementService: TableManagementService,
+    public router: Router
   ) {}
 
   ngOnInit() {
