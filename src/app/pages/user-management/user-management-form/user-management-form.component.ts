@@ -1,19 +1,25 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, AfterContentInit, AfterViewInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import PasswordMatchErrorStateMatcher from "app/validators/Password-match-error-state-matcher";
 import { Router } from "@angular/router";
+import { BatchRequestService } from "app/services/batch-request/batch-request.service";
+
 @Component({
   selector: "app-user-management-form",
   templateUrl: "./user-management-form.component.html",
   styleUrls: ["./user-management-form.component.scss"]
 })
-export class UserManagementFormComponent implements OnInit {
+export class UserManagementFormComponent implements OnInit , AfterViewInit {
   locations: string[];
   roles: string[];
   confirmPasswordErrorMatcher;
   profileForm: FormGroup;
-
-  constructor(private fb: FormBuilder, private router: Router) {}
+  result;
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private batchRequest: BatchRequestService
+  ) {}
 
   ngOnInit() {
     this.profileForm = this.fb.group(
@@ -60,5 +66,14 @@ export class UserManagementFormComponent implements OnInit {
     };
 
     console.log(confirmedData);
+  }
+
+  async ngAfterViewInit() {
+    this.result = await this.batchRequest.newBatchRequest([
+      "/odata/xback/users/getCurrentUser",
+      "/odata/xback/users/getCurrentUser",
+      "/odata/xback/users/getCurrentUser"
+    ]);
+    console.log(this.result)
   }
 }
