@@ -68,11 +68,11 @@
             matInput
             formControlName="backOfficePassword"
             placeholder="Back-Office Password "
-            [type]="hide1 ? 'password' : 'text'"
+            [type]="backOfficePasswordHide ? 'password' : 'text'"
             required
           />
-          <mat-icon matSuffix (click)="hide1 = !hide1">{{
-            hide1 ? "visibility_off" : "visibility"
+          <mat-icon matSuffix (click)="backOfficePasswordHide = !backOfficePasswordHide">{{
+            backOfficePasswordHide ? "visibility_off" : "visibility"
           }}</mat-icon>
           <mat-error> Password is <strong>required</strong> </mat-error>
         </mat-form-field>
@@ -84,12 +84,12 @@
             matInput
             formControlName="backOfficeRepeatedPassword"
             placeholder="Repeat Back-Office Password "
-            [type]="hide2 ? 'password' : 'text'"
+            [type]="backOfficeRepeatedPasswordHide ? 'password' : 'text'"
             [errorStateMatcher]="confirmPasswordErrorMatcher"
             required
           />
-          <mat-icon matSuffix (click)="hide2 = !hide2">{{
-            hide2 ? "visibility_off" : "visibility"
+          <mat-icon matSuffix (click)="backOfficeRepeatedPasswordHide = !backOfficeRepeatedPasswordHide">{{
+            backOfficeRepeatedPasswordHide ? "visibility_off" : "visibility"
           }}</mat-icon>
           <mat-error
             *ngIf="
@@ -129,6 +129,7 @@
       <div class="image-uploader-container">
         <app-image-uploader></app-image-uploader>
       </div>
+      <!--<div *ngFor="let res of result">{{res.CompanyId}}</div>-->
     </mat-card>
   </div>
 </div>

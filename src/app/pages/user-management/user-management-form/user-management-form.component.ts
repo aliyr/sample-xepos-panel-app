@@ -15,6 +15,9 @@ export class UserManagementFormComponent implements OnInit , AfterViewInit {
   confirmPasswordErrorMatcher;
   profileForm: FormGroup;
   result;
+  backOfficePasswordHide = false;
+  backOfficeRepeatedPasswordHide = false;
+
   constructor(
     private fb: FormBuilder,
     private router: Router,
@@ -68,12 +71,11 @@ export class UserManagementFormComponent implements OnInit , AfterViewInit {
     console.log(confirmedData);
   }
 
-  async ngAfterViewInit() {
+   async ngAfterViewInit() {
     this.result = await this.batchRequest.newBatchRequest([
       "/odata/xback/users/getCurrentUser",
       "/odata/xback/users/getCurrentUser",
       "/odata/xback/users/getCurrentUser"
     ]);
-    console.log(this.result)
   }
 }

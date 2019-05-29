@@ -1,16 +1,15 @@
-import { Injectable } from '@angular/core';
-import { generateGuid } from "app/utils/create-guid";
+import { Injectable } from "@angular/core";
+import { generateGuid } from "app/utils/generate-guid";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { ValueConverter } from '@angular/compiler/src/render3/view/template';
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class BatchRequestService {
   batchID: string;
   batchBody;
-  responsesArray = [] ;
+  responsesArray = [];
 
-  constructor(private http: HttpClient ) { 
+  constructor(private http: HttpClient) {
     this.batchID = generateGuid();
   }
 
@@ -34,9 +33,8 @@ OData-MaxVersion: 4.0
     return this.batchRequest();
   }
 
-
-  private batchRequest() {
-      this.http
+  private async batchRequest() {
+    const batchRes = await this.http
       .post("odata/XBack/$batch", this.batchBody, {
         headers: new HttpHeaders({
           Accept: "multipart/mixed",
@@ -50,17 +48,12 @@ OData-MaxVersion: 4.0
         }),
         responseType: "text"
       })
-      .subscribe(data => {
-        const returnedJSON = data.match(/\{(.*?)\}/gim);
-        returnedJSON.map((value)=> {
-          this.responsesArray.push(JSON.parse(value));
-        });
-      });
-      return this.responsesArray;
-    }
+      .toPromise();
 
+    const returnedJSON = batchRes.match(/\{(.*?)\}/gim);
+    returnedJSON.map(value => {
+      this.responsesArray.push(JSON.parse(value));
+    });
+    return this.responsesArray;
+  }
 }
-
-
-
-

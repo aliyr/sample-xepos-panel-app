@@ -13,6 +13,7 @@ export class CustomInputComponent implements OnInit {
   @Input() errors: Error[];
   @Input() inputType: string;
   control: FormControl;
+  hide = false;
 
   constructor(private controlContainer: ControlContainer) {
     this.inputType = "text";
