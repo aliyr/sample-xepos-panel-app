@@ -1,3 +1,4 @@
+// this util is used to create a 32 digit guid using random numbers and time  
 export function generateGuid() {
   let d = new Date().getTime();
   const uuid = "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, c => {
