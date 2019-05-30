@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { generateGuid } from "app/utils/generate-guid";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { SnackbarService } from '../snackbar/snackbar.service';
 @Injectable({
   providedIn: "root"
 })
@@ -8,12 +9,15 @@ export class BatchRequestService {
   batchID: string;
   batchBody;
   responsesArray = [];
+  batchRequestLength: number;
+  batchResponseLength: number;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient , private snackbarService: SnackbarService) {
     this.batchID = generateGuid();
   }
 
   public newBatchRequest(requests: string[]) {
+    this.batchRequestLength = requests.length;
     this.batchBody = `${requests
       .map(r => {
         return `
@@ -47,13 +51,18 @@ OData-MaxVersion: 4.0
           "X-CorrelationId": generateGuid()
         }),
         responseType: "text"
-      })
-      .toPromise();
+      }).toPromise();
 
     const returnedJSON = batchRes.match(/\{(.*?)\}/gim);
     returnedJSON.map(value => {
       this.responsesArray.push(JSON.parse(value));
     });
-    return this.responsesArray;
+    this.batchResponseLength = this.responsesArray.length;
+    debugger;
+    if (this.batchResponseLength === this.batchRequestLength) {
+      return this.responsesArray;
+    } else {
+      this.snackbarService.toastError(' something went wrong :( ' , ' close ' , 3000);
+    }
   }
 }
