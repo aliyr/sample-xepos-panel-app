@@ -53,7 +53,7 @@ OData-MaxVersion: 4.0
         responseType: "text"
       }).toPromise();
 
-    const returnedJSON = batchRes.match(/\{(.*?)\}/gim);
+    const returnedJSON = batchRes.match(/\{(\"@odata)(.*?)\}/gim);
     returnedJSON.map(value => {
       this.responsesArray.push(JSON.parse(value));
     });
