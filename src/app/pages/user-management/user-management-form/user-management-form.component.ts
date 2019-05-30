@@ -1,4 +1,8 @@
-import { Component, OnInit, AfterContentInit, AfterViewInit } from "@angular/core";
+import {
+  Component,
+  OnInit,
+  AfterViewInit
+} from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import PasswordMatchErrorStateMatcher from "app/validators/Password-match-error-state-matcher";
 import { Router } from "@angular/router";
@@ -9,7 +13,7 @@ import { BatchRequestService } from "app/services/batch-request/batch-request.se
   templateUrl: "./user-management-form.component.html",
   styleUrls: ["./user-management-form.component.scss"]
 })
-export class UserManagementFormComponent implements OnInit , AfterViewInit {
+export class UserManagementFormComponent implements OnInit, AfterViewInit {
   locations: string[];
   roles: string[];
   confirmPasswordErrorMatcher;
@@ -71,8 +75,12 @@ export class UserManagementFormComponent implements OnInit , AfterViewInit {
     console.log(confirmedData);
   }
 
-   async ngAfterViewInit() {
-    this.result = await this.batchRequest.newBatchRequest([
+  ngAfterViewInit() {
+    this.sendBatchRequest();
+  }
+
+  async sendBatchRequest() {
+    this.result = await this.batchRequest.createBatchBody([
       "/odata/xback/users/getCurrentUser",
       "/odata/xback/users/getCurrentUser",
       "/odata/xback/users/getCurrentUser"
