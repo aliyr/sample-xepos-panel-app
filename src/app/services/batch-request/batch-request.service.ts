@@ -13,10 +13,12 @@ export class BatchRequestService {
   batchResponseLength: number;
 
   constructor(private http: HttpClient , private snackbarService: SnackbarService) {
+    // each batch request has a unique ID that should be placed on
+    // each request and also on the end of whole request
     this.batchID = generateGuid();
   }
 
-  public newBatchRequest(requests: string[]) {
+  public createBatchBody(requests: string[]) {
     this.batchRequestLength = requests.length;
     this.batchBody = `${requests
       .map(r => {
@@ -53,15 +55,19 @@ OData-MaxVersion: 4.0
         responseType: "text"
       }).toPromise();
 
-    const returnedJSON = batchRes.match(/\{(\"@odata)(.*?)\}/gim);
-    returnedJSON.map(value => {
+
+    // Extracts objects that started with
+    // Odata and push them into an array
+    const returnedJSONArray = batchRes.match(/\{(\"@odata)(.*?)\}/gim);
+    returnedJSONArray.map(value => {
       this.responsesArray.push(JSON.parse(value));
     });
     this.batchResponseLength = this.responsesArray.length;
-    debugger;
+
     if (this.batchResponseLength === this.batchRequestLength) {
       return this.responsesArray;
     } else {
+      // if one or more requests become failed, show an error
       this.snackbarService.toastError(' something went wrong :( ' , ' close ' , 3000);
     }
   }
