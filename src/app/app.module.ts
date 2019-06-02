@@ -7,6 +7,8 @@ import { AppComponent } from "./app.component";
 import { DashboardComponent } from "./pages/dashboard/dashboard.component";
 import { LoginComponent } from "./pages/login/login.component";
 import { SignupComponent } from "./pages/signup/signup.component";
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core';
 import { UserManagementDetailsComponent } from "./pages/user-management/user-management-details/user-management-details.component";
 import {
   MatTableModule,
@@ -30,7 +32,7 @@ import {
   MatCardModule,
   MatButtonModule,
   MatBadgeModule,
-  MatPaginatorIntl
+  MatPaginatorIntl,
 } from "@angular/material";
 
 import { MatIconModule } from "@angular/material/icon";
@@ -73,6 +75,7 @@ import { DevicesFormComponent } from "./pages/devices/devices-form/devices-form.
 import { DevicesComponent } from "./pages/devices/devices.component";
 import {HttpClientModule} from '@angular/common/http';
 import { CustomTableComponent } from './components/custom-table/custom-table.component';
+import { PanelComponent } from './pages/panel/panel.component';
 
 @NgModule({
   declarations: [
@@ -102,7 +105,8 @@ import { CustomTableComponent } from './components/custom-table/custom-table.com
     DevicesDetailsComponent,
     DevicesFormComponent,
     DevicesComponent,
-    CustomTableComponent
+    CustomTableComponent,
+    PanelComponent
   ],
   imports: [
     BrowserModule,
@@ -149,7 +153,8 @@ import { CustomTableComponent } from './components/custom-table/custom-table.com
     MatToolbarModule,
     AgmCoreModule.forRoot({
       apiKey: "AIzaSyCeWFYR_9Kqa5Q0CH_KAWLfNrojB0LngrM"
-    })
+    }),
+    FontAwesomeModule
   ],
   providers: [{ provide: MatPaginatorIntl, useClass: CustomMatPaginatorIntl }],
   bootstrap: [AppComponent]

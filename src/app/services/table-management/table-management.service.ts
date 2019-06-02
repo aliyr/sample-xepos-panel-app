@@ -101,6 +101,6 @@ export class TableManagementService {
     this.paginationEvent = element;
   }
   cancelRequest(): void {
-    this.router.navigate(["/"]);
+    this.router.navigate(["/panel"]);
   }
 }

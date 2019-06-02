@@ -16,7 +16,7 @@ export class SubNavComponent {
     this.sideNavItems = [
       {
         title: "dashboard",
-        route: ""
+        route: "dashboard"
       },
       {
         title: "reporting",
@@ -77,14 +77,14 @@ export class SubNavComponent {
         items: [
           {
             title: "company",
-            items: [{ title: "company details", route: "/company-management" }]
+            items: [{ title: "company details", route: "/panel/company-management" }]
           },
           {
             title: "locations",
             items: [
               { title: "locations", route: "" },
-              { title: "registers", route: "/registers" },
-              { title: "devices", route: "/devices" },
+              { title: "registers", route: "/panel/registers" },
+              { title: "devices", route: "/panel/devices" },
             ]
           },
           {
@@ -109,7 +109,7 @@ export class SubNavComponent {
           {
             title: "users",
             items: [
-              { title: "user management", route: "/user-management" },
+              { title: "user management", route: "/panel/user-management" },
               { title: "loyalty schemes", route: "" }
             ]
           },

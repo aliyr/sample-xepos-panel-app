@@ -1,0 +1,21 @@
+<mat-drawer-container class="drawer-container" hasBackdrop="false" autosize>
+  <mat-drawer
+    #drawer
+    mode="side"
+    class="left-side-nav"
+    [opened]="menuIsOpen"
+  >
+    <nav>
+      <app-sub-nav></app-sub-nav>
+    </nav>
+  </mat-drawer>
+  <mat-drawer-content>
+    <div class="container-fluid">
+      <mat-card class="page-header">
+        user info
+        <button mat-stroked-button (click)="toggleDrawer()" >{{menuIsOpen ?   'close' : 'open'}}</button>
+      </mat-card>
+      <router-outlet></router-outlet>
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>

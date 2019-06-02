@@ -59,7 +59,7 @@ export class UserManagementFormComponent implements OnInit, AfterViewInit {
   }
 
   returnToList() {
-    this.router.navigate(["/user-management/details"]);
+    this.router.navigate(["/panel/user-management/details"]);
   }
   save() {
     const confirmedData = {

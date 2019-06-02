@@ -44,6 +44,6 @@ export class UserManagementDetailsComponent implements OnInit, AfterViewInit  {
   }
 
   updateUser(userID): void {
-    this.router.navigate(["/user-management/form", userID]);
+    this.router.navigate(["/panel/user-management/form", userID]);
   }
 }

@@ -35,7 +35,7 @@ export class DevicesDetailsComponent implements OnInit {
     this.updateTable();
   }
   updateDevice(userID) {
-    this.router.navigate(["/devices/form", userID]);
+    this.router.navigate(["/panel/devices/form", userID]);
   }
   updateTable(): void {
     // filter predicate is used to limit search datas to specific columns

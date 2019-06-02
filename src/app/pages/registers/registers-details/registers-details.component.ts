@@ -44,7 +44,7 @@ export class RegistersDetailsComponent implements OnInit {
   }
 
   updateRegister(registerID): void {
-    this.router.navigate(["/registers/form", registerID]);
+    this.router.navigate(["/panel/registers/form", registerID]);
   }
 
   applyFilter(filterValue: string) {

@@ -81,7 +81,7 @@ export class CompanyManagementWizardComponent implements OnInit {
   }
 
   cancelCompanyWizardForm() {
-    this.router.navigate(["/company-management/details"]);
+    this.router.navigate(["/panel/company-management/details"]);
   }
 
   markerDragEnd($event) {
