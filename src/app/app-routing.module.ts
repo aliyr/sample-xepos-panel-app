@@ -16,6 +16,7 @@ import { RegistersFormComponent } from "./pages/registers/registers-form/registe
 import { DevicesFormComponent } from "app/pages/devices/devices-form/devices-form.component";
 import { DevicesDetailsComponent } from "app/pages/devices/devices-details/devices-details.component";
 import { DevicesComponent } from "app/pages/devices/devices.component";
+import { LicenseDetailsComponent } from "./pages/license-details/license-details.component";
 import {PanelComponent} from './pages/panel/panel.component';
 
 const routes: Routes = [

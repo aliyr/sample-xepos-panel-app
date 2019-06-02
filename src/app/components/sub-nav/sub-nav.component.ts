@@ -77,7 +77,10 @@ export class SubNavComponent {
         items: [
           {
             title: "company",
-            items: [{ title: "company details", route: "/panel/company-management" }]
+            items: [
+              { title: "license details", route: "/license-details" }
+            ]
+              { title: "company details", route: "/company-management" },
           },
           {
             title: "locations",

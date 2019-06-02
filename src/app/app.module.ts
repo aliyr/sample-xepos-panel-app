@@ -75,6 +75,8 @@ import { DevicesFormComponent } from "./pages/devices/devices-form/devices-form.
 import { DevicesComponent } from "./pages/devices/devices.component";
 import {HttpClientModule} from '@angular/common/http';
 import { CustomTableComponent } from './components/custom-table/custom-table.component';
+import { LicenseDetailsComponent } from './pages/license-details/license-details.component';
+import { DialogBoxComponent } from './components/dialogs/license-paircode-dialog-box/generate-paircode-dialog-box.component';
 import { PanelComponent } from './pages/panel/panel.component';
 
 @NgModule({
@@ -106,6 +108,8 @@ import { PanelComponent } from './pages/panel/panel.component';
     DevicesFormComponent,
     DevicesComponent,
     CustomTableComponent,
+    LicenseDetailsComponent,
+    DialogBoxComponent
     PanelComponent
   ],
   imports: [
@@ -157,6 +161,7 @@ import { PanelComponent } from './pages/panel/panel.component';
     FontAwesomeModule
   ],
   providers: [{ provide: MatPaginatorIntl, useClass: CustomMatPaginatorIntl }],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [DialogBoxComponent]
 })
 export class AppModule {}
