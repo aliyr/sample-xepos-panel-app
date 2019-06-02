@@ -77,14 +77,17 @@ export class SubNavComponent {
         items: [
           {
             title: "company",
-            items: [{ title: "company details", route: "/company-management" }]
+            items: [
+              { title: "company details", route: "/company-management" },
+              { title: "license details", route: "/license-details" }
+            ]
           },
           {
             title: "locations",
             items: [
               { title: "locations", route: "" },
               { title: "registers", route: "/registers" },
-              { title: "devices", route: "/devices" },
+              { title: "devices", route: "/devices" }
             ]
           },
           {

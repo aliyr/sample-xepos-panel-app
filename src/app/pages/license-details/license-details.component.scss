@@ -1,0 +1,16 @@
+.status-circle {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 5px;
+}
+.status-circle-pending {
+  background-color: orange;
+}
+.status-circle-free {
+  background-color: green;
+}
+.status-circle-invoked {
+  background-color: red;
+}

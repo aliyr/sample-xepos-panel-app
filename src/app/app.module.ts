@@ -73,6 +73,8 @@ import { DevicesFormComponent } from "./pages/devices/devices-form/devices-form.
 import { DevicesComponent } from "./pages/devices/devices.component";
 import {HttpClientModule} from '@angular/common/http';
 import { CustomTableComponent } from './components/custom-table/custom-table.component';
+import { LicenseDetailsComponent } from './pages/license-details/license-details.component';
+import { DialogBoxComponent } from './components/dialogs/license-paircode-dialog-box/generate-paircode-dialog-box.component';
 
 @NgModule({
   declarations: [
@@ -102,7 +104,9 @@ import { CustomTableComponent } from './components/custom-table/custom-table.com
     DevicesDetailsComponent,
     DevicesFormComponent,
     DevicesComponent,
-    CustomTableComponent
+    CustomTableComponent,
+    LicenseDetailsComponent,
+    DialogBoxComponent
   ],
   imports: [
     BrowserModule,
@@ -152,6 +156,7 @@ import { CustomTableComponent } from './components/custom-table/custom-table.com
     })
   ],
   providers: [{ provide: MatPaginatorIntl, useClass: CustomMatPaginatorIntl }],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [DialogBoxComponent]
 })
 export class AppModule {}
