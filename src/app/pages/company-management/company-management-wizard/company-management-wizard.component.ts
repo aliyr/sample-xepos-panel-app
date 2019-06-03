@@ -2,6 +2,8 @@ import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { FormArray, FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { STEPPER_GLOBAL_OPTIONS } from "@angular/cdk/stepper";
+import { MatDialog } from "@angular/material";
+import { DaysPickerComponent } from "app/components/dialogs/days-picker/days-picker.component";
 
 @Component({
   selector: "app-company-details-wizard",
@@ -19,7 +21,11 @@ export class CompanyManagementWizardComponent implements OnInit {
   longitude = -0.640457;
   currencyList: string[];
 
-  constructor(private router: Router, private fb: FormBuilder) {}
+  constructor(
+    private router: Router,
+    private fb: FormBuilder,
+    private dialog: MatDialog
+  ) {}
   companyWizardForm: FormGroup;
 
   ngOnInit() {
@@ -33,17 +39,22 @@ export class CompanyManagementWizardComponent implements OnInit {
     this.companyWizardForm = this.fb.group({
       generalInfo: this.fb.group({
         businessName: ["", Validators.required],
-        address1: [""],
+        address1: ["", Validators.required],
         address2: [""],
         town: [""],
         country: [""],
         postcode: ["", Validators.required],
+        registersName: [""],
+        workHours: [""],
+        website: [""],
+        staffsNO: [""],
+        deviceNo: ["", Validators.required],
         privateAddress: [""],
-        phoneNumber: [""],
+        phoneNumber: ["", Validators.required],
         email: [""],
         CRMOrderNumber: [""],
         companyLat: [this.latitude],
-        companyLng: [this.longitude],
+        companyLng: [this.longitude]
       }),
       locations: this.fb.array([])
     });
@@ -125,5 +136,13 @@ export class CompanyManagementWizardComponent implements OnInit {
       })
     };
     console.log(confirmedData);
+  }
+
+  openDialog() {
+    const dialogRef = this.dialog.open(DaysPickerComponent, {
+      data: {
+        controller: this.generalInfoFormGroup.get("workHours")
+      }
+    });
   }
 }

@@ -29,6 +29,7 @@
       <app-custom-input
         controlName="address1"
         label="address 1"
+        [errors]="[{ title: 'required', message: 'your address is required' }]"
       ></app-custom-input>
 
       <app-custom-input
@@ -51,7 +52,39 @@
       <app-custom-input
         controlName="phoneNumber"
         label="Phone number"
+        [errors]="[{ title: 'required', message: 'Phone number is required' }]"
       ></app-custom-input>
+      <app-custom-input
+        controlName="website"
+        label="website"
+      ></app-custom-input>
+
+      <button mat-raised-button color="accent" (click)="openDialog()">
+        pick your work hours
+      </button>
+
+      <app-custom-input
+        controlName="staffsNO"
+        label="staffs number"
+      ></app-custom-input>
+
+      <app-custom-input
+        controlName="deviceNo"
+        label="devices number"
+        [errors]="[
+          { title: 'required', message: 'at least one device is required' }
+        ]"
+      ></app-custom-input>
+
+      <app-multi-select-chips
+        controlName="registersName"
+        inputLabel="registers names"
+      >
+      </app-multi-select-chips>
+
+      <div class="image-uploader-container">
+        <app-image-uploader></app-image-uploader>
+      </div>
 
       <app-custom-input
         controlName="privateAddress"

@@ -9,12 +9,14 @@
       [matAutocomplete]="auto"
       (focus)="isInputTouched = true"
       [required]="isRequired"
+      (keyup.enter)="!optionsArray ? addToOptions(chosenOption.value) : ''"
+      (keyup)="optionsArray ? _filter(chosenOption.value) : ''"
     />
     <mat-autocomplete
       #auto="matAutocomplete"
       (optionSelected)="addToOptions(chosenOption.value)"
     >
-      <mat-option *ngFor="let option of optionsArray" [value]="option">
+      <mat-option *ngFor="let option of filteredOptions" [value]="option">
         {{ option }}
       </mat-option>
     </mat-autocomplete>

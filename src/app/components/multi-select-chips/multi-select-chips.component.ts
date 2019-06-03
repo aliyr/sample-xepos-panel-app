@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { FormControl, ControlContainer } from "@angular/forms";
-import { controlNameBinding } from "@angular/forms/src/directives/reactive_directives/form_control_name";
 
 @Component({
   selector: "app-multi-select-chips",
@@ -14,25 +13,41 @@ export class MultiSelectChipsComponent implements OnInit {
   @Input() isRequired: boolean;
   control: FormControl;
   isInputTouched: boolean;
+  filteredOptions: string[];
   // workaround
   // problem with list error
+  // errors are not shown like other errors
 
   constructor(private controlContainer: ControlContainer) {
     this.isRequired = false;
   }
 
   ngOnInit() {
+    this.filteredOptions = this.optionsArray;
     this.control = this.controlContainer.control.get(
       this.controlName
     ) as FormControl;
     this.control.patchValue([]);
   }
 
+  public _filter(value: string) {
+    const filterValue = value.toLowerCase();
+
+    this.filteredOptions = this.optionsArray.filter(option =>
+      option.toLowerCase().includes(filterValue)
+    );
+  }
+
   validateUseroptions(userOptions: string[], insertedOption: string): boolean {
     // check if the Option is valid or not
     let isOptionNonRepetitive = true;
-    const isOptionValid =
-      this.optionsArray.find(p => p === insertedOption) !== undefined;
+    let isOptionValid: boolean;
+    if (this.optionsArray) {
+      isOptionValid =
+        this.optionsArray.find(p => p === insertedOption) !== undefined;
+    } else {
+      isOptionValid = true;
+    }
 
     if (userOptions) {
       isOptionNonRepetitive =

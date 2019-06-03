@@ -75,7 +75,8 @@ import {HttpClientModule} from '@angular/common/http';
 import { CustomTableComponent } from './components/custom-table/custom-table.component';
 import { LicenseDetailsComponent } from './pages/license-details/license-details.component';
 import { DialogBoxComponent } from './components/dialogs/license-paircode-dialog-box/generate-paircode-dialog-box.component';
-
+import { DaysPickerComponent } from './components/dialogs/days-picker/days-picker.component';
+import { Ng5SliderModule } from 'ng5-slider';
 @NgModule({
   declarations: [
     AppComponent,
@@ -106,7 +107,8 @@ import { DialogBoxComponent } from './components/dialogs/license-paircode-dialog
     DevicesComponent,
     CustomTableComponent,
     LicenseDetailsComponent,
-    DialogBoxComponent
+    DialogBoxComponent,
+    DaysPickerComponent
   ],
   imports: [
     BrowserModule,
@@ -151,12 +153,13 @@ import { DialogBoxComponent } from './components/dialogs/license-paircode-dialog
     MatBottomSheetModule,
     FormsModule,
     MatToolbarModule,
+    Ng5SliderModule,
     AgmCoreModule.forRoot({
       apiKey: "AIzaSyCeWFYR_9Kqa5Q0CH_KAWLfNrojB0LngrM"
     })
   ],
   providers: [{ provide: MatPaginatorIntl, useClass: CustomMatPaginatorIntl }],
   bootstrap: [AppComponent],
-  entryComponents: [DialogBoxComponent]
+  entryComponents: [DialogBoxComponent , DaysPickerComponent]
 })
 export class AppModule {}
