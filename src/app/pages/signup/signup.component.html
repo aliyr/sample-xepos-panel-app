@@ -1,3 +1,46 @@
-<p>
-  signup works!
-</p>
+<div class="container-fluid registeration-page-container">
+  <div class="row justify-content-center align-items-center">
+    <div class="col-6" [formGroup]="signupForm">
+      <mat-card class="horizontal-centralize">
+        <mat-card-header>
+          <mat-card-title>Sign up</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <app-custom-input
+            controlName="email"
+            [errors]="[
+          { title: 'required', message: 'email is required' }
+        ]"
+            label="email"
+          ></app-custom-input>
+          <app-custom-input
+            controlName="password"
+            [errors]="[
+          { title: 'required', message: 'password is required' }
+        ]"
+            label="password"
+          ></app-custom-input>
+          <div class="col-12 button-container">
+            <button mat-button mat-raised-button color="accent">
+              Sign Up
+            </button>
+          </div>
+          <div class="col-12">
+            <mat-divider></mat-divider>
+          </div>
+          <div class="col-12 button-container justify-content-center">
+            <button mat-mini-fab color="accent">
+              <mat-icon>tweeter</mat-icon>
+            </button>
+            <button mat-mini-fab color="accent">
+              <mat-icon>facebook</mat-icon>
+            </button>
+            <button mat-mini-fab color="accent">
+              <mat-icon>google</mat-icon>
+            </button>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>

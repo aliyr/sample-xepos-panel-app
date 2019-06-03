@@ -31,7 +31,7 @@ export class DevicesFormComponent implements OnInit {
     });
   }
   cancelEditDeviceForm() {
-    this.router.navigate(["/devices"]);
+    this.router.navigate(["/panel/devices"]);
   }
 
   saveDevicesEditForm() {

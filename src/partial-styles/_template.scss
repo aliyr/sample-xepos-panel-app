@@ -26,6 +26,13 @@
   top: 50%;
   transform: translateY(-50%);
 }
+
+.horizontal-centralize {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 .mat-card-container {
   margin-bottom: 20px;
 }
@@ -50,4 +57,19 @@
   background-color: #36485f;
   min-height: 500px;
   z-index: 2;
+}
+
+
+// Styles that being used for signup and login pages
+
+.registeration-page-container{
+  height: 100%;
+  background-color: $dark-background;
+  .row{
+    height: 100%;
+
+    .mat-card{
+      max-width: 500px;
+    }
+  }
 }

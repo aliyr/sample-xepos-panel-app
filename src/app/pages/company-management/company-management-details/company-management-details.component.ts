@@ -73,10 +73,10 @@ export class CompanyManagementDetailsComponent implements OnInit {
   }
 
   updateUser(userID: number): void {
-    this.router.navigate(["/company-management/form", userID]);
+    this.router.navigate(["/panel/company-management/form", userID]);
   }
   openWizardForm() {
-    this.router.navigate(["/company-management/wizard"]);
+    this.router.navigate(["/panel/company-management/wizard"]);
   }
   updateTable(): void {
     // filter predicate is used to limit search datas to specific columns

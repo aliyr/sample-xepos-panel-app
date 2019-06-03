@@ -17,51 +17,57 @@ import { DevicesFormComponent } from "app/pages/devices/devices-form/devices-for
 import { DevicesDetailsComponent } from "app/pages/devices/devices-details/devices-details.component";
 import { DevicesComponent } from "app/pages/devices/devices.component";
 import { LicenseDetailsComponent } from "./pages/license-details/license-details.component";
+import {PanelComponent} from './pages/panel/panel.component';
 
 const routes: Routes = [
-  { path: "", component: DashboardComponent },
+  { path: "", component: LoginComponent },
   { path: "login", component: LoginComponent },
   { path: "sign-up", component: SignupComponent },
   {
-    path: "user-management",
-    component: UserManagementComponent,
+    // panel child routes
+    path: "panel",
+    component: PanelComponent,
     children: [
-      { path: "", redirectTo: "details", pathMatch: "full" },
-      { path: "form/:id", component: UserManagementFormComponent },
-      { path: "details", component: UserManagementDetailsComponent }
+      { path: "", redirectTo: "dashboard", pathMatch: "full" },
+      { path: "dashboard", component: DashboardComponent },
+      {
+        path: "user-management",
+        component: UserManagementComponent,
+        children: [
+          { path: "", redirectTo: "details", pathMatch: "full" },
+          { path: "form/:id", component: UserManagementFormComponent },
+          { path: "details", component: UserManagementDetailsComponent }
+        ]
+      },
+      {
+        path: "company-management",
+        component: CompanyManagementComponent,
+        children: [
+          { path: "", redirectTo: "details", pathMatch: "full" },
+          { path: "form/:id", component: CompanyManagementFormComponent },
+          { path: "details", component: CompanyManagementDetailsComponent },
+          { path: "wizard", component: CompanyManagementWizardComponent }
+        ]
+      },
+      {
+        path: "devices",
+        component: DevicesComponent,
+        children: [
+          { path: "", redirectTo: "details", pathMatch: "full" },
+          { path: "form/:id", component: DevicesFormComponent },
+          { path: "details", component: DevicesDetailsComponent }
+        ]
+      },
+      {
+        path: "registers",
+        component: RegistersComponent,
+        children: [
+          { path: "", redirectTo: "details", pathMatch: "full" },
+          { path: "form/:id", component: RegistersFormComponent },
+          { path: "details", component: RegistersDetailsComponent }
+        ]
+      }
     ]
-  },
-  {
-    path: "company-management",
-    component: CompanyManagementComponent,
-    children: [
-      { path: "", redirectTo: "details", pathMatch: "full" },
-      { path: "form/:id", component: CompanyManagementFormComponent },
-      { path: "details", component: CompanyManagementDetailsComponent },
-      { path: "wizard", component: CompanyManagementWizardComponent }
-    ]
-  },
-  {
-    path: "devices",
-    component: DevicesComponent,
-    children: [
-      { path: "", redirectTo: "details", pathMatch: "full" },
-      { path: "form/:id", component: DevicesFormComponent },
-      { path: "details", component: DevicesDetailsComponent }
-    ]
-  },
-  {
-    path: "registers",
-    component: RegistersComponent,
-    children: [
-      { path: "", redirectTo: "details", pathMatch: "full" },
-      { path: "form/:id", component: RegistersFormComponent },
-      { path: "details", component: RegistersDetailsComponent }
-    ]
-  },
-  {
-    path: "license-details",
-    component: LicenseDetailsComponent
   }
 ];
 

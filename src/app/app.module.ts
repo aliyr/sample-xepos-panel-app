@@ -7,6 +7,8 @@ import { AppComponent } from "./app.component";
 import { DashboardComponent } from "./pages/dashboard/dashboard.component";
 import { LoginComponent } from "./pages/login/login.component";
 import { SignupComponent } from "./pages/signup/signup.component";
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core';
 import { UserManagementDetailsComponent } from "./pages/user-management/user-management-details/user-management-details.component";
 import {
   MatTableModule,
@@ -30,7 +32,7 @@ import {
   MatCardModule,
   MatButtonModule,
   MatBadgeModule,
-  MatPaginatorIntl
+  MatPaginatorIntl,
 } from "@angular/material";
 
 import { MatIconModule } from "@angular/material/icon";
@@ -77,6 +79,8 @@ import { LicenseDetailsComponent } from './pages/license-details/license-details
 import { DialogBoxComponent } from './components/dialogs/license-paircode-dialog-box/generate-paircode-dialog-box.component';
 import { DaysPickerComponent } from './components/dialogs/days-picker/days-picker.component';
 import { Ng5SliderModule } from 'ng5-slider';
+import { PanelComponent } from './pages/panel/panel.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -109,6 +113,7 @@ import { Ng5SliderModule } from 'ng5-slider';
     LicenseDetailsComponent,
     DialogBoxComponent,
     DaysPickerComponent
+    PanelComponent
   ],
   imports: [
     BrowserModule,
@@ -156,7 +161,8 @@ import { Ng5SliderModule } from 'ng5-slider';
     Ng5SliderModule,
     AgmCoreModule.forRoot({
       apiKey: "AIzaSyCeWFYR_9Kqa5Q0CH_KAWLfNrojB0LngrM"
-    })
+    }),
+    FontAwesomeModule
   ],
   providers: [{ provide: MatPaginatorIntl, useClass: CustomMatPaginatorIntl }],
   bootstrap: [AppComponent],

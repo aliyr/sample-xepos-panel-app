@@ -41,7 +41,7 @@ export class CompanyManagementFormComponent implements OnInit {
   }
 
   cancelCompanyEditForm() {
-    this.router.navigate(["/company-management/details"]);
+    this.router.navigate(["/panel/company-management/details"]);
   }
   saveCompanyEditForm() {
     const confirmedData = {

@@ -27,7 +27,7 @@ export class RegistersFormComponent implements OnInit {
   }
 
   returnToList() {
-    this.router.navigate(["/user-management/details"]);
+    this.router.navigate(["/panel/user-management/details"]);
   }
 
   save() {
