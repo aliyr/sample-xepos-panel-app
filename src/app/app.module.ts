@@ -7,8 +7,6 @@ import { AppComponent } from "./app.component";
 import { DashboardComponent } from "./pages/dashboard/dashboard.component";
 import { LoginComponent } from "./pages/login/login.component";
 import { SignupComponent } from "./pages/signup/signup.component";
-import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
-import { library } from "@fortawesome/fontawesome-svg-core";
 import { UserManagementDetailsComponent } from "./pages/user-management/user-management-details/user-management-details.component";
 import {
   MatTableModule,
@@ -167,8 +165,7 @@ import { LocationFormComponent } from "./pages/locations/location-form/location-
     Ng5SliderModule,
     AgmCoreModule.forRoot({
       apiKey: "AIzaSyCeWFYR_9Kqa5Q0CH_KAWLfNrojB0LngrM"
-    })
-    // FontAwesomeModule
+    }),
   ],
   providers: [{ provide: MatPaginatorIntl, useClass: CustomMatPaginatorIntl }],
   bootstrap: [AppComponent],
