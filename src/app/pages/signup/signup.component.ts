@@ -1,6 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {Router} from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 
 @Component({
   selector: "app-signup",
@@ -8,7 +7,6 @@ import {Router} from '@angular/router';
   styleUrls: ["./signup.component.scss"]
 })
 export class SignupComponent implements OnInit {
-
   signupForm: FormGroup;
   constructor(private fb: FormBuilder) {}
 
@@ -16,7 +14,7 @@ export class SignupComponent implements OnInit {
     this.signupForm = this.fb.group({
       username: ["", [Validators.required]],
       email: ["", [Validators.required]],
-      password: ["", [Validators.required]],
+      password: ["", [Validators.required]]
     });
   }
 }

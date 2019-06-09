@@ -1,0 +1,54 @@
+<app-list-header
+  title="Edit User Information"
+  description="lorem ipsum dolor sit"
+>
+  <button
+    (click)="cancelForm()"
+    mat-raised-button
+    class="header-button"
+    color="warn"
+  >
+    cancel
+  </button>
+  <button
+    (click)="updateLocation()"
+    mat-raised-button
+    class="header-button"
+    color="accent"
+    [disabled]="!locationsForm.valid"
+  >
+    save
+  </button>
+</app-list-header>
+<div class="row" [formGroup]="locationsForm">
+  <div class="col-12 form-group-container">
+    <app-custom-input
+      controlName="locationName"
+      [errors]="[{ title: 'required', message: 'location name is required' }]"
+      label="location name"
+    ></app-custom-input>
+    <app-custom-input
+      controlName="cityName"
+      [errors]="[{ title: 'required', message: 'city name is required' }]"
+      label="city name"
+    ></app-custom-input>
+
+    <app-custom-input
+      controlName="streeName"
+      [errors]="[{ title: 'required', message: 'street name is required' }]"
+      label="street name"
+    ></app-custom-input>
+
+    <app-custom-input
+      controlName="zipCode"
+      [errors]="[{ title: 'required', message: 'zip code is required' }]"
+      label="zip code"
+    ></app-custom-input>
+    <app-custom-autocomplete-input
+      [optionsArray]="data"
+      label="country"
+      controlName="Country"
+      [errors]="[{ title: 'required', message: 'city name is required' }]"
+    ></app-custom-autocomplete-input>
+  </div>
+</div>

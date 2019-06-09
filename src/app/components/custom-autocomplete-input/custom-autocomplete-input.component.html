@@ -9,6 +9,7 @@
       [placeholder]="label"
       [formControl]="control"
       [required]="errors"
+      (blur)="checkValue(chosenCountry)"
     />
     <mat-autocomplete #auto2="matAutocomplete">
       <mat-option

@@ -7,8 +7,8 @@ import { AppComponent } from "./app.component";
 import { DashboardComponent } from "./pages/dashboard/dashboard.component";
 import { LoginComponent } from "./pages/login/login.component";
 import { SignupComponent } from "./pages/signup/signup.component";
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { library } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
+import { library } from "@fortawesome/fontawesome-svg-core";
 import { UserManagementDetailsComponent } from "./pages/user-management/user-management-details/user-management-details.component";
 import {
   MatTableModule,
@@ -32,7 +32,7 @@ import {
   MatCardModule,
   MatButtonModule,
   MatBadgeModule,
-  MatPaginatorIntl,
+  MatPaginatorIntl
 } from "@angular/material";
 
 import { MatIconModule } from "@angular/material/icon";
@@ -65,21 +65,24 @@ import { MultiSelectChipsComponent } from "./components/multi-select-chips/multi
 import { CustomInputComponent } from "./components/custom-input/custom-input.component";
 import { CustomOptionSelectComponent } from "./components/custom-options-select/custom-options-select.component";
 import { CustomAutocompleteInputComponent } from "./components/custom-autocomplete-input/custom-autocomplete-input.component";
-import { RegistersComponent } from './pages/registers/registers.component';
-import { RegistersDetailsComponent } from './pages/registers/registers-details/registers-details.component';
-import { RegistersFormComponent } from './pages/registers/registers-form/registers-form.component';
-import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
-import { TimePickerComponent } from './components/time-picker/time-picker.component';
+import { RegistersComponent } from "./pages/registers/registers.component";
+import { RegistersDetailsComponent } from "./pages/registers/registers-details/registers-details.component";
+import { RegistersFormComponent } from "./pages/registers/registers-form/registers-form.component";
+import { NgxMaterialTimepickerModule } from "ngx-material-timepicker";
+import { TimePickerComponent } from "./components/time-picker/time-picker.component";
 import { DevicesDetailsComponent } from "./pages/devices/devices-details/devices-details.component";
 import { DevicesFormComponent } from "./pages/devices/devices-form/devices-form.component";
 import { DevicesComponent } from "./pages/devices/devices.component";
-import {HttpClientModule} from '@angular/common/http';
-import { CustomTableComponent } from './components/custom-table/custom-table.component';
-import { LicenseDetailsComponent } from './pages/license-details/license-details.component';
-import { DialogBoxComponent } from './components/dialogs/license-paircode-dialog-box/generate-paircode-dialog-box.component';
-import { DaysPickerComponent } from './components/dialogs/days-picker/days-picker.component';
-import { Ng5SliderModule } from 'ng5-slider';
-import { PanelComponent } from './pages/panel/panel.component';
+import { HttpClientModule } from "@angular/common/http";
+import { CustomTableComponent } from "./components/custom-table/custom-table.component";
+import { LicenseDetailsComponent } from "./pages/license-details/license-details.component";
+import { DialogBoxComponent } from "./components/dialogs/license-paircode-dialog-box/generate-paircode.component";
+import { DaysPickerComponent } from "./components/dialogs/days-picker/days-picker.component";
+import { Ng5SliderModule } from "ng5-slider";
+import { PanelComponent } from "./pages/panel/panel.component";
+import { LocationsComponent } from "./pages/locations/locations.component";
+import { LocationDetailsComponent } from "./pages/locations/location-details/location-details.component";
+import { LocationFormComponent } from "./pages/locations/location-form/location-form.component";
 
 @NgModule({
   declarations: [
@@ -112,8 +115,11 @@ import { PanelComponent } from './pages/panel/panel.component';
     CustomTableComponent,
     LicenseDetailsComponent,
     DialogBoxComponent,
-    DaysPickerComponent
-    PanelComponent
+    DaysPickerComponent,
+    PanelComponent,
+    LocationsComponent,
+    LocationDetailsComponent,
+    LocationFormComponent
   ],
   imports: [
     BrowserModule,
@@ -161,11 +167,11 @@ import { PanelComponent } from './pages/panel/panel.component';
     Ng5SliderModule,
     AgmCoreModule.forRoot({
       apiKey: "AIzaSyCeWFYR_9Kqa5Q0CH_KAWLfNrojB0LngrM"
-    }),
-    FontAwesomeModule
+    })
+    // FontAwesomeModule
   ],
   providers: [{ provide: MatPaginatorIntl, useClass: CustomMatPaginatorIntl }],
   bootstrap: [AppComponent],
-  entryComponents: [DialogBoxComponent , DaysPickerComponent]
+  entryComponents: [DialogBoxComponent, DaysPickerComponent]
 })
 export class AppModule {}

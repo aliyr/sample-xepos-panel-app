@@ -39,4 +39,13 @@ export class CustomAutocompleteInputComponent implements OnInit {
       this.controlName
     ) as FormControl;
   }
+  checkValue(chosenValue) {
+    const result = this.optionsArray.find(data => {
+      return data === chosenValue.value;
+    });
+    if (!result) {
+      this.control.patchValue("");
+      chosenValue.value = "";
+    }
+  }
 }

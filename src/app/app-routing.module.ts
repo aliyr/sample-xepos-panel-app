@@ -17,7 +17,10 @@ import { DevicesFormComponent } from "app/pages/devices/devices-form/devices-for
 import { DevicesDetailsComponent } from "app/pages/devices/devices-details/devices-details.component";
 import { DevicesComponent } from "app/pages/devices/devices.component";
 import { LicenseDetailsComponent } from "./pages/license-details/license-details.component";
-import {PanelComponent} from './pages/panel/panel.component';
+import { PanelComponent } from "./pages/panel/panel.component";
+import { LocationsComponent } from "./pages/locations/locations.component";
+import { LocationFormComponent } from "./pages/locations/location-form/location-form.component";
+import { LocationDetailsComponent } from "./pages/locations/location-details/location-details.component";
 
 const routes: Routes = [
   { path: "", component: LoginComponent },
@@ -65,6 +68,16 @@ const routes: Routes = [
           { path: "", redirectTo: "details", pathMatch: "full" },
           { path: "form/:id", component: RegistersFormComponent },
           { path: "details", component: RegistersDetailsComponent }
+        ]
+      },
+      { path: "license-details", component: LicenseDetailsComponent },
+      {
+        path: "locations",
+        component: LocationsComponent,
+        children: [
+          { path: "", redirectTo: "details", pathMatch: "full" },
+          { path: "form/:id", component: LocationFormComponent },
+          { path: "details", component: LocationDetailsComponent }
         ]
       }
     ]

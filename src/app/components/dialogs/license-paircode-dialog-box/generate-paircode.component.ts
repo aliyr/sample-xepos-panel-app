@@ -2,9 +2,9 @@ import { Component, Inject } from "@angular/core";
 import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
 
 @Component({
-  selector: "app-generate-paircode-dialog-box",
-  templateUrl: "./generate-paircode-dialog-box.component.html",
-  styleUrls: ["./generate-paircode-dialog-box.component.scss"]
+  selector: "app-generate-paircode",
+  templateUrl: "./generate-paircode.component.html",
+  styleUrls: ["./generate-paircode.component.scss"]
 })
 export class DialogBoxComponent {
   license: string;

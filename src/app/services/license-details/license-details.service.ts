@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { MatDialog } from "@angular/material";
-import { DialogBoxComponent } from "app/components/dialogs/license-paircode-dialog-box/generate-paircode-dialog-box.component";
+import { DialogBoxComponent } from "app/components/dialogs/license-paircode-dialog-box/generate-paircode.component";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 
 @Injectable({
