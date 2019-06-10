@@ -81,6 +81,7 @@ import { PanelComponent } from "./pages/panel/panel.component";
 import { LocationsComponent } from "./pages/locations/locations.component";
 import { LocationDetailsComponent } from "./pages/locations/location-details/location-details.component";
 import { LocationFormComponent } from "./pages/locations/location-form/location-form.component";
+import { UsermanagementAddUserComponent } from "./pages/user-management/user-management-add-user/user-management-add-user.component";
 
 @NgModule({
   declarations: [
@@ -117,7 +118,8 @@ import { LocationFormComponent } from "./pages/locations/location-form/location-
     PanelComponent,
     LocationsComponent,
     LocationDetailsComponent,
-    LocationFormComponent
+    LocationFormComponent,
+    UsermanagementAddUserComponent
   ],
   imports: [
     BrowserModule,

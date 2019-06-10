@@ -21,7 +21,7 @@ import { PanelComponent } from "./pages/panel/panel.component";
 import { LocationsComponent } from "./pages/locations/locations.component";
 import { LocationFormComponent } from "./pages/locations/location-form/location-form.component";
 import { LocationDetailsComponent } from "./pages/locations/location-details/location-details.component";
-
+import { UsermanagementAddUserComponent } from "./pages/user-management/user-management-add-user/user-management-add-user.component";
 const routes: Routes = [
   { path: "", component: LoginComponent },
   { path: "login", component: LoginComponent },
@@ -39,7 +39,8 @@ const routes: Routes = [
         children: [
           { path: "", redirectTo: "details", pathMatch: "full" },
           { path: "form/:id", component: UserManagementFormComponent },
-          { path: "details", component: UserManagementDetailsComponent }
+          { path: "details", component: UserManagementDetailsComponent },
+          { path: "add-staff", component: UsermanagementAddUserComponent }
         ]
       },
       {

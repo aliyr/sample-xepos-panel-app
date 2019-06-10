@@ -1,16 +1,17 @@
 <app-list-header
-  title="Users Management"
-  description="A list of all of your users."
+  title="Add Staff"
+  description="A list of all users that you can add to your business"
 >
   <button
     mat-raised-button
     class="header-button"
-    color="accent"
-    (click)="addStaff()"
+    color="warn"
+    (click)="cancel()"
   >
-    Add New User
+    cancel
   </button>
 </app-list-header>
+
 <mat-card class="mat-elevation-z8 list-container">
   <mat-form-field>
     <input matInput placeholder="Filter" #filterInput />
@@ -19,36 +20,32 @@
     mat-table
     matSort
     [dataSource]="tableManagementService.dataSource"
-    matSortActive="Name"
+    matSortActive="name"
     matSortDirection="asc"
   >
-    <ng-container matColumnDef="Name">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>name</th>
       <td mat-cell *matCellDef="let element">{{ element.Name }}</td>
     </ng-container>
-
-    <ng-container matColumnDef="edit">
-      <th mat-header-cell *matHeaderCellDef class="list-action-row">
-        Edit
+    <ng-container matColumnDef="Add">
+      <th
+        mat-header-cell
+        *matHeaderCellDef
+        mat-sort-header
+        class="list-action-row"
+      >
+        Add
       </th>
-      <td mat-cell *matCellDef="let element" class="list-action-row">
-        <i class="material-icons" (click)="updateUser(element.Name)">
-          edit
-        </i>
-      </td></ng-container
-    >
-
-    <ng-container matColumnDef="delete">
-      <th mat-header-cell *matHeaderCellDef class="list-action-row">
-        Delete
-      </th>
-      <td mat-cell *matCellDef="let element" class="list-action-row">
-        <i class="material-icons">
-          delete
-        </i>
+      <td mat-cell *matCellDef="let element" (click)="addStaff(element)">
+        <i
+          class="far"
+          [ngClass]="{
+            'fa-plus': !element.isSelected,
+            'fa-check': element.isSelected
+          }"
+        ></i>
       </td>
     </ng-container>
-
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
   </table>

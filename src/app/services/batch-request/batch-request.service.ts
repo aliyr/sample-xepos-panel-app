@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { generateGuid } from "app/utils/generate-guid";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { SnackbarService } from '../snackbar/snackbar.service';
+import { SnackbarService } from "../snackbar/snackbar.service";
 @Injectable({
   providedIn: "root"
 })
@@ -12,7 +12,10 @@ export class BatchRequestService {
   batchRequestLength: number;
   batchResponseLength: number;
 
-  constructor(private http: HttpClient , private snackbarService: SnackbarService) {
+  constructor(
+    private http: HttpClient,
+    private snackbarService: SnackbarService
+  ) {
     // each batch request has a unique ID that should be placed on
     // each request and also on the end of whole request
     this.batchID = generateGuid();
@@ -53,8 +56,8 @@ OData-MaxVersion: 4.0
           "X-CorrelationId": generateGuid()
         }),
         responseType: "text"
-      }).toPromise();
-
+      })
+      .toPromise();
 
     // Extracts objects that started with
     // Odata and push them into an array
@@ -68,7 +71,11 @@ OData-MaxVersion: 4.0
       return this.responsesArray;
     } else {
       // if one or more requests become failed, show an error
-      this.snackbarService.toastError(' something went wrong :( ' , ' close ' , 3000);
+      this.snackbarService.toastError(
+        " something went wrong :( ",
+        " close ",
+        3000
+      );
     }
   }
 }
