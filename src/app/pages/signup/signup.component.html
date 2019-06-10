@@ -16,12 +16,12 @@
           <app-custom-input
             controlName="password"
             [errors]="[
-          { title: 'required', message: 'password is required' }
+          { title: 'required', message: 'password is required and should be more than 4 characters' }
         ]"
             label="password"
           ></app-custom-input>
           <div class="col-12 button-container">
-            <button mat-button mat-raised-button color="accent">
+            <button mat-button mat-raised-button color="accent" [disabled]="signupForm.invalid">
               Sign Up
             </button>
           </div>
@@ -39,6 +39,11 @@
                 <i class="fab fa-google-plus-g"></i>
               </button>
             </div>
+          <div class="col-12 button-container justify-content-center">
+            <p>
+              Already have an account yet ? try <a routerLink="/login"> login </a>
+            </p>
+          </div>
         </mat-card-content>
       </mat-card>
     </div>
