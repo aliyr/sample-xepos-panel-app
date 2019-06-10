@@ -17,7 +17,7 @@
             label="password"
           ></app-custom-input>
           <div class="col-12 button-container">
-            <button mat-button mat-raised-button color="accent">
+            <button mat-button mat-raised-button color="accent" [disabled]="loginForm.invalid">
               Login
             </button>
           </div>
@@ -36,7 +36,7 @@
 
           <div class="col-12 button-container justify-content-center">
             <p>
-              dont have an acoount yet ? try <a href="/sign-up"> signing up </a>
+              dont have an account yet ? try <a routerLink="/sign-up"> signing up </a>
             </p>
           </div>
         </mat-card-content>
